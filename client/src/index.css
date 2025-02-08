@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'Afacad Flux';
+  src: url('./assets/fonts/Afacad-VariableFont_wght.ttf');
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Afacad Flux', Inter;
   line-height: 1.5;
   font-weight: 400;
 
@@ -24,10 +29,17 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: auto;
   min-height: 100vh;
+}
+
+#root {
+ width: 100% !important;
+}
+
+#root, #root * {
+  max-width: 100% !important;
 }
 
 h1 {
