@@ -13,7 +13,7 @@ function Collapsible(props) {
         <>
             {props.useButton ? (
                 <button
-                    className="flex items-center px-3 py-2 text-white-200"
+                    className="flex items-center px-3 py-2"
                     type="button"
                     onClick={toggleContent}
                 >
@@ -21,13 +21,13 @@ function Collapsible(props) {
                 </button>
             ) : (
                 <a
-                    className="flex items-center px-3 py-2 text-white-200"
+                    className="flex items-center px-3 py-2"
                     onClick={toggleContent}
                 >
                     {props.collapseButtonContent}
                 </a>
             )}
-            {isShown || screenSize.isLarge ? (
+            {isShown || (screenSize.isLarge && !props.collapsibleAlways) ? (
                 <>{props.collapseBodyContent}</>
             ) : (
                 <></>

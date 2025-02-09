@@ -4,12 +4,7 @@ import { mdiMenu } from '@mdi/js';
 
 function Header() {
     return (
-        <header className="w-full flex items-center justify-between flex-wrap bg-teal-500 p-6">
-            <div className="flex items-center flex-shrink-0 text-white mr-6">
-                <span className="font-semibold text-xl tracking-tight">
-                    Tailwind CSS
-                </span>
-            </div>
+        <header className="w-full flex items-center justify-between flex-wrap bg-transparent p-6">
             <Collapsible
                 collapseButtonContent={
                     <div className="block lg:hidden">
@@ -24,19 +19,19 @@ function Header() {
                         <div className="text-sm lg:flex-grow">
                             <a
                                 href="#responsive-header"
-                                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4"
                             >
                                 Docs
                             </a>
                             <a
                                 href="#responsive-header"
-                                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4"
                             >
                                 Examples
                             </a>
                             <a
                                 href="#responsive-header"
-                                className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200"
                             >
                                 Blog
                             </a>
