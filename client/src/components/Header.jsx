@@ -4,7 +4,7 @@ import { mdiMenu } from '@mdi/js';
 
 function Header() {
     return (
-        <header className="w-full flex items-center justify-between flex-wrap bg-transparent p-6">
+        <header className="w-full flex items-center justify-between flex-wrap bg-transparent p-6 lg:text-lg">
             <Collapsible
                 collapseButtonContent={
                     <div className="block lg:hidden">
@@ -19,19 +19,19 @@ function Header() {
                         <div className="lg:flex-grow">
                             <a
                                 href="#responsive-header"
-                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4"
+                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-cyan-400 mr-4"
                             >
                                 Docs
                             </a>
                             <a
                                 href="#responsive-header"
-                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4"
+                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-cyan-400 mr-4"
                             >
                                 Examples
                             </a>
                             <a
                                 href="#responsive-header"
-                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200"
+                                className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-cyan-400"
                             >
                                 Blog
                             </a>

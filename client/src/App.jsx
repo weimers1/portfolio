@@ -1,14 +1,20 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './components/Header';
-import Footer from './components/Footer';
+import Home from './pages/Home';
+import Experience from './pages/Experience';
 
 function App() {
     return (
-        <>
-            <Header></Header>
-            <main className="container h-screen"></main>
-            <Footer></Footer>
-        </>
+        <Routes>
+            <Route
+                path="/"
+                element={<Home />}
+            />
+            <Route
+                path="/experience"
+                element={<Experience />}
+            />
+        </Routes>
     );
 }
 

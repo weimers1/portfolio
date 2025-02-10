@@ -5,24 +5,24 @@ function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-6">
-            <div>&copy; {currentYear} Samuel Weimer</div>
+        <footer className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-6 lg:text-lg">
+            <div className="text-xs">&copy; {currentYear} Samuel Weimer</div>
             <div className="grid grid-cols-1 lg:grid-cols-3">
                 <a
                     href="#responsive-header"
-                    className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4"
+                    className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-cyan-400 mr-4"
                 >
                     Docs
                 </a>
                 <a
                     href="#responsive-header"
-                    className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4"
+                    className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-cyan-400 mr-4"
                 >
                     Examples
                 </a>
                 <a
                     href="#responsive-header"
-                    className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200"
+                    className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-cyan-400"
                 >
                     Blog
                 </a>
