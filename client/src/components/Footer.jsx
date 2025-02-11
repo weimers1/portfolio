@@ -1,8 +1,22 @@
-import Icon from '@mdi/react';
-import { mdiCodeBraces, mdiGithub, mdiLinkedin } from '@mdi/js';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Icon } from '@iconify/react';
 
 function Footer() {
     const currentYear = new Date().getFullYear();
+
+    const [socials, setSocials] = useState([]);
+    useEffect(() => {
+        axios
+            .get('http://localhost:4000/socials')
+            .then((response) => {
+                setSocials(response.data);
+            })
+            .catch((error) => {
+                // @TODO: email errors
+                console.log(error);
+            });
+    }, []);
 
     return (
         <footer className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-6 lg:text-lg pt-10">
@@ -28,39 +42,22 @@ function Footer() {
                 </a>
             </div>
             <div className="flex justify-center lg:justify-end">
-                <a
-                    className="p-3"
-                    href="https://www.github.com/weimers1"
-                    target="_blank"
-                >
-                    <Icon
-                        path={mdiGithub}
-                        size={1}
-                        title="GitHub"
-                    />
-                </a>
-                <a
-                    className="p-3"
-                    href="https://www.linkedin.com/in/sam-weimer/"
-                    target="_blank"
-                >
-                    <Icon
-                        path={mdiLinkedin}
-                        size={1}
-                        title="LinkedIn"
-                    />
-                </a>
-                <a
-                    className="p-3"
-                    href="https://leetcode.com/u/samweimer7/"
-                    target="_blank"
-                >
-                    <Icon
-                        path={mdiCodeBraces}
-                        size={1}
-                        title="LeetCode"
-                    />
-                </a>
+                {socials.map((social) => {
+                    return (
+                        <a
+                            className="p-3"
+                            href={social.urlWebsite}
+                            target="_blank"
+                            key={social._id}
+                        >
+                            <Icon
+                                icon={social.icon}
+                                title={social.title}
+                                className="w-5 h-5 lg:w-7 lg:h-7"
+                            />
+                        </a>
+                    );
+                })}
             </div>
         </footer>
     );

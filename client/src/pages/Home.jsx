@@ -5,22 +5,23 @@ import profile from '../assets/images/profile.jpg';
 import { Icon } from '@iconify/react';
 
 function Home() {
-    const [socials, setSocials] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [socials, setSocials] = useState([]);
     useEffect(() => {
         setLoading(true);
         axios
             .get('http://localhost:4000/')
             .then((response) => {
                 setLoading(false);
-                console.log(response);
                 setSocials(response.data.socials);
             })
             .catch((error) => {
                 setLoading(false);
+                // @TODO: email errors
                 console.log(error);
             });
     }, []);
+
     return (
         <Layout>
             {loading ? (
@@ -39,10 +40,10 @@ function Home() {
                         />
                     </div>
                     <div className="p-5 lg:pe-10 pt-10 text-center lg:flex lg:justify-center text-3xl lg:text-5xl text-shadow-cyan">
-                        <div className="border-b lg:border-b-0 lg:border-e mx-10 lg:mx-0 pb-7 lg:pb-0 lg:pe-6">
+                        <div className="border-b lg:border-b-0 lg:border-e mx-10 lg:mx-0 pb-7 lg:pb-0 lg:pe-6 lg:mt-2">
                             Sam Weimer
                         </div>
-                        <div className="border-b lg:border-b-0 lg:border-e mx-10 lg:mx-0 py-7 lg:py-0 lg:px-6">
+                        <div className="border-b lg:border-b-0 lg:border-e mx-10 lg:mx-0 py-7 lg:py-0 lg:px-6 lg:mt-2">
                             Full Stack Developer
                         </div>
                         <div className="flex justify-center pt-7 lg:pt-0 lg:ps-4">
@@ -57,13 +58,14 @@ function Home() {
                                         <Icon
                                             icon={social.icon}
                                             title={social.title}
-                                            className="w-7 lg:w-10"
+                                            className="w-8 h-8 lg:w-11 lg:h-11"
                                         />
                                     </a>
                                 );
                             })}
                         </div>
                     </div>
+                    <div></div>
                 </div>
             )}
         </Layout>
