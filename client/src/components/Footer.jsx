@@ -5,7 +5,7 @@ function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-6 lg:text-lg">
+        <footer className="grid grid-cols-1 lg:grid-cols-3 gap-4 p-6 lg:text-lg pt-10">
             <div className="text-xs">&copy; {currentYear} Samuel Weimer</div>
             <div className="grid grid-cols-1 lg:grid-cols-3">
                 <a

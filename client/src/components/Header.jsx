@@ -4,7 +4,7 @@ import { mdiMenu } from '@mdi/js';
 
 function Header() {
     return (
-        <header className="w-full flex items-center justify-between flex-wrap bg-transparent p-6 lg:text-lg">
+        <header className="w-full flex items-center justify-between flex-wrap bg-transparent p-6 lg:text-lg lg:pb-10">
             <Collapsible
                 collapseButtonContent={
                     <div className="block lg:hidden">

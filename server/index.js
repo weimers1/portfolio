@@ -3,6 +3,7 @@ import { PORT, DB_CONNECTION_STRING } from './config.js';
 import mongoose from 'mongoose';
 import { Project, getGitHubRepoLanguages } from './models/project.js';
 import cors from 'cors';
+import { Social } from './models/social.js';
 
 // Create server
 const app = express();
@@ -22,15 +23,24 @@ app.use(
 );
 
 app.get('/', async (request, response) => {
-    const projects = await Project.find({});
-    projects.forEach(async (project) => {
-        const projectLanguages = await getGitHubRepoLanguages(
-            project['titleRepo']
-        );
-        console.log(projectLanguages);
-    });
+    try {
+        const projects = await Project.find({});
+        projects.forEach(async (project) => {
+            const projectLanguages = await getGitHubRepoLanguages(
+                project['titleRepo']
+            );
+        });
 
-    return response.status(200).send('Hello World');
+        const socials = await Social.find({});
+
+        return response
+            .status(200)
+            .json({ projects: projects, socials: socials });
+    } catch (error) {
+        // @TODO: email errors
+        console.log(error);
+        response.status(500).send('System Error');
+    }
 });
 
 app.get('/projects', async (request, response) => {
@@ -40,10 +50,20 @@ app.get('/projects', async (request, response) => {
             const projectLanguages = await getGitHubRepoLanguages(
                 project['titleRepo']
             );
-            console.log(projectLanguages);
         });
 
         return response.status(200).json(projects);
+    } catch (error) {
+        // @TODO: email errors
+        console.log(error);
+        response.status(500).send('System Error');
+    }
+});
+
+app.get('/socials', async (request, response) => {
+    try {
+        const socials = await Social.find({});
+        return response.status(200).json(socials);
     } catch (error) {
         // @TODO: email errors
         console.log(error);
