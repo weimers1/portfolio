@@ -32,6 +32,18 @@ const schema = mongoose.Schema(
 
 export const Project = mongoose.model('Project', schema);
 
+export async function getGitHubRepoCommitCount(titleRepo) {
+    const url = `https://api.github.com/repos/weimers1/${titleRepo}/contributors`;
+    const headers = {
+        Authorization: `token ${GITHUB_API_KEY}`,
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+    };
+
+    const response = await executeFetch(url, headers);
+    return response[0].contributions;
+}
+
 export async function getGitHubRepoInfo(titleRepo) {
     const url = `https://api.github.com/repos/weimers1/${titleRepo}`;
     const headers = {
@@ -64,6 +76,9 @@ export async function getProjects() {
             projects[i].titleRepo
         );
         projects[i].info = await getGitHubRepoInfo(projects[i].titleRepo);
+        projects[i].commitCount = await getGitHubRepoCommitCount(
+            projects[i].titleRepo
+        );
     }
 
     return projects;

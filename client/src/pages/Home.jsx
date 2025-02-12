@@ -24,15 +24,23 @@ function Home() {
             });
     }, []);
 
-    const languages = useMemo(() => {
+    const stats = useMemo(() => {
         const languageArray = [];
+        var commitCountTotal = 0;
+
         projects.forEach((project) => {
             Object.keys(project.languages).forEach((language) => {
                 if (languageArray.indexOf(language) === -1)
                     languageArray.push(language);
             });
+
+            commitCountTotal += project.commitCount;
         });
-        return languageArray;
+
+        return {
+            languages: languageArray,
+            commitCountTotal: commitCountTotal,
+        };
     }, [projects]);
 
     return (
@@ -46,13 +54,13 @@ function Home() {
                 </div>
             ) : (
                 <div className="grid grid-cols-1">
-                    <div className="place-items-center lg:pb-10">
+                    <section className="place-items-center lg:pb-10">
                         <img
                             className="rounded-full w-40 lg:w-80 shadow-2xl shadow-cyan-600 border-3 lg:border-6 border-cyan-600"
                             src={profile}
                         />
-                    </div>
-                    <div className="p-5 lg:pe-10 pt-10 text-center lg:flex lg:justify-center text-3xl lg:text-5xl text-shadow-cyan">
+                    </section>
+                    <section className="p-5 pt-10 text-center lg:flex lg:justify-center text-3xl lg:text-5xl text-shadow-cyan">
                         <div className="border-b lg:border-b-0 lg:border-e mx-10 lg:mx-0 pb-7 lg:pb-0 lg:pe-6 lg:mt-2">
                             Sam Weimer
                         </div>
@@ -77,8 +85,17 @@ function Home() {
                                 );
                             })}
                         </div>
-                    </div>
-                    <div>{}</div>
+                    </section>
+                    <section className="flex justify-center pt-10">
+                        <div className="bg-white w-30 h-30 lg:w-60 lg:h-60 text-center rounded-full border-3 lg:border-6 border-cyan-600">
+                            <div className="pt-6 text-cyan-600">
+                                <p className="text-4xl">
+                                    {stats.commitCountTotal}
+                                </p>
+                                <p className="text-xl">Commits</p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             )}
         </Layout>
