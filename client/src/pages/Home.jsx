@@ -39,7 +39,13 @@ function Home() {
 
         return {
             languages: languageArray,
-            commitCountTotal: commitCountTotal,
+            commitCountTotal: commitCountTotal + 600, // including commits from private repos/other jobs
+            yearsExperience: Math.floor(
+                Math.abs(
+                    new Date('2020-04-27').getTime() - new Date().getTime() // 2020-04-27 marks the start date of the weimers1 GitHub account
+                ) /
+                    (1000 * 60 * 60 * 24 * 365.25)
+            ),
         };
     }, [projects]);
 
@@ -60,7 +66,7 @@ function Home() {
                             src={profile}
                         />
                     </section>
-                    <section className="p-5 pt-10 text-center lg:flex lg:justify-center text-3xl lg:text-5xl text-shadow-cyan">
+                    <section className="p-5 py-10 text-center lg:flex lg:justify-center text-3xl lg:text-5xl text-shadow-cyan">
                         <div className="border-b lg:border-b-0 lg:border-e mx-10 lg:mx-0 pb-7 lg:pb-0 lg:pe-6 lg:mt-2">
                             Sam Weimer
                         </div>
@@ -71,7 +77,7 @@ function Home() {
                             {socials.map((social) => {
                                 return (
                                     <a
-                                        className="p-3"
+                                        className="p-3 text-white"
                                         href={social.urlWebsite}
                                         target="_blank"
                                         key={social._id}
@@ -86,15 +92,44 @@ function Home() {
                             })}
                         </div>
                     </section>
-                    <section className="flex justify-center pt-10">
-                        <div className="bg-white w-30 h-30 lg:w-60 lg:h-60 text-center rounded-full border-3 lg:border-6 border-cyan-600">
-                            <div className="pt-6 text-cyan-600">
-                                <p className="text-4xl">
-                                    {stats.commitCountTotal}
+                    <section className="lg:hidden place-items-center">
+                        <div className="h-50"></div>
+                        <p className="text-white text-3xl border-b w-45 text-center pb-8 text-shadow-cyan">
+                            Highlights
+                        </p>
+                    </section>
+                    <section className="py-10 grid grid-cols-1 lg:grid-cols-3 place-items-center">
+                        <div className="bg-white w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 mb-10 lg:mb-0">
+                            <div className="pt-6 lg:pt-8 text-cyan-600">
+                                <p className="text-4xl lg:text-7xl">
+                                    {stats.yearsExperience}+
                                 </p>
-                                <p className="text-xl">Commits</p>
+                                <p className="text-xl lg:text-3xl">Y.O.E.</p>
                             </div>
                         </div>
+                        <div className="bg-white w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
+                            <div className="pt-6 lg:pt-8 text-cyan-600">
+                                <p className="text-4xl lg:text-7xl">
+                                    {stats.commitCountTotal}
+                                </p>
+                                <p className="text-xl lg:text-3xl">Commits</p>
+                            </div>
+                        </div>
+                        <div className="bg-white w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
+                            <div className="pt-5 lg:pt-7 text-cyan-600">
+                                <p className="text-4xl lg:text-7xl">
+                                    {stats.languages.length}+
+                                </p>
+                                <p className="text-sm lg:text-2xl">
+                                    Programming Languages
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section className="pt-10 grid grid-cols-1 lg:grid-cols-2 place-items-center">
+                        <p className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center pb-8 text-shadow-cyan col-span-2">
+                            Projects
+                        </p>
                     </section>
                 </div>
             )}

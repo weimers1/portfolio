@@ -5,7 +5,7 @@ function Layout({ children }) {
     return (
         <>
             <Header></Header>
-            <main className="container h-screen lg:py-10">{children}</main>
+            <main className="container min-h-screen lg:py-10">{children}</main>
             <Footer></Footer>
         </>
     );
