@@ -1,7 +1,7 @@
 import express from 'express';
 import { PORT, DB_CONNECTION_STRING } from './config.js';
 import mongoose from 'mongoose';
-import { Project, getGitHubRepoLanguages } from './models/project.js';
+import { getProjects } from './models/project.js';
 import cors from 'cors';
 import { Social } from './models/social.js';
 
@@ -24,12 +24,7 @@ app.use(
 
 app.get('/', async (request, response) => {
     try {
-        const projects = await Project.find({});
-        projects.forEach(async (project) => {
-            const projectLanguages = await getGitHubRepoLanguages(
-                project['titleRepo']
-            );
-        });
+        const projects = await getProjects();
 
         const socials = await Social.find({});
 
@@ -45,12 +40,7 @@ app.get('/', async (request, response) => {
 
 app.get('/projects', async (request, response) => {
     try {
-        const projects = await Project.find({});
-        projects.forEach(async (project) => {
-            const projectLanguages = await getGitHubRepoLanguages(
-                project['titleRepo']
-            );
-        });
+        const projects = await getProjects();
 
         return response.status(200).json(projects);
     } catch (error) {

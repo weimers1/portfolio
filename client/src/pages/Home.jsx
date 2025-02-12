@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
 import Layout from '../components/Layout';
 import profile from '../assets/images/profile.jpg';
@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react';
 function Home() {
     const [loading, setLoading] = useState(true);
     const [socials, setSocials] = useState([]);
+    const [projects, setProjects] = useState([]);
     useEffect(() => {
         setLoading(true);
         axios
@@ -14,6 +15,7 @@ function Home() {
             .then((response) => {
                 setLoading(false);
                 setSocials(response.data.socials);
+                setProjects(response.data.projects);
             })
             .catch((error) => {
                 setLoading(false);
@@ -21,6 +23,17 @@ function Home() {
                 console.log(error);
             });
     }, []);
+
+    const languages = useMemo(() => {
+        const languageArray = [];
+        projects.forEach((project) => {
+            Object.keys(project.languages).forEach((language) => {
+                if (languageArray.indexOf(language) === -1)
+                    languageArray.push(language);
+            });
+        });
+        return languageArray;
+    }, [projects]);
 
     return (
         <Layout>
@@ -65,7 +78,7 @@ function Home() {
                             })}
                         </div>
                     </div>
-                    <div></div>
+                    <div>{}</div>
                 </div>
             )}
         </Layout>

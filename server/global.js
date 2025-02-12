@@ -18,7 +18,7 @@ export async function executeFetch(url, headers = {}, method = 'GET') {
         return data;
     } catch (error) {
         // @TODO: email errors
-        console.error('Error fetching GitHub data:', error);
+        console.error('Error fetching data:', error);
         throw error;
     }
 }
