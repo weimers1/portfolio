@@ -1,9 +1,9 @@
 import express from 'express';
 import { PORT, DB_CONNECTION_STRING } from './config.js';
-import mongoose from 'mongoose';
 import { getProjects } from './models/project.js';
+import { getSocials } from './models/social.js';
+import mongoose from 'mongoose';
 import cors from 'cors';
-import { Social } from './models/social.js';
 
 // Create server
 const app = express();
@@ -26,7 +26,7 @@ app.get('/', async (request, response) => {
     try {
         const projects = await getProjects();
 
-        const socials = await Social.find({});
+        const socials = await getSocials();
 
         return response
             .status(200)
@@ -52,7 +52,7 @@ app.get('/projects', async (request, response) => {
 
 app.get('/socials', async (request, response) => {
     try {
-        const socials = await Social.find({});
+        const socials = await getSocials();
         return response.status(200).json(socials);
     } catch (error) {
         // @TODO: email errors

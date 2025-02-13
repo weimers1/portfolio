@@ -21,3 +21,7 @@ const schema = mongoose.Schema(
 );
 
 export const Social = mongoose.model('Social', schema);
+
+export async function getSocials() {
+    return await Social.find({});
+}
