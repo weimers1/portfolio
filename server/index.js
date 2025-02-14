@@ -2,6 +2,7 @@ import express from 'express';
 import { PORT, DB_CONNECTION_STRING } from './config.js';
 import { getProjects } from './models/project.js';
 import { getSocials } from './models/social.js';
+import { getPages } from './models/page.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
@@ -31,6 +32,18 @@ app.get('/', async (request, response) => {
         return response
             .status(200)
             .json({ projects: projects, socials: socials });
+    } catch (error) {
+        // @TODO: email errors
+        console.log(error);
+        response.status(500).send('System Error');
+    }
+});
+
+app.get('/pages', async (request, response) => {
+    try {
+        const pages = await getPages();
+
+        return response.status(200).json(pages);
     } catch (error) {
         // @TODO: email errors
         console.log(error);

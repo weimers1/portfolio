@@ -1,12 +1,12 @@
 import Header from './Header';
 import Footer from './Footer';
 
-function Layout({ children }) {
+function Layout({ pages, children }) {
     return (
         <>
-            <Header></Header>
+            <Header pages={pages}></Header>
             <main className="container min-h-screen lg:py-10">{children}</main>
-            <Footer></Footer>
+            <Footer pages={pages}></Footer>
         </>
     );
 }

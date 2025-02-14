@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Icon } from '@iconify/react';
 
-function Footer() {
+function Footer(props) {
     const currentYear = new Date().getFullYear();
 
     const [socials, setSocials] = useState([]);
@@ -23,37 +23,28 @@ function Footer() {
             <div className="text-xs lg:pt-2">
                 &copy; {currentYear} Samuel Weimer
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3">
-                <div className="block mt-4 lg:inline-block lg:mt-0 lg:text-center">
-                    <a
-                        href="#responsive-header"
-                        className="text-white hover:text-cyan-400"
-                    >
-                        Docs
-                    </a>
-                </div>
-                <div className="block mt-4 lg:inline-block lg:mt-0 lg:text-center">
-                    <a
-                        href="#responsive-header"
-                        className="text-white hover:text-cyan-400"
-                    >
-                        Examples
-                    </a>
-                </div>
-                <div className="block mt-4 lg:inline-block lg:mt-0 lg:text-center">
-                    <a
-                        href="#responsive-header"
-                        className="text-white hover:text-cyan-400"
-                    >
-                        Blog
-                    </a>
-                </div>
+            <div className="lg:flex items-center lg:justify-between">
+                {props.pages.map((page) => {
+                    return (
+                        <div
+                            key={page.path}
+                            className="block mt-4 lg:inline-block lg:mt-0 lg:text-center"
+                        >
+                            <a
+                                href={page.path}
+                                className="text-white hover:text-cyan-500 text-shadow-cyan"
+                            >
+                                {page.title}
+                            </a>
+                        </div>
+                    );
+                })}
             </div>
             <div className="flex justify-center lg:justify-end">
                 {socials.map((social) => {
                     return (
                         <a
-                            className="p-3 text-white hover:text-cyan-400"
+                            className="p-3 text-white hover:text-cyan-500"
                             href={social.urlWebsite}
                             target="_blank"
                             key={social._id}

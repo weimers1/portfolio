@@ -2,9 +2,9 @@ import Layout from '../components/Layout';
 import reactLogo from '../assets/images/react.svg';
 import viteLogo from '../assets/images/vite.svg';
 
-function Experience() {
+function Experience(props) {
     return (
-        <Layout>
+        <Layout pages={props.pages}>
             <img
                 src={reactLogo}
                 className="logo react"

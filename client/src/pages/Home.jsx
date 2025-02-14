@@ -4,7 +4,7 @@ import Layout from '../components/Layout';
 import profile from '../assets/images/profile.jpg';
 import { Icon } from '@iconify/react';
 
-function Home() {
+function Home(props) {
     const [loading, setLoading] = useState(true);
     const [socials, setSocials] = useState([]);
     const [projects, setProjects] = useState([]);
@@ -50,7 +50,7 @@ function Home() {
     }, [projects]);
 
     return (
-        <Layout>
+        <Layout pages={props.pages}>
             {loading ? (
                 <div className="flex justify-center h-120 lg:h-170 items-center">
                     <Icon
@@ -99,35 +99,46 @@ function Home() {
                         <p className="lg:hidden text-white text-3xl border-b w-45 text-center mb-8 pb-8 text-shadow-cyan">
                             Highlights
                         </p>
-                        <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 mb-10 lg:mb-0">
-                            <div className="pt-4 lg:pt-7 text-white text-shadow-cyan">
-                                <p className="text-4xl lg:text-7xl">
-                                    {stats.yearsExperience}+
-                                </p>
-                                <p className="text-sm lg:text-2xl">
-                                    Years of
-                                    <br /> Experience
-                                </p>
+                        <a href="/experience">
+                            <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 mb-10 lg:mb-0">
+                                <div className="pt-4 lg:pt-7 text-white text-shadow-cyan">
+                                    <p className="text-4xl lg:text-7xl">
+                                        {stats.yearsExperience}+
+                                    </p>
+                                    <p className="text-sm lg:text-2xl">
+                                        Years of
+                                        <br /> Experience
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
-                            <div className="pt-6 lg:pt-8 text-white text-shadow-cyan">
-                                <p className="text-4xl lg:text-7xl">
-                                    {stats.commitCountTotal}
-                                </p>
-                                <p className="text-xl lg:text-3xl">Commits</p>
+                        </a>
+                        <a
+                            href="https://www.github.com/weimers1"
+                            target="_blank"
+                        >
+                            <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
+                                <div className="pt-6 lg:pt-8 text-white text-shadow-cyan">
+                                    <p className="text-4xl lg:text-7xl">
+                                        {stats.commitCountTotal}
+                                    </p>
+                                    <p className="text-xl lg:text-3xl">
+                                        Commits
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
-                            <div className="pt-4 lg:pt-7 text-white text-shadow-cyan">
-                                <p className="text-4xl lg:text-7xl">
-                                    {stats.languages.length}+
-                                </p>
-                                <p className="text-sm lg:text-2xl">
-                                    Programming Languages
-                                </p>
+                        </a>
+                        <a href="/experience#languages">
+                            <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
+                                <div className="pt-4 lg:pt-7 text-white text-shadow-cyan">
+                                    <p className="text-4xl lg:text-7xl">
+                                        {stats.languages.length}+
+                                    </p>
+                                    <p className="text-sm lg:text-2xl">
+                                        Programming Languages
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </section>
                     <section className="hidden lg:block">
                         <div className="h-50"></div>
