@@ -3,6 +3,7 @@ import { PORT, DB_CONNECTION_STRING } from './config.js';
 import { getProjects } from './models/project.js';
 import { getSocials } from './models/social.js';
 import { getPages } from './models/page.js';
+import { getTechnologies } from './models/technology.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 

@@ -23,7 +23,7 @@ function App() {
     }, []);
 
     const loadComponent = (componentPath) => {
-        return lazy(() => import(`./pages/${componentPath}`));
+        return lazy(() => import(`./pages/${componentPath}.jsx`));
     };
 
     const componentLoading = (

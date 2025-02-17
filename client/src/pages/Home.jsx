@@ -9,7 +9,6 @@ function Home(props) {
     const [socials, setSocials] = useState([]);
     const [projects, setProjects] = useState([]);
     useEffect(() => {
-        setLoading(true);
         axios
             .get('http://localhost:4000/')
             .then((response) => {
