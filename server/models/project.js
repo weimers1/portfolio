@@ -24,6 +24,10 @@ const schema = mongoose.Schema(
             type: String,
             required: true,
         },
+        techStack: {
+            type: Array,
+            required: true,
+        },
     },
     {
         timestamps: true,

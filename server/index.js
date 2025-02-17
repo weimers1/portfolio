@@ -74,6 +74,17 @@ app.get('/socials', async (request, response) => {
     }
 });
 
+app.get('/technologies', async (request, response) => {
+    try {
+        const technologies = await getTechnologies();
+        return response.status(200).json(technologies);
+    } catch (error) {
+        // @TODO: email errors
+        console.log(error);
+        response.status(500).send('System Error');
+    }
+});
+
 mongoose
     .connect(DB_CONNECTION_STRING)
     .then((response) => {
