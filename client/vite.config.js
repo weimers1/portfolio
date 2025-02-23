@@ -8,5 +8,14 @@ export default defineConfig({
     server: {
         port: PORT,
     },
-    plugins: [react(), tailwindcss()],
+    plugins: [
+        react(),
+        tailwindcss({
+            content: [
+                './src/**/*.jsx', // Your project files
+                './components/**/*.jsx', // Example for your components
+                './index.html', // Often needed
+            ],
+        }),
+    ],
 });

@@ -36,39 +36,23 @@ function Experience(props) {
 
             {/* Tech Stacks/Technologies */}
             <section>
-                {technologies.map((technology) => {
-                    {
-                        technology.icon;
-                    }
-                    if (technology.icon !== '') {
+                <div className="grid grid-cols-3 lg:grid-cols-5 place-items-center">
+                    {technologies.map((technology, index) => {
                         return (
-                            <Icon
-                                key={technology._id}
-                                className={'w-20 h-20 ' + technology.class}
-                                icon={technology.icon}
-                                title={technology.name}
-                            />
+                            <div className="py-2">
+                                <img
+                                    key={technology._id}
+                                    src={technology.svgFilePath}
+                                    className={
+                                        'h-15 lg:h-30 ' + technology.class
+                                    }
+                                    alt={technology.name}
+                                    title={technology.name}
+                                />
+                            </div>
                         );
-                    }
-
-                    if (technology.svgFilePath !== '') {
-                        return (
-                            <img
-                                key={technology._id}
-                                src={technology.svgFilePath}
-                                className={'w-20 h-20 ' + technology.class}
-                                alt={technology.name}
-                                title={technology.name}
-                            />
-                        );
-                    }
-                })}
-                {}
-                {/* <img
-                src={reactLogo}
-                className="logo react"
-                alt="React logo"
-                /> */}
+                    })}
+                </div>
             </section>
 
             {/* Resumes (both user friendly and ATS) */}
