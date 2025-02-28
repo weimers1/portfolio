@@ -1,7 +1,7 @@
 import Header from './Header';
 import Footer from './Footer';
 
-function Layout({ pages, children }) {
+function PageLayout({ pages, children }) {
     return (
         <>
             <Header pages={pages}></Header>
@@ -11,4 +11,4 @@ function Layout({ pages, children }) {
     );
 }
 
-export default Layout;
+export default PageLayout;

@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
-import Layout from '../components/Layout';
+import PageLayout from '../components/PageLayout';
 import profile from '../assets/images/profile.jpg';
 import { Icon } from '@iconify/react';
 
@@ -49,7 +49,7 @@ function Home(props) {
     }, [projects]);
 
     return (
-        <Layout pages={props.pages}>
+        <PageLayout pages={props.pages}>
             {loading ? (
                 <div className="flex justify-center h-120 lg:h-170 items-center">
                     <Icon
@@ -173,7 +173,7 @@ function Home(props) {
                     </section>
                 </div>
             )}
-        </Layout>
+        </PageLayout>
     );
 }
 
