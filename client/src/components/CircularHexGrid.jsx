@@ -3,6 +3,7 @@ import { HexGrid, Layout, Hexagon, Text } from 'react-hexgrid';
 import useScreenSize from '../hooks/useScreenSize';
 
 function CircularHexGrid({ totalHexagons }) {
+    let layers = 1;
     const screenSize = useScreenSize();
 
     const generateHexagons = (numHexagons) => {
@@ -10,7 +11,6 @@ function CircularHexGrid({ totalHexagons }) {
 
         if (numHexagons <= 1) return hexagons;
 
-        let layer = 1;
         let count = 1;
         let q = 0;
         let r = 0;
@@ -25,7 +25,7 @@ function CircularHexGrid({ totalHexagons }) {
             let skippedSecondSideThisLayer = false;
 
             for (let side = 0; side < 6; side++) {
-                for (let i = 0; i < layer; i++) {
+                for (let i = 0; i < layers; i++) {
                     if (side === 0) {
                         q--;
                         s++;
@@ -56,7 +56,7 @@ function CircularHexGrid({ totalHexagons }) {
                     }
                 }
             }
-            layer++;
+            layers++;
             maxIterations++;
         }
 
@@ -72,7 +72,10 @@ function CircularHexGrid({ totalHexagons }) {
             viewBox="-50 -40 100 100"
         >
             <Layout
-                size={{ x: 10, y: 10 }}
+                size={{
+                    x: 10 - (screenSize.isLarge ? 0 : layers / 2),
+                    y: 10 - (screenSize.isLarge ? 0 : layers / 2),
+                }}
                 flat={true}
                 spacing={1.1}
                 origin={{ x: 0, y: 10 }}
@@ -84,13 +87,7 @@ function CircularHexGrid({ totalHexagons }) {
                         r={hex.r}
                         s={hex.s}
                     >
-                        <Text
-                            fill={`#${4 + index * 6}${4 + index * 5}${
-                                4 + index * 4
-                            }`}
-                        >
-                            test
-                        </Text>
+                        {/* TODO: add svg's for technologies */}
                     </Hexagon>
                 ))}
             </Layout>

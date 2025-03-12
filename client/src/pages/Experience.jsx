@@ -36,7 +36,7 @@ function Experience(props) {
             <section></section>
 
             {/* Tech Stacks/Technologies */}
-            <section className="bg-white">
+            <section>
                 <CircularHexGrid totalHexagons={20} />
                 {/* <div className="grid grid-cols-3 lg:grid-cols-6 place-items-center mx-15 lg:mx-50">
                     {technologies.map((technology, index) => {
