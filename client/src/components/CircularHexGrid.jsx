@@ -2,20 +2,33 @@ import React from 'react';
 import { HexGrid, Layout, Hexagon, Text } from 'react-hexgrid';
 import useScreenSize from '../hooks/useScreenSize';
 
-function CircularHexGrid({ totalHexagons }) {
+function CircularHexGrid({ hexagonContent }) {
+    // track layer info
+    let outsideLayerAmountMax = 0;
     let layers = 1;
+
     const screenSize = useScreenSize();
 
     const generateHexagons = (numHexagons) => {
-        const hexagons = [{ q: 0, r: 0, s: 0 }];
+        if (!hexagonContent.length) return [];
+
+        const hexagons = [
+            { q: 0, r: 0, s: 0, svgFilePath: hexagonContent[0].svgFilePath },
+        ];
 
         if (numHexagons <= 1) return hexagons;
 
+        // count the hexagons that get added to the array
         let count = 1;
+
+        // initialize coordinates
         let q = 0;
         let r = 0;
         let s = 0;
+
+        // set maximum number of iterations
         let maxIterations = 100;
+
         while (count < numHexagons && maxIterations > 0) {
             /*
              * I wrote out the pattern I saw for each layer's transition rules (coordinate ++/--) and noticed
@@ -26,6 +39,8 @@ function CircularHexGrid({ totalHexagons }) {
 
             for (let side = 0; side < 6; side++) {
                 for (let i = 0; i < layers; i++) {
+                    outsideLayerAmountMax = layers * 6;
+
                     if (side === 0) {
                         q--;
                         s++;
@@ -63,22 +78,33 @@ function CircularHexGrid({ totalHexagons }) {
         return hexagons;
     };
 
-    const hexagons = generateHexagons(totalHexagons);
+    const hexagons = generateHexagons(hexagonContent.length);
+
+    const getViewBox = () => {
+        const numHexagonsTotal = hexagonContent.length;
+        const numHexagonsOuterLayer =
+            numHexagonsTotal - (outsideLayerAmountMax + 1);
+        return `-5${
+            numHexagonsOuterLayer < Math.floor(outsideLayerAmountMax / 2)
+                ? '5'
+                : '0'
+        } ${screenSize.isLarge ? '-40' : '-30'} 100 100`;
+    };
 
     return (
         <HexGrid
             width={screenSize.width}
-            height={screenSize.height / 1.5}
-            viewBox="-50 -40 100 100"
+            height={screenSize.height / 1.2}
+            viewBox={getViewBox()}
         >
             <Layout
                 size={{
-                    x: 10 - (screenSize.isLarge ? 0 : layers / 2),
-                    y: 10 - (screenSize.isLarge ? 0 : layers / 2),
+                    x: 10 - (screenSize.isLarge ? layers / 2 : layers / 1.5),
+                    y: 10 - (screenSize.isLarge ? layers / 2 : layers / 1.5),
                 }}
                 flat={true}
                 spacing={1.1}
-                origin={{ x: 0, y: 10 }}
+                origin={{ x: 0, y: 15 }}
             >
                 {hexagons.map((hex, index) => (
                     <Hexagon
