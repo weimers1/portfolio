@@ -1,8 +1,8 @@
 import React from 'react';
-import { HexGrid, Layout, Hexagon, Text } from 'react-hexgrid';
+import { HexGrid, Layout, Hexagon, Pattern, Text } from 'react-hexgrid';
 import useScreenSize from '../hooks/useScreenSize';
 
-function CircularHexGrid({ hexagonContent }) {
+function CircularHexGrid({ hexagonsContent }) {
     // track layer info
     let outsideLayerAmountMax = 0;
     let layers = 1;
@@ -10,10 +10,10 @@ function CircularHexGrid({ hexagonContent }) {
     const screenSize = useScreenSize();
 
     const generateHexagons = (numHexagons) => {
-        if (!hexagonContent.length) return [];
+        if (!hexagonsContent.length) return [];
 
         const hexagons = [
-            { q: 0, r: 0, s: 0, svgFilePath: hexagonContent[0].svgFilePath },
+            { q: 0, r: 0, s: 0, hexagonContent: hexagonsContent[0] },
         ];
 
         if (numHexagons <= 1) return hexagons;
@@ -66,7 +66,12 @@ function CircularHexGrid({ hexagonContent }) {
                     }
 
                     if (count < numHexagons) {
-                        hexagons.push({ q, r, s });
+                        hexagons.push({
+                            q,
+                            r,
+                            s,
+                            hexagonContent: hexagonsContent[count],
+                        });
                         count++;
                     }
                 }
@@ -78,19 +83,27 @@ function CircularHexGrid({ hexagonContent }) {
         return hexagons;
     };
 
-    const hexagons = generateHexagons(hexagonContent.length);
+    const hexagons = generateHexagons(hexagonsContent.length);
 
     const getViewBox = () => {
-        const numHexagonsTotal = hexagonContent.length;
+        const numHexagonsTotal = hexagonsContent.length;
         const numHexagonsOuterLayer =
             numHexagonsTotal - (outsideLayerAmountMax + 1);
+
+        /*
+         * if the number of hexagons in the outermost layer is at least half
+         * (meaning it doesn't span to the other side), shift the viewbox slightly right;
+         * need to tweak to work with any number of hexagons;
+         * also change width depending on screen size
+         */
         return `-5${
             numHexagonsOuterLayer < Math.floor(outsideLayerAmountMax / 2)
                 ? '5'
                 : '0'
-        } ${screenSize.isLarge ? '-40' : '-30'} 100 100`;
+        } ${screenSize.isLarge ? '-40' : '-30'} 140 140`;
     };
 
+    // TODO: fix spacing on smaller screens and add contrasting background for better visibility
     return (
         <HexGrid
             width={screenSize.width}
@@ -103,8 +116,8 @@ function CircularHexGrid({ hexagonContent }) {
                     y: 10 - (screenSize.isLarge ? layers / 2 : layers / 1.5),
                 }}
                 flat={true}
-                spacing={1.1}
-                origin={{ x: 0, y: 15 }}
+                spacing={1.85}
+                origin={{ x: 15, y: 20 }}
             >
                 {hexagons.map((hex, index) => (
                     <Hexagon
@@ -112,8 +125,14 @@ function CircularHexGrid({ hexagonContent }) {
                         q={hex.q}
                         r={hex.r}
                         s={hex.s}
+                        fill={'pattern-' + index}
                     >
-                        {/* TODO: add svg's for technologies */}
+                        <image
+                            href={hex.hexagonContent.svgFilePath}
+                            width="15%"
+                            // height="15%"
+                            transform="translate(-7.5,-7.5)"
+                        />
                     </Hexagon>
                 ))}
             </Layout>

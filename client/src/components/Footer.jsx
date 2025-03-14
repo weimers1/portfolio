@@ -32,7 +32,7 @@ function Footer(props) {
                         >
                             <a
                                 href={page.path}
-                                className="text-white hover:text-cyan-500 text-shadow-cyan"
+                                className="text-white hover:text-cyan-300 text-shadow-cyan"
                             >
                                 {page.title}
                             </a>
@@ -44,7 +44,7 @@ function Footer(props) {
                 {socials.map((social) => {
                     return (
                         <a
-                            className="p-3 text-white hover:text-cyan-500"
+                            className="p-3 text-white hover:text-cyan-300"
                             href={social.urlWebsite}
                             target="_blank"
                             key={social._id}

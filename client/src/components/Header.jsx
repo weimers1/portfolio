@@ -22,7 +22,7 @@ function Header(props) {
                                     <a
                                         key={page.path}
                                         href={page.path}
-                                        className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-cyan-500 lg:mx-10 text-shadow-cyan"
+                                        className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-cyan-300 lg:mx-10 text-shadow-cyan"
                                     >
                                         {page.title}
                                     </a>
