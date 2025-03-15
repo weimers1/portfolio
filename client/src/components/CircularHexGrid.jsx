@@ -1,10 +1,9 @@
 import React from 'react';
-import { HexGrid, Layout, Hexagon, Pattern, Text } from 'react-hexgrid';
+import { HexGrid, Layout, Hexagon } from 'react-hexgrid';
 import useScreenSize from '../hooks/useScreenSize';
 
 function CircularHexGrid({ hexagonsContent }) {
     // track layer info
-    let outsideLayerAmountMax = 0;
     let layers = 1;
 
     const screenSize = useScreenSize();
@@ -39,8 +38,6 @@ function CircularHexGrid({ hexagonsContent }) {
 
             for (let side = 0; side < 6; side++) {
                 for (let i = 0; i < layers; i++) {
-                    outsideLayerAmountMax = layers * 6;
-
                     if (side === 0) {
                         q--;
                         s++;
@@ -85,35 +82,19 @@ function CircularHexGrid({ hexagonsContent }) {
 
     const hexagons = generateHexagons(hexagonsContent.length);
 
-    const getViewBox = () => {
-        const numHexagonsTotal = hexagonsContent.length;
-        const numHexagonsOuterLayer =
-            numHexagonsTotal - (outsideLayerAmountMax + 1);
-
-        /*
-         * if the number of hexagons in the outermost layer is at least half
-         * (meaning it doesn't span to the other side), shift the viewbox slightly right;
-         * need to tweak to work with any number of hexagons;
-         * also change width depending on screen size
-         */
-        return `-5${
-            numHexagonsOuterLayer < Math.floor(outsideLayerAmountMax / 2)
-                ? '5'
-                : '0'
-        } ${screenSize.isLarge ? '-40' : '-30'} 140 140`;
-    };
-
     // TODO: fix spacing on smaller screens and add contrasting background for better visibility
     return (
         <HexGrid
+            // width={screenSize.isLarge ? screenSize.height : screenSize.width}
+            // height={screenSize.isLarge ? screenSize.height : screenSize.width}
             width={screenSize.width}
-            height={screenSize.height / 1.2}
-            viewBox={getViewBox()}
+            height={screenSize.width}
+            viewBox="-50 -40 120 120"
         >
             <Layout
                 size={{
-                    x: 10 - (screenSize.isLarge ? layers / 2 : layers / 1.5),
-                    y: 10 - (screenSize.isLarge ? layers / 2 : layers / 1.5),
+                    x: screenSize.isLarge ? 10 : 6,
+                    y: screenSize.isLarge ? 10 : 6,
                 }}
                 flat={true}
                 spacing={1.85}
@@ -128,10 +109,20 @@ function CircularHexGrid({ hexagonsContent }) {
                         fill={'pattern-' + index}
                     >
                         <image
-                            href={hex.hexagonContent.svgFilePath}
-                            width="15%"
-                            // height="15%"
-                            transform="translate(-7.5,-7.5)"
+                            href={
+                                hex.hexagonContent.svgFilePath
+                                    ? hex.hexagonContent.svgFilePath
+                                    : '/src/assets/images/default.svg'
+                            }
+                            alt={
+                                hex.hexagonContent.name
+                                    ? hex.hexagonContent.name
+                                    : '?'
+                            }
+                            width={screenSize.isLarge ? '17' : '10' + '%'}
+                            transform={`translate(${
+                                screenSize.isLarge ? '-8.5' : '-5'
+                            },${screenSize.isLarge ? '-8.5' : '-5'})`}
                         />
                     </Hexagon>
                 ))}
