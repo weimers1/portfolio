@@ -82,11 +82,8 @@ function CircularHexGrid({ hexagonsContent }) {
 
     const hexagons = generateHexagons(hexagonsContent.length);
 
-    // TODO: fix spacing on smaller screens and add contrasting background for better visibility
     return (
         <HexGrid
-            // width={screenSize.isLarge ? screenSize.height : screenSize.width}
-            // height={screenSize.isLarge ? screenSize.height : screenSize.width}
             width={screenSize.width}
             height={screenSize.width}
             viewBox="-50 -40 120 120"
@@ -97,9 +94,14 @@ function CircularHexGrid({ hexagonsContent }) {
                     y: screenSize.isLarge ? 10 : 6,
                 }}
                 flat={true}
-                spacing={1.85}
-                origin={{ x: 15, y: 20 }}
+                spacing={screenSize.isLarge ? 1 : 1.65}
+                origin={{ x: 15, y: 10 }}
             >
+                <use
+                    href="#circle-background"
+                    x={-45}
+                    y={-45}
+                />
                 {hexagons.map((hex, index) => (
                     <Hexagon
                         key={index}
@@ -119,10 +121,10 @@ function CircularHexGrid({ hexagonsContent }) {
                                     ? hex.hexagonContent.name
                                     : '?'
                             }
-                            width={screenSize.isLarge ? '17' : '10' + '%'}
+                            width={screenSize.isLarge ? '12' : '10' + '%'}
                             transform={`translate(${
-                                screenSize.isLarge ? '-8.5' : '-5'
-                            },${screenSize.isLarge ? '-8.5' : '-5'})`}
+                                screenSize.isLarge ? '-6' : '-5'
+                            },${screenSize.isLarge ? '-6' : '-5'})`}
                         />
                     </Hexagon>
                 ))}

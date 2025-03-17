@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import PageLayout from '../components/PageLayout';
 import axios from 'axios';
-import { HexGrid, Layout, Hexagon, Pattern, Hex } from 'react-hexgrid';
 import CircularHexGrid from '../components/CircularHexGrid';
 
 function Experience(props) {
@@ -38,26 +37,22 @@ function Experience(props) {
             {/* Tech Stacks/Technologies */}
             <section /*className="bg-cyan-200/60 p-4 rounded-full m-10 lg:m-30"*/
             >
-                <CircularHexGrid hexagonsContent={technologies.concat()} />
-                {/* <div className="grid grid-cols-3 lg:grid-cols-6 place-items-center mx-15 lg:mx-50">
-                    {technologies.map((technology, index) => {
-                        return (
-                            <div key={technology._id}>
-                                <div className="max-h-22 max-w-22 lg:max-h-35 lg:max-w-35 place-items-center">
-                                    <img
-                                        src={technology.svgFilePath}
-                                        className={
-                                            'pb-1 h-14 lg:h-30 ' +
-                                            technology.class
-                                        }
-                                        alt={technology.name}
-                                        title={technology.name}
-                                    />
-                                </div>
-                            </div>
-                        );
-                    })}
-                </div> */}
+                <CircularHexGrid hexagonsContent={technologies} />
+                <svg className="hidden">
+                    <symbol
+                        id="circle-background"
+                        viewBox="-45 -45 100 100"
+                    >
+                        <circle
+                            cx="0"
+                            cy="3"
+                            r="42"
+                            stroke="rgba(0, 146, 184, 1)"
+                            strokeWidth="3"
+                            fill="rgba(0, 146, 184, 0.5)"
+                        />
+                    </symbol>
+                </svg>
             </section>
 
             {/* Resumes (both user friendly and ATS) */}
