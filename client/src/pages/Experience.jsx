@@ -35,8 +35,10 @@ function Experience(props) {
             <section></section>
 
             {/* Tech Stacks/Technologies */}
-            <section /*className="bg-cyan-200/60 p-4 rounded-full m-10 lg:m-30"*/
-            >
+            <section className="place-items-center">
+                <div className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
+                    Tech Stacks
+                </div>
                 <CircularHexGrid hexagonsContent={technologies} />
                 <svg className="hidden">
                     <symbol
@@ -48,7 +50,7 @@ function Experience(props) {
                             cy="3"
                             r="42"
                             stroke="rgba(0, 146, 184, 1)"
-                            strokeWidth="3"
+                            strokeWidth="2"
                             fill="rgba(0, 146, 184, 0.5)"
                         />
                     </symbol>

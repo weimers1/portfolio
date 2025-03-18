@@ -3,11 +3,13 @@ import axios from 'axios';
 import PageLayout from '../components/PageLayout';
 import profile from '../assets/images/profile.jpg';
 import { Icon } from '@iconify/react';
+import useScreenSize from '../hooks/useScreenSize';
 
 function Home(props) {
     const [loading, setLoading] = useState(true);
     const [socials, setSocials] = useState([]);
     const [projects, setProjects] = useState([]);
+    const screenSize = useScreenSize();
     useEffect(() => {
         axios
             .get('http://localhost:4000/')
@@ -92,9 +94,18 @@ function Home(props) {
                         </div>
                     </section>
                     <section className="lg:hidden">
-                        <div className="h-50"></div>
+                        <div
+                            className={
+                                screenSize.height > 800 ? 'h-100' : 'h-50'
+                            }
+                        ></div>
                     </section>
-                    <section className="py-10 grid grid-cols-1 lg:grid-cols-3 place-items-center">
+                    <section
+                        className={
+                            (screenSize.height > 1000 ? 'py-60' : 'py-10') +
+                            ' grid grid-cols-1 lg:grid-cols-3 place-items-center'
+                        }
+                    >
                         <p className="lg:hidden text-white text-3xl border-b w-45 text-center mb-8 pb-8 text-shadow-cyan">
                             Highlights
                         </p>
@@ -150,7 +161,7 @@ function Home(props) {
                             const image = (
                                 <img
                                     src={project.imageFilePath}
-                                    className="border-3 lg:border-6 border-cyan-600 rounded-md w-20 lg:w-35 h-20 lg:h-35 shadow-2xl shadow-cyan-600 bg-cyan-600/50"
+                                    className="border-3 lg:border-6 border-cyan-600 rounded-full w-20 lg:w-35 h-20 lg:h-35 shadow-2xl shadow-cyan-600 bg-cyan-600/50"
                                 />
                             );
                             return (
