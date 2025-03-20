@@ -22,16 +22,18 @@ function Experience(props) {
 
     return (
         <PageLayout pages={props.pages}>
-            {/* Jobs */}
-            <section></section>
+            <section>
+                <div className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
+                    Professional
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-3">
+                    {/* {jobs.map((jobInfo) => {
+                        return ();
+                    })} */}
+                </div>
+            </section>
 
-            {/* Certs - links to them (found on LinkedIn) */}
-            <section></section>
-
-            {/* Degree */}
-            <section></section>
-
-            {/* Skills */}
+            {/* Personal */}
             <section></section>
 
             {/* Tech Stacks/Technologies */}
@@ -56,6 +58,12 @@ function Experience(props) {
                     </symbol>
                 </svg>
             </section>
+
+            {/* Certs - links to them (found on LinkedIn) */}
+            <section></section>
+
+            {/* Schooling */}
+            <section></section>
 
             {/* Resumes (both user friendly and ATS) */}
             <section></section>

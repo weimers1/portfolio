@@ -4,6 +4,7 @@ import { getProjects } from './models/project.js';
 import { getSocials } from './models/social.js';
 import { getPages } from './models/page.js';
 import { getTechnologies } from './models/technology.js';
+import { getJobs } from './models/job.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
@@ -79,6 +80,17 @@ app.get('/technologies', async (request, response) => {
     try {
         const technologies = await getTechnologies();
         return response.status(200).json(technologies);
+    } catch (error) {
+        // @TODO: email errors
+        console.log(error);
+        response.status(500).send('System Error');
+    }
+});
+
+app.get('/jobs', async (request, response) => {
+    try {
+        const jobs = await getJobs();
+        return response.status(200).json(jobs);
     } catch (error) {
         // @TODO: email errors
         console.log(error);
