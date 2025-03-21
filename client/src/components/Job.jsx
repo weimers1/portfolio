@@ -1,7 +1,9 @@
-function Job(data) {
+function Job({ jobObj }) {
     return (
         <div className="place-items-center">
-            <h4 className="text-white">{data.titleCompany}</h4>
+            <div className="text-white text-lg lg:text-2xl">
+                {jobObj.titleCompany}
+            </div>
         </div>
     );
 }
