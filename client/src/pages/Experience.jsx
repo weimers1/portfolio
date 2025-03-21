@@ -2,34 +2,48 @@ import { useEffect, useState } from 'react';
 import PageLayout from '../components/PageLayout';
 import axios from 'axios';
 import CircularHexGrid from '../components/CircularHexGrid';
+import Job from '../components/Job';
 
 function Experience(props) {
     const [loading, setLoading] = useState(true);
     const [technologies, setTechnologies] = useState([]);
+    const [jobs, setJobs] = useState([]);
     useEffect(() => {
-        axios
-            .get('http://localhost:4000/technologies')
-            .then((response) => {
+        const fetchAllData = async () => {
+            try {
+                const [technologiesResponse, jobsResponse] = await Promise.all([
+                    axios.get('http://localhost:4000/technologies'),
+                    axios.get('http://localhost:4000/jobs'),
+                ]);
+
+                setTechnologies(technologiesResponse.data);
+                setJobs(jobsResponse.data);
                 setLoading(false);
-                setTechnologies(response.data);
-            })
-            .catch((error) => {
+            } catch (error) {
                 setLoading(false);
+                console.error('Error fetching data:', error);
                 // @TODO: email errors
-                console.log(error);
-            });
+            }
+        };
+
+        fetchAllData();
     }, []);
 
     return (
         <PageLayout pages={props.pages}>
-            <section>
+            <section className="place-items-center">
                 <div className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
                     Professional
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3">
-                    {/* {jobs.map((jobInfo) => {
-                        return ();
-                    })} */}
+                    {jobs.map((job) => {
+                        return (
+                            <Job
+                                key={job._id}
+                                data={job}
+                            />
+                        );
+                    })}
                 </div>
             </section>
 
@@ -65,7 +79,7 @@ function Experience(props) {
             {/* Schooling */}
             <section></section>
 
-            {/* Resumes (both user friendly and ATS) */}
+            {/* Resumes (both For People and For Robots) */}
             <section></section>
         </PageLayout>
     );

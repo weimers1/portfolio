@@ -28,7 +28,7 @@ const schema = mongoose.Schema(
 export const Technology = mongoose.model('Technology', schema);
 
 export async function getTechnologies() {
-    const technologies = await Technology.find({}).populate('techStack');
+    const technologies = await Technology.find({});
 
     return technologies;
 }

@@ -117,6 +117,8 @@ async function addJobs() {
                 description: job.description,
                 tasks: job.tasks,
                 techStack: technologyIds,
+                dateStart: job.dateStart,
+                dateEnd: job.dateEnd,
             });
 
             // add job to db
