@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import PageLayout from '../components/PageLayout';
 import axios from 'axios';
-import CircularHexGrid from '../components/CircularHexGrid';
 import Job from '../components/Job';
 
 function Experience(props) {
@@ -35,7 +34,7 @@ function Experience(props) {
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
                     Professional
                 </div>
-                <div className="grid grid-cols-1 lg:grid-cols-3">
+                <div className="grid grid-cols-1">
                     {jobs.map((job) => {
                         return (
                             <Job
@@ -55,25 +54,21 @@ function Experience(props) {
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
                     Tech Stacks
                 </div>
-                <CircularHexGrid
-                    hexagonsContent={technologies}
-                    backgroundId="circle-background"
-                />
-                <svg className="hidden">
-                    <symbol
-                        id="circle-background"
-                        viewBox="-45 -45 100 100"
-                    >
-                        <circle
-                            cx="0"
-                            cy="3"
-                            r="42"
-                            stroke="rgba(0, 146, 184, 1)"
-                            strokeWidth="2"
-                            fill="rgba(0, 146, 184, 0.5)"
-                        />
-                    </symbol>
-                </svg>
+                <div className="place-items-center">
+                    {technologies.map((technology, i) => {
+                        return (
+                            <image
+                                key={'technology-' + i}
+                                href={
+                                    technology.svgFilePath
+                                        ? technology.svgFilePath
+                                        : '/src/assets/images/default.svg'
+                                }
+                                width="8%"
+                            />
+                        );
+                    })}
+                </div>
             </section>
 
             {/* Certs - links to them (found on LinkedIn) */}
