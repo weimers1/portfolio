@@ -44,7 +44,9 @@ const schema = mongoose.Schema(
 export const Job = mongoose.model('Job', schema);
 
 export async function getJobs() {
-    const jobs = await Job.find({}).populate('techStack');
+    const jobs = await Job.find({})
+        .populate('techStack')
+        .sort({ dateStart: -1 });
 
     return jobs;
 }

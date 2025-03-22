@@ -2,7 +2,7 @@ import React from 'react';
 import { HexGrid, Layout, Hexagon } from 'react-hexgrid';
 import useScreenSize from '../hooks/useScreenSize';
 
-function CircularHexGrid({ hexagonsContent }) {
+function CircularHexGrid({ hexagonsContent, backgroundId }) {
     // track layer info
     let layers = 1;
 
@@ -95,10 +95,10 @@ function CircularHexGrid({ hexagonsContent }) {
                 }}
                 flat={true}
                 spacing={screenSize.isLarge ? 1 : 1.65}
-                origin={{ x: 15, y: 10 }}
+                origin={{ x: hexagonsContent.length < 7 ? 10 : 15, y: 10 }} // temp fix for uneven hex grids...
             >
                 <use
-                    href="#circle-background"
+                    href={'#' + backgroundId}
                     x={-45}
                     y={-45}
                 />

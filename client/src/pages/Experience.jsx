@@ -32,7 +32,7 @@ function Experience(props) {
     return (
         <PageLayout pages={props.pages}>
             <section className="place-items-center py-10">
-                <div className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
+                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
                     Professional
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3">
@@ -52,10 +52,13 @@ function Experience(props) {
 
             {/* Tech Stacks/Technologies */}
             <section className="place-items-center">
-                <div className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
+                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
                     Tech Stacks
                 </div>
-                <CircularHexGrid hexagonsContent={technologies} />
+                <CircularHexGrid
+                    hexagonsContent={technologies}
+                    backgroundId="circle-background"
+                />
                 <svg className="hidden">
                     <symbol
                         id="circle-background"
