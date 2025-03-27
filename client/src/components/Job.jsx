@@ -5,24 +5,26 @@ import { formatMongoDBDate } from '../utils/date.js';
 
 function Job({ jobObj }) {
     return (
-        <div className="text-white text-shadow-cyan text-lg lg:text-2xl my-8 text-center place-items-center">
-            <div className="pb-4">
-                <span className="border-b inline-block pb-4 px-2">
-                    {jobObj.titlePosition}
-                </span>
-            </div>
-            <div className="w-45">
-                <span className="border-b inline-block pb-4 px-2">
-                    {jobObj.titleCompany}
-                </span>
-            </div>
-            <div className="pt-4">
-                <span className="border-b inline-block pb-4 px-2">
-                    {formatMongoDBDate(jobObj.dateStart)} -{' '}
-                    {jobObj.dateEnd
-                        ? formatMongoDBDate(jobObj.dateEnd)
-                        : 'Present'}
-                </span>
+        <div className="text-white text-shadow-cyan place-items-center my-8">
+            <div className="w-45 h-45 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 text-md lg:text-2xl text-center place-items-center mb-4">
+                <div className="pt-1 lg:pb-3 pt-12 lg:pt-16">
+                    <span className="border-b inline-block pb-1 lg:pb-3 px-2">
+                        {jobObj.titlePosition}
+                    </span>
+                </div>
+                <div className="w-50">
+                    <span className="border-b inline-block pb-1 pt-1 lg:pb-3 px-2">
+                        {jobObj.titleCompany}
+                    </span>
+                </div>
+                <div className="pt-1 lg:pt-3">
+                    <span className="px-2">
+                        {formatMongoDBDate(jobObj.dateStart)} -{' '}
+                        {jobObj.dateEnd
+                            ? formatMongoDBDate(jobObj.dateEnd)
+                            : 'Present'}
+                    </span>
+                </div>
             </div>
             <div className="pt-4 text-sm lg:text-xl w-75 lg:w-200 text-start">
                 <div className="grid grid-cols-12 gap-y-4">

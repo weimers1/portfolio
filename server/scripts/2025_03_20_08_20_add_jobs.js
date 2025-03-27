@@ -51,8 +51,7 @@ async function addJobs() {
                 dateEnd: null,
             },
             {
-                titleCompany:
-                    'Edward Via College of Osteopathic Medicine (VCOM)',
+                titleCompany: 'VCOM',
                 titlePosition: 'Full Stack Developer',
                 description:
                     'Develop, analyze, and maintain large-scale learning management system and medical logging application for medical students, clinical staff, and preceptors to optimize educational experience and improve data management, tracking, and validation for global medical research',
