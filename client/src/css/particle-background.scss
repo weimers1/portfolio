@@ -1,0 +1,101 @@
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background-color: rgba(0, 95, 120, .6);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-5vh) translateX(0);
+        opacity: 0;
+    }
+}
+
+// configure particles
+$num-particles: random(30) + 20;
+$base-duration: 15s;
+$min-size: 5px;
+$max-size: 15px;
+$left-positions: (
+    10%,
+    15%,
+    20%,
+    25%,
+    30%,
+    35%,
+    40%,
+    45%,
+    50%,
+    55%,
+    60%,
+    65%,
+    70%,
+    75%,
+    80%,
+    85%,
+    90%
+);
+@media (min-width: 1024px) {
+    $left-positions: (
+        1%,
+        5%,
+        10%,
+        15%,
+        20%,
+        25%,
+        30%,
+        35%,
+        40%,
+        45%,
+        50%,
+        55%,
+        60%,
+        65%,
+        70%,
+        75%,
+        80%,
+        85%,
+        90%,
+        95%,
+        99%
+    );
+}
+
+@for $i from 1 through $num-particles {
+    .particle:nth-child(#{$i}) {
+        $size: random($max-size - $min-size) + $min-size;
+        $left-index: random(length($left-positions)) - 1;
+        $left-position: nth($left-positions, $left-index + 1);
+
+        // animation duration is inversely proportional to size
+        $min-duration: 2s;
+        $max-duration: 20s;
+        $base-duration: $max-duration - (($size - $min-size) / ($max-size - $min-size)) * ($max-duration - $min-duration);
+
+        // randomly offset duration
+        $duration-variation: (random(5s) + 5s);
+        $final-duration: abs($base-duration + $duration-variation);
+
+        animation-duration: $final-duration;
+        width: $size;
+        height: $size;
+        left: $left-position;
+    }
+}

@@ -23,6 +23,7 @@ body {
   place-items: center;
   min-width: auto;
   min-height: 100vh;
+  z-index: -2 !important;
 }
 
 #root {
