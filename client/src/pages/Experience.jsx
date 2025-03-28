@@ -31,7 +31,7 @@ function Experience(props) {
     return (
         <PageLayout pages={props.pages}>
             <section className="place-items-center py-10">
-                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center pb-6 text-shadow-cyan">
+                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center pb-6 lg:pb-10 text-shadow-cyan">
                     Professional
                 </div>
                 <div className="grid grid-cols-1">
@@ -52,19 +52,20 @@ function Experience(props) {
             {/* Tech Stacks/Technologies */}
             <section className="place-items-center">
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
-                    Tech Stacks
+                    Technologies
                 </div>
-                <div className="place-items-center">
+                <div className="place-items-center grid grid-cols-4 lg:grid-cols-6 w-75 lg:w-250">
                     {technologies.map((technology, i) => {
                         return (
                             <img
                                 key={'technology-' + i}
                                 src={
-                                    technology.svgFilePath
-                                        ? technology.svgFilePath
+                                    technology.imgFilePath
+                                        ? technology.imgFilePath
                                         : '/src/assets/images/default.svg'
                                 }
-                                width="8%"
+                                width="70%"
+                                className="py-2 lg:py-4"
                             />
                         );
                     })}

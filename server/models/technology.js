@@ -10,11 +10,7 @@ const schema = mongoose.Schema(
             type: String,
             required: true,
         },
-        icon: {
-            type: String,
-            required: true,
-        },
-        svgFilePath: {
+        imgFilePath: {
             type: String,
             required: true,
         },
