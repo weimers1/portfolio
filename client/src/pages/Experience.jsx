@@ -29,7 +29,10 @@ function Experience(props) {
     }, []);
 
     return (
-        <PageLayout pages={props.pages}>
+        <PageLayout
+            pages={props.pages}
+            loading={loading}
+        >
             <section className="place-items-center py-10">
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center pb-6 lg:pb-10 text-shadow-cyan">
                     Professional
@@ -46,10 +49,9 @@ function Experience(props) {
                 </div>
             </section>
 
-            {/* Personal */}
+            {/* Personal: project logo; description; tech stack; clicking on a project brings you to the projects page where it shows the tasks and desktop/mobile images */}
             <section></section>
 
-            {/* Tech Stacks/Technologies */}
             <section className="place-items-center">
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
                     Technologies
@@ -72,13 +74,13 @@ function Experience(props) {
                 </div>
             </section>
 
-            {/* Certs - links to them (found on LinkedIn) */}
+            {/* Certs - links to them (found on LinkedIn): title; date received; linkedin link */}
             <section></section>
 
-            {/* Schooling */}
+            {/* Schooling: just do Bing - school name; degree; field of study; date received */}
             <section></section>
 
-            {/* Resumes (both For People and For Robots) */}
+            {/* Resumes - have both "For People" and "For Robots"; use pdf icons that download the selected version */}
             <section></section>
         </PageLayout>
     );
