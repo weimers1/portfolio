@@ -2,21 +2,26 @@ import { useEffect, useState } from 'react';
 import PageLayout from '../components/PageLayout';
 import axios from 'axios';
 import Job from '../components/Job';
+import Project from '../components/Project';
 
 function Experience(props) {
     const [loading, setLoading] = useState(true);
     const [technologies, setTechnologies] = useState([]);
     const [jobs, setJobs] = useState([]);
+    const [projects, setProjects] = useState([]);
     useEffect(() => {
         const fetchAllData = async () => {
             try {
-                const [technologiesResponse, jobsResponse] = await Promise.all([
-                    axios.get('http://localhost:4000/technologies'),
-                    axios.get('http://localhost:4000/jobs'),
-                ]);
+                const [technologiesResponse, jobsResponse, projectsResponse] =
+                    await Promise.all([
+                        axios.get('http://localhost:4000/technologies'),
+                        axios.get('http://localhost:4000/jobs'),
+                        axios.get('http://localhost:4000/projects'),
+                    ]);
 
                 setTechnologies(technologiesResponse.data);
                 setJobs(jobsResponse.data);
+                setProjects(projectsResponse.data);
                 setLoading(false);
             } catch (error) {
                 setLoading(false);
@@ -50,9 +55,21 @@ function Experience(props) {
             </section>
 
             {/* Personal: project logo; description; tech stack; clicking on a project brings you to the projects page where it shows the tasks and desktop/mobile images */}
-            <section></section>
+            <section className="place-items-center py-10">
+                <p className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
+                    Personal
+                </p>
+                {projects.map((project) => {
+                    return (
+                        <Project
+                            key={project._id}
+                            projectObj={project}
+                        />
+                    );
+                })}
+            </section>
 
-            <section className="place-items-center">
+            <section className="place-items-center py-10">
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
                     Technologies
                 </div>

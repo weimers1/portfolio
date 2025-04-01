@@ -148,28 +148,12 @@ function Home(props) {
                     <p className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
                         Projects
                     </p>
-                    {projects.map((project, i) => {
-                        const image = (
-                            <img
-                                src={project.imageFilePath}
-                                className="border-3 lg:border-6 border-cyan-600 rounded-full w-20 lg:w-35 h-20 lg:h-35 shadow-2xl shadow-cyan-600 bg-cyan-600/50"
-                            />
-                        );
+                    {projects.map((project) => {
                         return (
-                            <div
-                                className="grid grid-cols-1 lg:grid-cols-2 pt-3 pb-10 lg:py-10 w-50 lg:w-200 place-items-center lg:relative"
+                            <Project
                                 key={project._id}
-                            >
-                                <a
-                                    href={project.urlWebsite}
-                                    target="_blank"
-                                >
-                                    {image}
-                                </a>
-                                <div className="mt-5 text-lg lg:text-2xl text-center lg:text-start lg:absolute lg:left-100 text-shadow-cyan">
-                                    {project.description}
-                                </div>
-                            </div>
+                                projectObj={project}
+                            />
                         );
                     })}
                 </section>

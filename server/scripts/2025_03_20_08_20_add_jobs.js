@@ -34,7 +34,7 @@ async function addJobs() {
                     'Visual Studio Code',
                 ],
                 dateStart: new Date('2022-02-01T00:00:00.000Z'),
-                dateEnd: new Date('2024-01-01T00:00:00.000Z'),
+                dateEnd: new Date('2024-01-02T00:00:00.000Z'),
             },
             {
                 titleCompany: 'CS Recitations, LLC',
