@@ -31,6 +31,8 @@ async function addJobs() {
                     'jQuery',
                     'SQL',
                     'Adobe ColdFusion',
+                    'Java',
+                    'Python',
                     'Visual Studio Code',
                 ],
                 dateStart: new Date('2022-02-01T00:00:00.000Z'),
@@ -81,25 +83,12 @@ async function addJobs() {
             },
         ];
 
-        // get existing jobs
-        const jobs = await getJobs();
-        const existingJobs = {};
-        for (const job of jobs) {
-            existingJobs[job.titleCompany] = job.titlePosition;
-
-            // debug stuff
-            // console.log(
-            //     JSON.stringify(
-            //         job.techStack.map((tech) => {
-            //             return tech.name;
-            //         })
-            //     )
-            // );
-        }
-
         for (const job of jobData) {
-            // ignore duplicates for now, maybe update them later
-            if (existingJobs[job.titleCompany] == job.titlePosition) continue;
+            // find existing job
+            const existingJob = await Job.findOne({
+                titleCompany: job.titleCompany,
+                titlePosition: job.titlePosition,
+            });
 
             // get technologies based on names
             const technologyIds = [];
@@ -112,22 +101,54 @@ async function addJobs() {
                 }
             }
 
-            // create job
-            const newJob = new Job({
-                titleCompany: job.titleCompany,
-                titlePosition: job.titlePosition,
-                description: job.description,
-                tasks: job.tasks,
-                techStack: technologyIds,
-                dateStart: job.dateStart,
-                dateEnd: job.dateEnd,
-            });
+            // update duplicates
+            if (existingJob) {
+                const updates = {};
+                if (job.description !== existingJob.description)
+                    updates.description = job.description;
+                if (
+                    JSON.stringify(job.tasks) !==
+                    JSON.stringify(existingJob.tasks)
+                )
+                    updates.tasks = job.tasks;
+                if (
+                    JSON.stringify(technologyIds) !==
+                    JSON.stringify(existingJob.techStack)
+                )
+                    updates.techStack = technologyIds;
+                if (job.dateStart.getTime() !== existingJob.dateStart.getTime())
+                    updates.dateStart = job.dateStart;
+                if (job.dateEnd?.getTime() !== existingJob.dateEnd?.getTime())
+                    updates.dateEnd = job.dateEnd;
 
-            // add job to db
-            await newJob.save();
-            console.log(
-                `${newJob.titleCompany} "${newJob.titlePosition}" added successfully.`
-            );
+                if (Object.keys(updates).length > 0) {
+                    await Job.findByIdAndUpdate(existingJob._id, updates);
+                    console.log(
+                        `${job.titleCompany} "${job.titlePosition}" updated successfully.`
+                    );
+                } else {
+                    console.log(
+                        `${job.titleCompany} "${job.titlePosition}" already up to date.`
+                    );
+                }
+            } else {
+                // create job
+                const newJob = new Job({
+                    titleCompany: job.titleCompany,
+                    titlePosition: job.titlePosition,
+                    description: job.description,
+                    tasks: job.tasks,
+                    techStack: technologyIds,
+                    dateStart: job.dateStart,
+                    dateEnd: job.dateEnd,
+                });
+
+                // add job to db
+                await newJob.save();
+                console.log(
+                    `${newJob.titleCompany} "${newJob.titlePosition}" added successfully.`
+                );
+            }
         }
 
         console.log('All jobs added.');

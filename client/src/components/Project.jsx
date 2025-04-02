@@ -1,4 +1,5 @@
 function Project({ projectObj, displayTechnologies }) {
+    console.log(projectObj);
     const image = (
         <img
             src={projectObj.imageFilePath}

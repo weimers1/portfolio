@@ -64,6 +64,7 @@ function Experience(props) {
                         <Project
                             key={project._id}
                             projectObj={project}
+                            displayTechnologies={true}
                         />
                     );
                 })}

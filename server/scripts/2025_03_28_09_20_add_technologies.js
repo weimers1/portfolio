@@ -76,6 +76,11 @@ async function addTechnologies() {
                 imgFilePath: '/src/assets/images/mysql.png',
             },
             {
+                name: 'Firestore',
+                type: 'database',
+                imgFilePath: '/src/assets/images/firestore.svg',
+            },
+            {
                 name: 'Adobe ColdFusion',
                 type: 'language',
                 imgFilePath: '/src/assets/images/coldfusion.svg',
