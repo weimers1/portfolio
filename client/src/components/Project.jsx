@@ -7,9 +7,9 @@ function Project({ projectObj, displayTechnologies }) {
         />
     );
     return (
-        <>
+        <div className="text-white text-shadow-cyan place-items-center py-8 lg:py-12">
             <div
-                className="grid grid-cols-1 lg:grid-cols-2 pt-3 pb-10 lg:py-10 w-50 lg:w-200 place-items-center lg:relative"
+                className="grid grid-cols-1 lg:grid-cols-2 place-items-center lg:relative text-sm lg:text-xl w-50 lg:w-200"
                 key={projectObj._id}
             >
                 <a
@@ -23,11 +23,11 @@ function Project({ projectObj, displayTechnologies }) {
                 </div>
             </div>
             {displayTechnologies ? (
-                <div className="place-items-center grid grid-cols-4 lg:grid-cols-6 w-75 lg:w-250">
+                <div className="pt-4 w-75 lg:w-200 place-items-center grid grid-cols-6">
                     {projectObj.techStack.map((technology, i) => {
                         return (
                             <img
-                                key={'technology-' + i}
+                                key={technology._id}
                                 src={
                                     technology.imgFilePath
                                         ? technology.imgFilePath
@@ -42,7 +42,7 @@ function Project({ projectObj, displayTechnologies }) {
             ) : (
                 <></>
             )}
-        </>
+        </div>
     );
 }
 

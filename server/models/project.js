@@ -24,10 +24,13 @@ const schema = mongoose.Schema(
             type: String,
             required: true,
         },
-        techStack: {
-            type: Array,
-            required: true,
-        },
+        techStack: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Technology',
+                required: true,
+            },
+        ],
     },
     {
         timestamps: true,
@@ -73,7 +76,7 @@ export async function getGitHubRepoLanguages(titleRepo) {
 }
 
 export async function getProjects() {
-    const projects = await Project.find({}).lean(); // @TODO: link techstack
+    const projects = await Project.find({}).populate('techStack').lean();
 
     for (let i = 0; i < projects.length; i++) {
         projects[i].languages = await getGitHubRepoLanguages(

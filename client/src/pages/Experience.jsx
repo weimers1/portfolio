@@ -56,7 +56,7 @@ function Experience(props) {
 
             {/* Personal: project logo; description; tech stack; clicking on a project brings you to the projects page where it shows the tasks and desktop/mobile images */}
             <section className="place-items-center py-10">
-                <p className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
+                <p className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center pb-6 lg:pb-10 text-shadow-cyan">
                     Personal
                 </p>
                 {projects.map((project) => {
