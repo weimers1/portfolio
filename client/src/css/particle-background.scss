@@ -1,3 +1,6 @@
+@use 'sass:math';
+@use 'sass:list';
+
 .particle-container {
     position: fixed;
     top: 0;
@@ -29,7 +32,7 @@
 }
 
 // configure particles
-$num-particles: random(30) + 20;
+$num-particles: math.floor(math.random() * 30) + 20;
 $base-duration: 15s;
 $min-size: 5px;
 $max-size: 15px;
@@ -80,17 +83,17 @@ $left-positions: (
 
 @for $i from 1 through $num-particles {
     .particle:nth-child(#{$i}) {
-        $size: random($max-size - $min-size) + $min-size;
-        $left-index: random(length($left-positions)) - 1;
-        $left-position: nth($left-positions, $left-index + 1);
+        $size: math.floor(math.random() * ($max-size - $min-size)) + $min-size;
+        $left-index: abs(math.floor(math.random() * list.length($left-positions)) - 1);
+        $left-position: list.nth($left-positions, $left-index + 1);
 
         // animation duration is inversely proportional to size
         $min-duration: 2s;
         $max-duration: 20s;
-        $base-duration: $max-duration - (($size - $min-size) / ($max-size - $min-size)) * ($max-duration - $min-duration);
+        $base-duration: $max-duration - calc(($size - $min-size) / ($max-size - $min-size)) * ($max-duration - $min-duration);
 
         // randomly offset duration
-        $duration-variation: (random(5s) + 5s);
+        $duration-variation: (math.floor(math.random() * 5s) + 5s);
         $final-duration: abs($base-duration + $duration-variation);
 
         animation-duration: $final-duration;

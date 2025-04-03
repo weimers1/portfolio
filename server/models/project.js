@@ -73,7 +73,7 @@ export async function getGitHubRepoLanguages(titleRepo) {
 }
 
 export async function getProjects() {
-    const projects = await Project.find({}).lean();
+    const projects = await Project.find({}).lean(); // @TODO: link techstack
 
     for (let i = 0; i < projects.length; i++) {
         projects[i].languages = await getGitHubRepoLanguages(
