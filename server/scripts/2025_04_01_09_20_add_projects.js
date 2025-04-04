@@ -58,7 +58,7 @@ async function addProjects() {
                 description:
                     'A small open-source games web app hosted via Google Cloud Platform.',
                 urlWebsite: 'https://www.googlecloudgames.com',
-                imageFilePath: '/src/assets/images/default.png',
+                imageFilePath: '/src/assets/images/gcg.png',
                 techStack: [
                     'HTML',
                     'CSS',
