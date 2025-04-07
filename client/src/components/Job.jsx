@@ -56,7 +56,7 @@ function Job({ jobObj }) {
                                     : '/src/assets/images/default.svg'
                             }
                             width="70%"
-                            className="py-2 lg:py-4"
+                            className="py-2 lg:py-4 lg:w-20"
                         />
                     );
                 })}
