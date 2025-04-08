@@ -1,5 +1,4 @@
 function Project({ projectObj, displayTechnologies }) {
-    console.log(projectObj);
     const image = (
         <img
             src={projectObj.imageFilePath}
@@ -15,10 +14,7 @@ function Project({ projectObj, displayTechnologies }) {
             >
                 {image}
             </a>
-            <div
-                className="grid grid-cols-1 lg:grid-cols-3 place-items-center lg:place-items-auto text-sm lg:text-xl w-50 lg:w-200"
-                key={projectObj._id}
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-3 place-items-center lg:place-items-auto text-sm lg:text-xl w-50 lg:w-200">
                 <a
                     href={projectObj.urlWebsite}
                     className="lg:hidden"

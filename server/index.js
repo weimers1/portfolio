@@ -7,6 +7,7 @@ import { getTechnologies } from './models/technology.js';
 import { getJobs } from './models/job.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import { getCertifications } from './models/certification.js';
 
 // Create server
 const app = express();
@@ -91,6 +92,17 @@ app.get('/jobs', async (request, response) => {
     try {
         const jobs = await getJobs();
         return response.status(200).json(jobs);
+    } catch (error) {
+        // @TODO: email errors
+        console.log(error);
+        response.status(500).send('System Error');
+    }
+});
+
+app.get('/certifications', async (request, response) => {
+    try {
+        const certifications = await getCertifications();
+        return response.status(200).json(certifications);
     } catch (error) {
         // @TODO: email errors
         console.log(error);

@@ -3,25 +3,33 @@ import PageLayout from '../components/PageLayout';
 import axios from 'axios';
 import Job from '../components/Job';
 import Project from '../components/Project';
+import Certification from '../components/Certification';
 
 function Experience(props) {
     const [loading, setLoading] = useState(true);
     const [technologies, setTechnologies] = useState([]);
     const [jobs, setJobs] = useState([]);
     const [projects, setProjects] = useState([]);
+    const [certifications, setCertifications] = useState([]);
     useEffect(() => {
         const fetchAllData = async () => {
             try {
-                const [technologiesResponse, jobsResponse, projectsResponse] =
-                    await Promise.all([
-                        axios.get('http://localhost:4000/technologies'),
-                        axios.get('http://localhost:4000/jobs'),
-                        axios.get('http://localhost:4000/projects'),
-                    ]);
+                const [
+                    technologiesResponse,
+                    jobsResponse,
+                    projectsResponse,
+                    certificationsResponse,
+                ] = await Promise.all([
+                    axios.get('http://localhost:4000/technologies'),
+                    axios.get('http://localhost:4000/jobs'),
+                    axios.get('http://localhost:4000/projects'),
+                    axios.get('http://localhost:4000/certifications'),
+                ]);
 
                 setTechnologies(technologiesResponse.data);
                 setJobs(jobsResponse.data);
                 setProjects(projectsResponse.data);
+                setCertifications(certificationsResponse.data);
                 setLoading(false);
             } catch (error) {
                 setLoading(false);
@@ -92,8 +100,21 @@ function Experience(props) {
                 </div>
             </section>
 
-            {/* Certs - links to them (found on LinkedIn): title; date received; linkedin link */}
-            <section></section>
+            <section className="place-items-center py-10">
+                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
+                    Certifications
+                </div>
+                <div className="lg:flex lg:flex-wrap lg:justify-center lg:gap-20 lg:pt-4 w-75 lg:w-250">
+                    {certifications.map((certification) => {
+                        return (
+                            <Certification
+                                key={certification._id}
+                                certificationObj={certification}
+                            />
+                        );
+                    })}
+                </div>
+            </section>
 
             {/* Schooling: just do Bing - school name; degree; field of study; date received */}
             <section></section>

@@ -35,7 +35,7 @@ async function addJobs() {
                     'Python',
                     'Visual Studio Code',
                 ],
-                dateStart: new Date('2022-02-01T00:00:00.000Z'),
+                dateStart: new Date('2022-02-02T00:00:00.000Z'),
                 dateEnd: new Date('2024-01-02T00:00:00.000Z'),
             },
             {
@@ -49,7 +49,7 @@ async function addJobs() {
                     'Customize learning experiences by teaching core programming concepts, application design, and code structure, preparing students for AP courses, nationwide contests, and practical application development challenges',
                 ],
                 techStack: ['HTML', 'CSS', 'JavaScript', 'Python', 'Java'],
-                dateStart: new Date('2021-09-01T00:00:00.000Z'),
+                dateStart: new Date('2021-09-02T00:00:00.000Z'),
                 dateEnd: null,
             },
             {
@@ -78,7 +78,7 @@ async function addJobs() {
                     'Jira',
                     'GitHub',
                 ],
-                dateStart: new Date('2024-06-01T00:00:00.000Z'),
+                dateStart: new Date('2024-06-02T00:00:00.000Z'),
                 dateEnd: null,
             },
         ];
