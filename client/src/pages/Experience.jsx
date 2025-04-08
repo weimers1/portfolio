@@ -100,6 +100,25 @@ function Experience(props) {
                 </div>
             </section>
 
+            {/* Schooling: just do Bing - school name; degree; field of study; date received */}
+            <section className="place-items-center py-10">
+                <div className="text-3xl lg:text-5xl border-b w-60 lg:w-200 mb-8 pb-6 text-white text-shadow-cyan text-center">
+                    Education
+                </div>
+                <div className="w-47 h-47 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-shadow-cyan text-center">
+                    <div className="border-b w-25 lg:w-40 text-xl lg:text-2xl mb-1 lg:mb-3 pb-1 lg:pb-3 pt-4 lg:pt-7">
+                        Binghamton University
+                    </div>
+                    <div className="border-b w-35 lg:w-50 text-md lg:text-xl mb-1 lg:mb-3 pb-1 lg:pb-3">
+                        Bachelor of Science
+                    </div>
+                    <div className="border-b w-30 lg:w-40 text-md lg:text-xl mb-1 lg:mb-3 pb-1 lg:pb-3">
+                        Computer Science
+                    </div>
+                    <div className="text-md lg:text-xl">12/2021</div>
+                </div>
+            </section>
+
             <section className="place-items-center py-10">
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
                     Certifications
@@ -115,9 +134,6 @@ function Experience(props) {
                     })}
                 </div>
             </section>
-
-            {/* Schooling: just do Bing - school name; degree; field of study; date received */}
-            <section></section>
 
             {/* Resumes - have both "For People" and "For Robots"; use pdf icons that download the selected version */}
             <section></section>
