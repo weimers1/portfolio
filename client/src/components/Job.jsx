@@ -5,7 +5,7 @@ import { formatMongoDBDate } from '../utils/date.js';
 
 function Job({ jobObj }) {
     return (
-        <div className="text-white text-shadow-cyan place-items-center py-8 lg:py-12">
+        <div className="text-white text-shadow-cyan place-items-center pb-20 lg:pb-40">
             <div className="w-45 h-45 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 text-md lg:text-2xl text-center place-items-center mb-4">
                 <div className="pt-1 lg:pb-3 pt-12 lg:pt-16">
                     <span className="border-b inline-block pb-1 lg:pb-3 px-2">

@@ -6,10 +6,10 @@ function Project({ projectObj, displayTechnologies }) {
         />
     );
     return (
-        <div className="text-white text-shadow-cyan place-items-center py-8 lg:py-12">
+        <div className="text-white text-shadow-cyan place-items-center pb-20 lg:pb-40">
             <a
                 href={projectObj.urlWebsite}
-                className="hidden lg:block lg:pb-10"
+                className="hidden lg:block lg:pb-5"
                 target="_blank"
             >
                 {image}
@@ -22,10 +22,10 @@ function Project({ projectObj, displayTechnologies }) {
                 >
                     {image}
                 </a>
-                <div className="py-5 lg:px-5 lg:py-0 border-b lg:border-b-0 w-40 lg:w-full text-xl lg:text-3xl text-center lg:text-end text-shadow-cyan">
+                <div className="py-5 lg:py-10 lg:px-5 border-b lg:border-b-0 w-40 lg:w-full text-xl lg:text-3xl text-center lg:text-end text-shadow-cyan">
                     {projectObj.titleProject}
                 </div>
-                <div className="my-5 lg:my-0 lg:ps-5 lg:border-s lg:col-span-2 lg:w-full text-lg lg:text-2xl text-center lg:text-start text-shadow-cyan">
+                <div className="my-5 lg:my-10 lg:ps-5 lg:border-s lg:col-span-2 lg:w-full text-lg lg:text-2xl text-center lg:text-start text-shadow-cyan">
                     {projectObj.description}
                 </div>
             </div>

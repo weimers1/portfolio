@@ -4,6 +4,7 @@ import axios from 'axios';
 import Job from '../components/Job';
 import Project from '../components/Project';
 import Certification from '../components/Certification';
+import { Icon } from '@iconify/react/dist/iconify.js';
 
 function Experience(props) {
     const [loading, setLoading] = useState(true);
@@ -46,8 +47,8 @@ function Experience(props) {
             pages={props.pages}
             loading={loading}
         >
-            <section className="place-items-center py-10">
-                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center pb-6 lg:pb-10 text-shadow-cyan">
+            <section className="place-items-center py-20 lg:py-30">
+                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
                     Professional
                 </div>
                 <div className="grid grid-cols-1">
@@ -62,9 +63,8 @@ function Experience(props) {
                 </div>
             </section>
 
-            {/* Personal: project logo; description; tech stack; clicking on a project brings you to the projects page where it shows the tasks and desktop/mobile images */}
-            <section className="place-items-center py-10">
-                <p className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center pb-6 lg:pb-10 text-shadow-cyan">
+            <section className="place-items-center py-20 lg:py-30">
+                <p className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
                     Personal
                 </p>
                 {projects.map((project) => {
@@ -78,8 +78,8 @@ function Experience(props) {
                 })}
             </section>
 
-            <section className="place-items-center py-10">
-                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
+            <section className="place-items-center py-20 lg:py-30">
+                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
                     Technologies
                 </div>
                 <div className="place-items-center grid grid-cols-4 lg:grid-cols-6 w-75 lg:w-250">
@@ -100,12 +100,11 @@ function Experience(props) {
                 </div>
             </section>
 
-            {/* Schooling: just do Bing - school name; degree; field of study; date received */}
-            <section className="place-items-center py-10">
-                <div className="text-3xl lg:text-5xl border-b w-60 lg:w-200 mb-8 pb-6 text-white text-shadow-cyan text-center">
+            <section className="place-items-center py-30 lg:py-35">
+                <div className="text-3xl lg:text-5xl border-b w-60 lg:w-200 mb-10 pb-10 lg:mb-20 lg:pb-20 text-white text-shadow-cyan text-center">
                     Education
                 </div>
-                <div className="w-47 h-47 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-shadow-cyan text-center">
+                <div className="w-47 h-47 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-shadow-cyan text-center mt-2">
                     <div className="border-b w-25 lg:w-40 text-xl lg:text-2xl mb-1 lg:mb-3 pb-1 lg:pb-3 pt-4 lg:pt-7">
                         Binghamton University
                     </div>
@@ -119,8 +118,8 @@ function Experience(props) {
                 </div>
             </section>
 
-            <section className="place-items-center py-10">
-                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-6 pb-6 text-shadow-cyan">
+            <section className="place-items-center py-20 lg:py-30">
+                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
                     Certifications
                 </div>
                 <div className="lg:flex lg:flex-wrap lg:justify-center lg:gap-20 lg:pt-4 w-75 lg:w-250">
@@ -135,8 +134,37 @@ function Experience(props) {
                 </div>
             </section>
 
-            {/* Resumes - have both "For People" and "For Robots"; use pdf icons that download the selected version */}
-            <section></section>
+            <section className="place-items-center py-30 lg:py-40">
+                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
+                    Resumes
+                </div>
+                <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-30 pt-2">
+                    <a
+                        href="/src/assets/documents/Samuel_Weimer_Full_Stack_Resume_Styled.pdf"
+                        target="_blank"
+                    >
+                        <div className="w-30 h-30 lg:w-50 lg:h-50 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center pt-5 lg:pt-10">
+                            For People
+                            <Icon
+                                className="w-10 h-10 lg:w-15 lg:h-15 mt-2"
+                                icon="mdi-account-tie"
+                            />
+                        </div>
+                    </a>
+                    <a
+                        href="/src/assets/documents/Samuel_Weimer_Full_Stack_Resume.pdf"
+                        target="_blank"
+                    >
+                        <div className="w-30 h-30 lg:w-50 lg:h-50 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center my-20 lg:my-0 pt-5 lg:pt-10">
+                            For Robots
+                            <Icon
+                                className="w-10 h-10 lg:w-15 lg:h-15 mt-2"
+                                icon="mdi-robot"
+                            />
+                        </div>
+                    </a>
+                </div>
+            </section>
         </PageLayout>
     );
 }
