@@ -5,6 +5,7 @@ import Job from '../components/Job';
 import Project from '../components/Project';
 import Certification from '../components/Certification';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import useScrollToHash from '../hooks/useScrollToHash';
 
 function Experience(props) {
     const [loading, setLoading] = useState(true);
@@ -12,6 +13,7 @@ function Experience(props) {
     const [jobs, setJobs] = useState([]);
     const [projects, setProjects] = useState([]);
     const [certifications, setCertifications] = useState([]);
+
     useEffect(() => {
         const fetchAllData = async () => {
             try {
@@ -42,12 +44,14 @@ function Experience(props) {
         fetchAllData();
     }, []);
 
+    useScrollToHash(loading);
+
     return (
         <PageLayout
             pages={props.pages}
             loading={loading}
         >
-            <section className="place-items-center py-20 lg:py-30">
+            <section className="place-items-center pt-10 pb-20 lg:pb-30">
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
                     Professional
                 </div>
@@ -79,7 +83,10 @@ function Experience(props) {
             </section>
 
             <section className="place-items-center py-20 lg:py-30">
-                <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
+                <div
+                    id="technologies"
+                    className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan"
+                >
                     Technologies
                 </div>
                 <div className="place-items-center grid grid-cols-4 lg:grid-cols-6 w-75 lg:w-250">

@@ -4,6 +4,7 @@ import PageLayout from '../components/PageLayout';
 import profile from '../assets/images/profile.jpg';
 import { Icon } from '@iconify/react';
 import useScreenSize from '../hooks/useScreenSize';
+import Project from '../components/Project';
 
 function Home(props) {
     const [loading, setLoading] = useState(true);
@@ -128,11 +129,11 @@ function Home(props) {
                             </div>
                         </div>
                     </a>
-                    <a href="/experience#languages">
+                    <a href="/experience#technologies">
                         <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
                             <div className="pt-4 lg:pt-7 text-white text-shadow-cyan">
                                 <p className="text-4xl lg:text-7xl">
-                                    {stats.languages.length}+
+                                    {stats.languages.length + 1}+
                                 </p>
                                 <p className="text-sm lg:text-2xl">
                                     Programming Languages
@@ -145,7 +146,7 @@ function Home(props) {
                     <div className="h-50"></div>
                 </section>
                 <section className="pt-10 mt-10 place-items-center">
-                    <p className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-8 pb-8 text-shadow-cyan">
+                    <p className="text-white text-3xl lg:text-5xl border-b w-45 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
                         Projects
                     </p>
                     {projects.map((project) => {

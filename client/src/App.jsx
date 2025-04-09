@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
+import NotFound from './components/NotFound';
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -52,6 +53,10 @@ function App() {
                                 />
                             );
                         })}
+                        <Route
+                            path="*"
+                            element={<NotFound pages={pages} />}
+                        />
                     </Routes>
                 </Suspense>
             )}
