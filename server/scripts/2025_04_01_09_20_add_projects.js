@@ -17,7 +17,8 @@ async function addProjects() {
                 description:
                     'A welding certification exam preparation website owned by Weld WISE, LLC.',
                 urlWebsite: 'https://www.weld-wise.net',
-                imageFilePath: '/src/assets/images/weld-wise.png',
+                filePathLogo: '/src/assets/images/weld-wise.png',
+                filePathViews: '/src/assets/images/default.svg',
                 techStack: [
                     'HTML',
                     'CSS',
@@ -37,7 +38,8 @@ async function addProjects() {
                 titleRepo: 'portfolio',
                 description: 'The current portfolio website you are viewing.',
                 urlWebsite: 'https://www.samweimer.com',
-                imageFilePath: '/src/assets/images/logo.png',
+                filePathLogo: '/src/assets/images/logo.png',
+                filePathViews: '/src/assets/images/portfolio_views.png',
                 techStack: [
                     'HTML',
                     'CSS',
@@ -58,7 +60,8 @@ async function addProjects() {
                 description:
                     'A small open-source games web app hosted via Google Cloud Platform.',
                 urlWebsite: 'https://www.googlecloudgames.com',
-                imageFilePath: '/src/assets/images/gcg.png',
+                filePathLogo: '/src/assets/images/gcg.png',
+                filePathViews: '/src/assets/images/default.svg',
                 techStack: [
                     'HTML',
                     'CSS',
@@ -99,8 +102,10 @@ async function addProjects() {
                     updates.description = project.description;
                 if (project.urlWebsite !== existingProject.urlWebsite)
                     updates.urlWebsite = project.urlWebsite;
-                if (project.imageFilePath !== existingProject.imageFilePath)
-                    updates.imageFilePath = project.imageFilePath;
+                if (project.filePathLogo !== existingProject.filePathLogo)
+                    updates.filePathLogo = project.filePathLogo;
+                if (project.filePathViews !== existingProject.filePathViews)
+                    updates.filePathViews = project.filePathViews;
                 if (
                     JSON.stringify(technologyIds) !==
                     JSON.stringify(existingProject.techStack)
@@ -125,8 +130,9 @@ async function addProjects() {
                     titleRepo: project.titleRepo,
                     description: project.description,
                     urlWebsite: project.urlWebsite,
-                    imageFilePath: project.imageFilePath,
-                    techStack: project.techStack,
+                    filePathLogo: project.filePathLogo,
+                    filePathViews: project.filePathViews,
+                    techStack: technologyIds,
                 });
 
                 // add project to db

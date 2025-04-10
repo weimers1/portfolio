@@ -77,6 +77,7 @@ function Experience(props) {
                             key={project._id}
                             projectObj={project}
                             displayTechnologies={true}
+                            displayViews={true}
                         />
                     );
                 })}
@@ -95,8 +96,8 @@ function Experience(props) {
                             <img
                                 key={'technology-' + i}
                                 src={
-                                    technology.imgFilePath
-                                        ? technology.imgFilePath
+                                    technology.filePathLogo
+                                        ? technology.filePathLogo
                                         : '/src/assets/images/default.svg'
                                 }
                                 width="70%"

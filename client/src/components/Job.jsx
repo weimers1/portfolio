@@ -51,8 +51,8 @@ function Job({ jobObj }) {
                         <img
                             key={'technology-' + i}
                             src={
-                                technology.imgFilePath
-                                    ? technology.imgFilePath
+                                technology.filePathLogo
+                                    ? technology.filePathLogo
                                     : '/src/assets/images/default.svg'
                             }
                             width="70%"

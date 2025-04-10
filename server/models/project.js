@@ -20,7 +20,11 @@ const schema = mongoose.Schema(
             type: String,
             required: true,
         },
-        imageFilePath: {
+        filePathLogo: {
+            type: String,
+            required: true,
+        },
+        filePathViews: {
             type: String,
             required: true,
         },

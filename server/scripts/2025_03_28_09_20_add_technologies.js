@@ -13,127 +13,127 @@ async function addTechnologies() {
             {
                 name: 'Nginx',
                 type: 'tool',
-                imgFilePath: '/src/assets/images/nginx.svg',
+                filePathLogo: '/src/assets/images/nginx.svg',
             },
             {
                 name: 'GitHub',
                 type: 'tool',
-                imgFilePath: '/src/assets/images/github.svg',
+                filePathLogo: '/src/assets/images/github.svg',
             },
             {
                 name: 'Jira',
                 type: 'tool',
-                imgFilePath: '/src/assets/images/jira.svg',
+                filePathLogo: '/src/assets/images/jira.svg',
             },
             {
                 name: 'Vite',
                 type: 'tool',
-                imgFilePath: '/src/assets/images/vite.svg',
+                filePathLogo: '/src/assets/images/vite.svg',
             },
             {
                 name: 'React',
                 type: 'framework',
-                imgFilePath: '/src/assets/images/react.svg',
+                filePathLogo: '/src/assets/images/react.svg',
             },
             {
                 name: 'CSS',
                 type: 'language',
-                imgFilePath: '/src/assets/images/css.svg',
+                filePathLogo: '/src/assets/images/css.svg',
             },
             {
                 name: 'HTML',
                 type: 'language',
-                imgFilePath: '/src/assets/images/html.svg',
+                filePathLogo: '/src/assets/images/html.svg',
             },
             {
                 name: 'JavaScript',
                 type: 'language',
-                imgFilePath: '/src/assets/images/javascript.svg',
+                filePathLogo: '/src/assets/images/javascript.svg',
             },
             {
                 name: 'MongoDB',
                 type: 'database',
-                imgFilePath: '/src/assets/images/mongodb.svg',
+                filePathLogo: '/src/assets/images/mongodb.svg',
             },
             {
                 name: 'Tailwind CSS',
                 type: 'framework',
-                imgFilePath: '/src/assets/images/tailwind.svg',
+                filePathLogo: '/src/assets/images/tailwind.svg',
             },
             {
                 name: 'Laravel',
                 type: 'framework',
-                imgFilePath: '/src/assets/images/laravel.svg',
+                filePathLogo: '/src/assets/images/laravel.svg',
             },
             {
                 name: 'Bootstrap',
                 type: 'framework',
-                imgFilePath: '/src/assets/images/bootstrap.svg',
+                filePathLogo: '/src/assets/images/bootstrap.svg',
             },
             {
                 name: 'MySQL',
                 type: 'database',
-                imgFilePath: '/src/assets/images/mysql.png',
+                filePathLogo: '/src/assets/images/mysql.png',
             },
             {
                 name: 'Firestore',
                 type: 'database',
-                imgFilePath: '/src/assets/images/firestore.svg',
+                filePathLogo: '/src/assets/images/firestore.svg',
             },
             {
                 name: 'Adobe ColdFusion',
                 type: 'language',
-                imgFilePath: '/src/assets/images/coldfusion.svg',
+                filePathLogo: '/src/assets/images/coldfusion.svg',
             },
             {
                 name: 'Vue.js',
                 type: 'framework',
-                imgFilePath: '/src/assets/images/vue.svg',
+                filePathLogo: '/src/assets/images/vue.svg',
             },
             {
                 name: 'jQuery',
                 type: 'framework',
-                imgFilePath: '/src/assets/images/jquery.svg',
+                filePathLogo: '/src/assets/images/jquery.svg',
             },
             {
                 name: 'SQL',
                 type: 'language',
-                imgFilePath: '/src/assets/images/sql.svg',
+                filePathLogo: '/src/assets/images/sql.svg',
             },
             {
                 name: 'Python',
                 type: 'language',
-                imgFilePath: '/src/assets/images/python.svg',
+                filePathLogo: '/src/assets/images/python.svg',
             },
             {
                 name: 'Java',
                 type: 'language',
-                imgFilePath: '/src/assets/images/java.png',
+                filePathLogo: '/src/assets/images/java.png',
             },
             {
                 name: 'PHP',
                 type: 'language',
-                imgFilePath: '/src/assets/images/php.svg',
+                filePathLogo: '/src/assets/images/php.svg',
             },
             {
                 name: 'Express.js',
                 type: 'framework',
-                imgFilePath: '/src/assets/images/express.svg',
+                filePathLogo: '/src/assets/images/express.svg',
             },
             {
                 name: 'Node.js',
                 type: 'tool',
-                imgFilePath: '/src/assets/images/node.svg',
+                filePathLogo: '/src/assets/images/node.svg',
             },
             {
                 name: 'Visual Studio Code',
                 type: 'tool',
-                imgFilePath: '/src/assets/images/vscode.svg',
+                filePathLogo: '/src/assets/images/vscode.svg',
             },
             {
                 name: 'Docker',
                 type: 'tool',
-                imgFilePath: '/src/assets/images/docker.svg',
+                filePathLogo: '/src/assets/images/docker.svg',
             },
         ];
 
@@ -152,7 +152,7 @@ async function addTechnologies() {
             const newTechnology = new Technology({
                 name: technology.name,
                 type: technology.type,
-                imgFilePath: technology.imgFilePath,
+                filePathLogo: technology.filePathLogo,
             });
 
             // add technology to db

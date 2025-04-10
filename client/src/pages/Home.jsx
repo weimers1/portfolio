@@ -57,7 +57,7 @@ function Home(props) {
             loading={loading}
         >
             <div className="grid grid-cols-1">
-                <section className="place-items-center lg:pb-10">
+                <section className="place-items-center pt-10 lg:pt-0 lg:pb-10">
                     <img
                         className="rounded-full w-40 lg:w-80 shadow-2xl shadow-cyan-600 border-3 lg:border-6 border-cyan-600"
                         src={profile}
