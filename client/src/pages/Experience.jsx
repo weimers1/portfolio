@@ -90,7 +90,10 @@ function Experience(props) {
                 >
                     Technologies
                 </div>
-                <div className="place-items-center grid grid-cols-4 lg:grid-cols-6 w-75 lg:w-250">
+                <div
+                    className="place-items-center grid grid-cols-4 lg:grid-cols-6 w-75 lg:w-250"
+                    data-aos="fade-up"
+                >
                     {technologies.map((technology, i) => {
                         return (
                             <img
@@ -112,7 +115,10 @@ function Experience(props) {
                 <div className="text-3xl lg:text-5xl border-b w-60 lg:w-200 mb-10 pb-10 lg:mb-20 lg:pb-20 text-white text-shadow-cyan text-center">
                     Education
                 </div>
-                <div className="w-47 h-47 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-shadow-cyan text-center mt-2">
+                <div
+                    className="w-47 h-47 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-shadow-cyan text-center mt-2"
+                    data-aos="fade-up"
+                >
                     <div className="border-b w-25 lg:w-40 text-xl lg:text-2xl mb-1 lg:mb-3 pb-1 lg:pb-3 pt-4 lg:pt-7">
                         Binghamton University
                     </div>
@@ -151,7 +157,10 @@ function Experience(props) {
                         href="/src/assets/documents/Samuel_Weimer_Full_Stack_Resume_Styled.pdf"
                         target="_blank"
                     >
-                        <div className="w-30 h-30 lg:w-50 lg:h-50 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center pt-5 lg:pt-10">
+                        <div
+                            className="w-30 h-30 lg:w-50 lg:h-50 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center pt-5 lg:pt-10"
+                            data-aos="fade-up"
+                        >
                             For People
                             <Icon
                                 className="w-10 h-10 lg:w-15 lg:h-15 mt-2"
@@ -163,7 +172,10 @@ function Experience(props) {
                         href="/src/assets/documents/Samuel_Weimer_Full_Stack_Resume.pdf"
                         target="_blank"
                     >
-                        <div className="w-30 h-30 lg:w-50 lg:h-50 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center my-20 lg:my-0 pt-5 lg:pt-10">
+                        <div
+                            className="w-30 h-30 lg:w-50 lg:h-50 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center my-20 lg:my-0 pt-5 lg:pt-10"
+                            data-aos="fade-up"
+                        >
                             For Robots
                             <Icon
                                 className="w-10 h-10 lg:w-15 lg:h-15 mt-2"

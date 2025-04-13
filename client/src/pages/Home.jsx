@@ -104,7 +104,10 @@ function Home(props) {
                         Highlights
                     </p>
                     <a href="/experience">
-                        <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 mb-10 lg:mb-0">
+                        <div
+                            className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 mb-10 lg:mb-0"
+                            data-aos="fade-up"
+                        >
                             <div className="pt-4 lg:pt-7 text-white text-shadow-cyan">
                                 <p className="text-4xl lg:text-7xl">
                                     {stats.yearsExperience}+
@@ -120,7 +123,10 @@ function Home(props) {
                         href="https://www.github.com/weimers1"
                         target="_blank"
                     >
-                        <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
+                        <div
+                            className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0"
+                            data-aos="fade-up"
+                        >
                             <div className="pt-6 lg:pt-8 text-white text-shadow-cyan">
                                 <p className="text-4xl lg:text-7xl">
                                     {stats.commitCountTotal}
@@ -130,7 +136,10 @@ function Home(props) {
                         </div>
                     </a>
                     <a href="/experience#technologies">
-                        <div className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0">
+                        <div
+                            className="bg-cyan-600/50 w-30 h-30 lg:w-50 lg:h-50 text-center rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 my-10 lg:my-0"
+                            data-aos="fade-up"
+                        >
                             <div className="pt-4 lg:pt-7 text-white text-shadow-cyan">
                                 <p className="text-4xl lg:text-7xl">
                                     {stats.languages.length + 1}+

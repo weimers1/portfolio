@@ -6,7 +6,10 @@ function Project({ projectObj, displayTechnologies, displayViews }) {
         />
     );
     return (
-        <div className="text-white text-shadow-cyan place-items-center pb-20 lg:pb-40">
+        <div
+            className="text-white text-shadow-cyan place-items-center pb-20 lg:pb-40"
+            data-aos="fade-up"
+        >
             <a
                 href={projectObj.urlWebsite}
                 className="hidden lg:block lg:pb-5"
