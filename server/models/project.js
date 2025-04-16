@@ -28,6 +28,10 @@ const schema = mongoose.Schema(
             type: String,
             required: true,
         },
+        tasks: {
+            type: Array,
+            required: true,
+        },
         techStack: [
             {
                 type: mongoose.Schema.Types.ObjectId,

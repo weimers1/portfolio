@@ -33,7 +33,11 @@ function Project({ projectObj, displayTechnologies, displayViews }) {
                 </div>
             </div>
             {displayViews ? (
-                <div className="mb-5 lg:mb-5 lg:pt-4 w-75 lg:w-200 place-items-center border-b">
+                <div
+                    className={`mb-5 lg:mb-5 lg:pt-4 w-75 lg:w-200 place-items-center ${
+                        displayTechnologies ? 'border-b' : ''
+                    }`}
+                >
                     <img
                         src={
                             projectObj.filePathViews

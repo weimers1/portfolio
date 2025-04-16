@@ -19,6 +19,12 @@ async function addProjects() {
                 urlWebsite: 'https://www.weld-wise.net',
                 filePathLogo: '/src/assets/images/weld-wise.png',
                 filePathViews: '/src/assets/images/default.svg',
+                tasks: [
+                    'Integrate PayPal API to process user payments for access to online welding certification testing materials, ensuring secure and reliable transaction handling',
+                    'Manage user authentication and authorization via Stytch magic links, providing a seamless and secure sign-up and login experience for hundreds of users',
+                    'Scale application infrastructure on Google Cloud Platform to accommodate current and potential growth in user base, ensuring optimal performance and reliability',
+                    'Administer Cloud SQL for MySQL database and application logic for the delivery and evaluation of welding certification tests, and manages user progress and results',
+                ],
                 techStack: [
                     'HTML',
                     'CSS',
@@ -40,6 +46,7 @@ async function addProjects() {
                 urlWebsite: 'https://www.samweimer.com',
                 filePathLogo: '/src/assets/images/logo.png',
                 filePathViews: '/src/assets/images/portfolio_views.png',
+                tasks: [''],
                 techStack: [
                     'HTML',
                     'CSS',
@@ -62,6 +69,7 @@ async function addProjects() {
                 urlWebsite: 'https://www.googlecloudgames.com',
                 filePathLogo: '/src/assets/images/gcg.png',
                 filePathViews: '/src/assets/images/default.svg',
+                tasks: [''],
                 techStack: [
                     'HTML',
                     'CSS',
@@ -107,6 +115,11 @@ async function addProjects() {
                 if (project.filePathViews !== existingProject.filePathViews)
                     updates.filePathViews = project.filePathViews;
                 if (
+                    JSON.stringify(project.tasks) !==
+                    JSON.stringify(existingProject.tasks)
+                )
+                    updates.tasks = project.tasks;
+                if (
                     JSON.stringify(technologyIds) !==
                     JSON.stringify(existingProject.techStack)
                 )
@@ -132,6 +145,7 @@ async function addProjects() {
                     urlWebsite: project.urlWebsite,
                     filePathLogo: project.filePathLogo,
                     filePathViews: project.filePathViews,
+                    tasks: project.tasks,
                     techStack: technologyIds,
                 });
 

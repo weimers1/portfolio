@@ -4,15 +4,18 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import useScreenSize from '../hooks/useScreenSize';
 
 function PageLayout({ pages, children, loading }) {
+    const screenSize = useScreenSize();
     useEffect(() => {
         if (!loading) {
             // init AOS only when loading is false
             AOS.init({
-                duration: 750,
+                duration: 1000,
                 once: false,
                 easing: 'ease-out',
+                offset: screenSize.isLarge ? 175 : 55,
             });
 
             // refresh to detect all elements
