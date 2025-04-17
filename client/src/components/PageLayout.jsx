@@ -5,9 +5,14 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import useScreenSize from '../hooks/useScreenSize';
+import { useLocation } from 'react-router-dom';
 
 function PageLayout({ pages, children, loading }) {
+    const location = useLocation();
+    const currentRoute = location.pathname;
+
     const screenSize = useScreenSize();
+
     useEffect(() => {
         if (!loading) {
             // init AOS only when loading is false
@@ -27,6 +32,13 @@ function PageLayout({ pages, children, loading }) {
             AOS.refreshHard();
         };
     }, [loading]);
+
+    useEffect(() => {
+        pages.forEach((page) => {
+            if (page.path === currentRoute)
+                document.title = 'Sam Weimer | ' + page.title;
+        });
+    }, []);
 
     return (
         <>

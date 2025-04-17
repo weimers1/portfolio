@@ -56,7 +56,7 @@ function Project({ projectObj, displayTechnologies, displayViews }) {
                     {projectObj.techStack.map((technology) => {
                         return (
                             <img
-                                key={technology._id}
+                                key={projectObj._id + '-' + technology._id}
                                 src={
                                     technology.filePathLogo
                                         ? technology.filePathLogo

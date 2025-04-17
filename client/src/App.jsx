@@ -47,7 +47,7 @@ function App() {
                             const Component = loadComponent(page.title);
                             return (
                                 <Route
-                                    key={page.path}
+                                    key={'route-' + page.path}
                                     path={page.path}
                                     element={<Component pages={pages} />}
                                 />

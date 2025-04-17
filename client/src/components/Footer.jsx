@@ -27,7 +27,7 @@ function Footer(props) {
                 {props.pages.map((page) => {
                     return (
                         <div
-                            key={page.path}
+                            key={'footer-' + page.path}
                             className="block mt-4 lg:inline-block lg:mt-0 lg:text-center"
                         >
                             <a
