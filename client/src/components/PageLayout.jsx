@@ -20,7 +20,7 @@ function PageLayout({ pages, children, loading }) {
                 duration: 1000,
                 once: false,
                 easing: 'ease-out',
-                offset: screenSize.isLarge ? 175 : 55,
+                offset: screenSize.isLarge ? 170 : 50,
             });
 
             // refresh to detect all elements
