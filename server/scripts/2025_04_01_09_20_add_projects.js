@@ -46,7 +46,12 @@ async function addProjects() {
                 urlWebsite: 'https://www.samweimer.com',
                 filePathLogo: '/src/assets/images/logo.png',
                 filePathViews: '/src/assets/images/portfolio_views.png',
-                tasks: [''],
+                tasks: [
+                    'Manage a portfolio database using MongoDB, with Node.js scripts for data insertion and updates of work history and project details',
+                    'Integrate GitHub APIs to dynamically fetch and display live data on coding projects, tech stacks, and commit history',
+                    'Develop portable and robust React components styled with Tailwind CSS for efficient creation of well-structured and responsive pages displaying all relevant information and showcasing experience',
+                    "Implement a contact form leveraging Google Cloud Platform's Cloud Functions to facilitate direct email communication",
+                ],
                 techStack: [
                     'HTML',
                     'CSS',
@@ -69,7 +74,12 @@ async function addProjects() {
                 urlWebsite: 'https://www.googlecloudgames.com',
                 filePathLogo: '/src/assets/images/gcg.png',
                 filePathViews: '/src/assets/images/default.svg',
-                tasks: [''],
+                tasks: [
+                    'Architect and deploy a scalable, containerized, responsive React-based gaming platform on Google Cloud Platform, leveraging Docker and HTML browser games from open-source GitHub repositories',
+                    'Implement a secure user experience with anonymous gameplay and persistent data storage for registered users via Cloud Firestore, featuring robust backend validation to protect user accounts and data integrity',
+                    'Integrate Google AdSense for platform monetization, showcasing experience with ad delivery optimization and demonstrating an understanding of revenue-generating strategies for web applications',
+                    'Establish a streamlined CI/CD pipeline via GitHub Actions for efficient automated building and deploying',
+                ],
                 techStack: [
                     'HTML',
                     'CSS',

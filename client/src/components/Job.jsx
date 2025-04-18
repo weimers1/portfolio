@@ -2,8 +2,10 @@ import React from 'react';
 import Icon from '@mdi/react';
 import { mdiCheckCircleOutline } from '@mdi/js';
 import { formatMongoDBDate } from '../utils/date.js';
+import useScreenSize from '../hooks/useScreenSize.jsx';
 
 function Job({ jobObj }) {
+    const screenSize = useScreenSize();
     return (
         <div
             className="text-white text-shadow-cyan place-items-center pb-20 lg:pb-40"
@@ -29,24 +31,22 @@ function Job({ jobObj }) {
                     </span>
                 </div>
             </div>
-            <div className="pt-4 lg:pt-8 text-sm lg:text-xl w-75 lg:w-200 text-start">
-                <div className="grid grid-cols-12 gap-y-4">
-                    {jobObj.tasks.map((task, i) => {
-                        return (
-                            <React.Fragment key={jobObj._id + '-job-icon-' + i}>
-                                <div className="col-span-2 lg:col-span-1">
-                                    <Icon
-                                        path={mdiCheckCircleOutline}
-                                        size={1}
-                                    />
-                                </div>
-                                <div className="col-span-10 lg:col-span-11">
-                                    {task}
-                                </div>
-                            </React.Fragment>
-                        );
-                    })}
-                </div>
+            <div className="pt-4 lg:pt-8 text-sm lg:text-xl w-75 lg:w-200 text-start grid grid-cols-12 gap-y-4">
+                {jobObj.tasks.map((task, i) => {
+                    return (
+                        <React.Fragment key={jobObj._id + '-job-icon-' + i}>
+                            <div className="col-span-2 lg:col-span-1">
+                                <Icon
+                                    path={mdiCheckCircleOutline}
+                                    size={screenSize.isLarge ? 1.5 : 1}
+                                />
+                            </div>
+                            <div className="col-span-10 lg:col-span-11">
+                                {task}
+                            </div>
+                        </React.Fragment>
+                    );
+                })}
             </div>
             <div className="pt-4 w-75 lg:w-200 place-items-center grid grid-cols-6">
                 {jobObj.techStack.map((technology, i) => {

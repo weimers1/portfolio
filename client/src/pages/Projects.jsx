@@ -41,6 +41,7 @@ function Experience(props) {
                             key={project._id}
                             projectObj={project}
                             displayViews={true}
+                            displayTasks={true}
                         />
                     );
                 })}

@@ -1,4 +1,15 @@
-function Project({ projectObj, displayTechnologies, displayViews }) {
+import { mdiCheckCircleOutline } from '@mdi/js';
+import Icon from '@mdi/react';
+import React from 'react';
+import useScreenSize from '../hooks/useScreenSize';
+
+function Project({
+    projectObj,
+    displayTechnologies,
+    displayViews,
+    displayTasks,
+}) {
+    const screenSize = useScreenSize();
     const image = (
         <img
             src={projectObj.filePathLogo}
@@ -47,6 +58,29 @@ function Project({ projectObj, displayTechnologies, displayViews }) {
                         width="90%"
                         className="pb-5 lg:pb-10"
                     />
+                </div>
+            ) : (
+                <></>
+            )}
+            {displayTasks ? (
+                <div className="text-sm lg:text-xl w-75 lg:w-200 text-start grid grid-cols-12 gap-y-4">
+                    {projectObj.tasks.map((task, i) => {
+                        return (
+                            <React.Fragment
+                                key={projectObj._id + '-task-icon-' + i}
+                            >
+                                <div className="col-span-2 lg:col-span-1">
+                                    <Icon
+                                        path={mdiCheckCircleOutline}
+                                        size={screenSize.isLarge ? 1.5 : 1}
+                                    />
+                                </div>
+                                <div className="col-span-10 lg:col-span-11">
+                                    {task}
+                                </div>
+                            </React.Fragment>
+                        );
+                    })}
                 </div>
             ) : (
                 <></>
