@@ -42,6 +42,7 @@ function Experience(props) {
                             projectObj={project}
                             displayViews={true}
                             displayTasks={true}
+                            displayLanguages={true}
                         />
                     );
                 })}

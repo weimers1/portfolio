@@ -2,20 +2,39 @@ import { mdiCheckCircleOutline } from '@mdi/js';
 import Icon from '@mdi/react';
 import React from 'react';
 import useScreenSize from '../hooks/useScreenSize';
+import MultiSegmentProgressBar from './MultiSegmentProgressBar';
 
 function Project({
     projectObj,
     displayTechnologies,
     displayViews,
     displayTasks,
+    displayLanguages,
 }) {
+    const colors = {
+        PHP: 'bg-indigo-300',
+        Blade: 'bg-orange-400',
+        CSS: 'bg-violet-500',
+        JavaScript: 'bg-yellow-300',
+        SCSS: 'bg-red-500',
+    };
+    const labels = {
+        PHP: 'PHP',
+        Blade: 'Blade',
+        CSS: 'CSS',
+        JavaScript: 'JS',
+        SCSS: 'SCSS',
+    };
+
     const screenSize = useScreenSize();
+
     const image = (
         <img
             src={projectObj.filePathLogo}
             className="border-3 lg:border-6 border-cyan-600 rounded-full w-20 lg:w-35 h-20 lg:h-35 shadow-2xl shadow-cyan-600 bg-cyan-600/50"
         />
     );
+
     return (
         <div
             className="text-white text-shadow-cyan place-items-center pb-20 lg:pb-40"
@@ -86,7 +105,11 @@ function Project({
                 <></>
             )}
             {displayTechnologies ? (
-                <div className="lg:pt-4 w-75 lg:w-200 place-items-center grid grid-cols-6">
+                <div
+                    className={`lg:pt-4 w-75 lg:w-200 place-items-center grid grid-cols-6 ${
+                        displayLanguages ? 'border-b' : ''
+                    }`}
+                >
                     {projectObj.techStack.map((technology) => {
                         return (
                             <img
@@ -101,6 +124,25 @@ function Project({
                             />
                         );
                     })}
+                </div>
+            ) : (
+                <></>
+            )}
+            {displayLanguages ? (
+                <div className="lg:pt-4 w-full place-items-center">
+                    <MultiSegmentProgressBar
+                        data={Object.keys(projectObj.languages).map(
+                            (language) => {
+                                return {
+                                    label: labels[language],
+                                    value: projectObj.languages[language],
+                                    color: colors[language]
+                                        ? colors[language]
+                                        : 'bg-cyan-100',
+                                };
+                            }
+                        )}
+                    />
                 </div>
             ) : (
                 <></>
