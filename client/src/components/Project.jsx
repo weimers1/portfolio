@@ -11,12 +11,14 @@ function Project({
     displayTasks,
     displayLanguages,
 }) {
+    console.log(projectObj);
     const colors = {
         PHP: 'bg-indigo-300',
         Blade: 'bg-orange-400',
         CSS: 'bg-violet-500',
         JavaScript: 'bg-yellow-300',
-        SCSS: 'bg-red-500',
+        SCSS: 'bg-red-400',
+        HTML: 'bg-red-500',
     };
     const labels = {
         PHP: 'PHP',
@@ -24,6 +26,7 @@ function Project({
         CSS: 'CSS',
         JavaScript: 'JS',
         SCSS: 'SCSS',
+        HTML: 'HTML',
     };
 
     const screenSize = useScreenSize();
@@ -129,7 +132,7 @@ function Project({
                 <></>
             )}
             {displayLanguages ? (
-                <div className="lg:pt-4 w-full place-items-center">
+                <div className="pt-10 lg:pt-14 w-full place-items-center">
                     <MultiSegmentProgressBar
                         data={Object.keys(projectObj.languages).map(
                             (language) => {
