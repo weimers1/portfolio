@@ -11,7 +11,6 @@ function Project({
     displayTasks,
     displayLanguages,
 }) {
-    console.log(projectObj);
     const colors = {
         PHP: 'bg-indigo-300',
         Blade: 'bg-rose-500',

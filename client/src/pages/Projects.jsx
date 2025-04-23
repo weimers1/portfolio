@@ -4,7 +4,7 @@ import axios from 'axios';
 import Project from '../components/Project';
 import useScrollToHash from '../hooks/useScrollToHash';
 
-function Experience(props) {
+function Projects(props) {
     const [loading, setLoading] = useState(true);
     const [projects, setProjects] = useState([]);
 
@@ -51,4 +51,4 @@ function Experience(props) {
     );
 }
 
-export default Experience;
+export default Projects;
