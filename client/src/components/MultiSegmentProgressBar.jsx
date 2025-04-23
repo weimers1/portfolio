@@ -18,7 +18,7 @@ function MultiSegmentProgressBar({ data }) {
     );
 
     return (
-        <div className="relative w-full bg-gray-200 h-6 lg:h-8">
+        <div className="relative w-full h-6 lg:h-8">
             {data.map((item, index) => {
                 const widthPercentage = (item.value / totalSize) * 100;
                 const skewedWidthPercentage =
@@ -34,7 +34,15 @@ function MultiSegmentProgressBar({ data }) {
 
                 return (
                     <div
-                        className={`absolute h-full ps-1 lg:ps-2 ${item.color}`}
+                        className={`absolute h-full ps-1 lg:ps-2 ${
+                            item.color
+                        } ${
+                            index === 0
+                                ? 'rounded-s-md'
+                                : index === data.length - 1
+                                ? 'rounded-e-md'
+                                : ''
+                        }`}
                         style={{
                             width: `${skewedWidthPercentage}%`,
                             left: `${previousWidthPercentage}%`,

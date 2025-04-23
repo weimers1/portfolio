@@ -14,9 +14,9 @@ function Project({
     console.log(projectObj);
     const colors = {
         PHP: 'bg-indigo-300',
-        Blade: 'bg-orange-400',
+        Blade: 'bg-rose-500',
         CSS: 'bg-violet-500',
-        JavaScript: 'bg-yellow-300',
+        JavaScript: 'bg-yellow-400',
         SCSS: 'bg-red-400',
         HTML: 'bg-red-500',
     };
