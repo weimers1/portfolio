@@ -34,6 +34,7 @@ function MultiSegmentProgressBar({ data }) {
 
                 return (
                     <div
+                        key={index}
                         className={`absolute h-full ps-1 lg:ps-2 ${
                             item.color
                         } ${

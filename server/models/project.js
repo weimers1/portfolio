@@ -84,7 +84,10 @@ export async function getGitHubRepoLanguages(titleRepo) {
 }
 
 export async function getProjects() {
-    const projects = await Project.find({}).populate('techStack').lean();
+    const projects = await Project.find({})
+        .populate('techStack')
+        .sort({ createdAt: -1 })
+        .lean();
 
     for (let i = 0; i < projects.length; i++) {
         projects[i].languages = await getGitHubRepoLanguages(

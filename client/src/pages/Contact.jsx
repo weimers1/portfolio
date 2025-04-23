@@ -28,33 +28,26 @@ function Contact(props) {
 
         fetchAllData();
 
-        // Load the Cloudflare Turnstile script if it's not already loaded
+        const completeTurnstile = () => {
+            setTurnstileLoaded(true);
+            window.turnstileCallback = () => {
+                setTurnstileComplete(true);
+            };
+        };
+
         if (!window.turnstile) {
             const script = document.createElement('script');
             script.src =
-                'https://challenges.cloudflare.com/turnstile/v0/api.js';
+                'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=turnstileCallback';
             script.defer = true;
             script.onload = () => {
-                console.log('Cloudflare Turnstile script loaded');
-                setTurnstileLoaded(true);
-                // define the global turnstileCallback only after the script is loaded
-                window.turnstileCallback = () => {
-                    console.log('Turnstile challenge completed');
-                    setTurnstileComplete(true);
-                };
+                completeTurnstile();
             };
             document.head.appendChild(script);
         } else {
-            // If the script is already loaded, just set the callback
-            console.log('Cloudflare Turnstile script already loaded');
-            setTurnstileLoaded(true);
-            window.turnstileCallback = () => {
-                console.log('Turnstile challenge completed');
-                setTurnstileComplete(true);
-            };
+            completeTurnstile();
         }
 
-        // cleanup function to remove the global callback
         return () => {
             delete window.turnstileCallback;
         };
@@ -66,11 +59,11 @@ function Contact(props) {
             loading={loading}
         >
             <section className="place-items-center lg:pt-5">
-                <div className="flex flex-wrap justify-center gap-7 lg:gap-20 pt-4 w-75 lg:w-200 lg:border-b pb-10">
+                <div className="flex flex-wrap justify-center gap-5 lg:gap-20 pt-4 w-75 lg:w-200 lg:border-b pb-5">
                     {socials.map((social) => {
                         return (
                             <a
-                                className="p-3 text-white"
+                                className="p-3 text-white hover:text-cyan-300"
                                 href={social.urlWebsite}
                                 target="_blank"
                                 key={social._id}
@@ -84,7 +77,7 @@ function Contact(props) {
                         );
                     })}
                     <a
-                        className="p-3 text-white"
+                        className="p-3 text-white hover:text-cyan-300"
                         href="mailto:samweimer7@gmail.com"
                         target="_blank"
                         key="gmail"
@@ -103,7 +96,7 @@ function Contact(props) {
                     action="/contact"
                     method="POST"
                 >
-                    <div className="w-75 lg:w-200">
+                    <div className="w-75 lg:w-200 mb-0 pb-0">
                         <input
                             type="text"
                             className="w-full bg-white rounded-lg text-black p-3 lg:p-5 lg:mt-15"
@@ -116,16 +109,15 @@ function Contact(props) {
                     </div>
                     {turnstileLoaded && (
                         <div
-                            className="cf-turnstile mt-5 lg:mt-15"
+                            className="cf-turnstile mt-10 lg:mt-15"
                             data-sitekey={TURNSTILE_SITE_KEY}
-                            data-callback="turnstileCallback"
                         ></div>
                     )}
                     {turnstileComplete && (
                         <button
                             type="submit"
                             value="Submit"
-                            className="bg-cyan-300/35 hover:bg-cyan-400/35 hover:cursor-pointer p-3 rounded-md flex float-start mt-5"
+                            className="bg-cyan-300/35 hover:bg-cyan-400/35 hover:cursor-pointer p-3 rounded-md flex float-start"
                         >
                             Send Message
                         </button>
