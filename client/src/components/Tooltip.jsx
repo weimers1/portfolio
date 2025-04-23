@@ -22,7 +22,7 @@ function Tooltip({ text, children, placement = 'bottom-6 lg:bottom-8' }) {
             </div>
             {isVisible && (
                 <div
-                    className={`absolute ${placement} left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm lg:text-lg rounded py-2 px-3 shadow-lg z-1 min-w-14 lg:min-w-17`}
+                    className={`absolute ${placement} left-1/2 -translate-x-1/2 bg-cyan-500/35 text-white text-sm lg:text-lg rounded py-2 px-3 text-shadow-cyan z-1 min-w-14 lg:min-w-17`}
                 >
                     {text}
                 </div>
