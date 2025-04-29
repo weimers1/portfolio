@@ -22,3 +22,8 @@ export async function executeFetch(url, headers = {}, method = 'GET') {
         throw error;
     }
 }
+
+export function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}

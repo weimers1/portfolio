@@ -5,6 +5,7 @@ import profile from '../assets/images/profile.jpg';
 import { Icon } from '@iconify/react';
 import useScreenSize from '../hooks/useScreenSize';
 import Project from '../components/Project';
+import { BASE_URL_API } from '../../config';
 
 function Home(props) {
     const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ function Home(props) {
     const screenSize = useScreenSize();
     useEffect(() => {
         axios
-            .get('http://localhost:4000/')
+            .get(BASE_URL_API + '/')
             .then((response) => {
                 setLoading(false);
                 setSocials(response.data.socials);

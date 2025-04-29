@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import NotFound from './components/NotFound';
+import { BASE_URL_API } from '../config';
 
 function App() {
     const [loading, setLoading] = useState(true);
@@ -11,7 +12,7 @@ function App() {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('http://localhost:4000/pages')
+            .get(BASE_URL_API + '/pages')
             .then((response) => {
                 setLoading(false);
                 setPages(response.data);

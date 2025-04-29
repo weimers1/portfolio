@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Icon } from '@iconify/react';
+import { BASE_URL_API } from '../../config';
 
 function Footer(props) {
     const currentYear = new Date().getFullYear();
@@ -8,7 +9,7 @@ function Footer(props) {
     const [socials, setSocials] = useState([]);
     useEffect(() => {
         axios
-            .get('http://localhost:4000/socials')
+            .get(BASE_URL_API + '/socials')
             .then((response) => {
                 setSocials(response.data);
             })

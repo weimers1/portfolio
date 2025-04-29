@@ -6,6 +6,7 @@ import Project from '../components/Project';
 import Certification from '../components/Certification';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import useScrollToHash from '../hooks/useScrollToHash';
+import { BASE_URL_API } from '../../config';
 
 function Experience(props) {
     const [loading, setLoading] = useState(true);
@@ -23,10 +24,10 @@ function Experience(props) {
                     projectsResponse,
                     certificationsResponse,
                 ] = await Promise.all([
-                    axios.get('http://localhost:4000/technologies'),
-                    axios.get('http://localhost:4000/jobs'),
-                    axios.get('http://localhost:4000/projects'),
-                    axios.get('http://localhost:4000/certifications'),
+                    axios.get(BASE_URL_API + '/technologies'),
+                    axios.get(BASE_URL_API + '/jobs'),
+                    axios.get(BASE_URL_API + '/projects'),
+                    axios.get(BASE_URL_API + '/certifications'),
                 ]);
 
                 setTechnologies(technologiesResponse.data);

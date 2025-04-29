@@ -1,5 +1,12 @@
 import express from 'express';
-import { PORT, DB_CONNECTION_STRING } from './config.js';
+import bodyParser from 'body-parser';
+import {
+    PORT_SERVER,
+    PORT_CLIENT,
+    DB_CONNECTION_STRING,
+    TURNSTILE_SECRET_KEY,
+    URL_CLIENT,
+} from './config.js';
 import { getProjects } from './models/project.js';
 import { getSocials } from './models/social.js';
 import { getPages } from './models/page.js';
@@ -8,23 +15,26 @@ import { getJobs } from './models/job.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import { getCertifications } from './models/certification.js';
+import { isValidEmail } from './global.js';
 
 // Create server
 const app = express();
 
 // Set server to listen on specified port
-app.listen(PORT, () => {
-    console.log('App is listening on port ' + PORT);
+app.listen(PORT_SERVER, () => {
+    console.log('App is listening on port ' + PORT_SERVER);
 });
 
 // Configure server middleware
 app.use(
     cors({
-        origin: 'http://localhost:3000',
+        origin: URL_CLIENT + PORT_CLIENT,
         methods: ['GET'],
         allowedHeaders: ['Content-Type'],
     })
 );
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.get('/', async (request, response) => {
     try {
@@ -110,6 +120,46 @@ app.get('/certifications', async (request, response) => {
     }
 });
 
+app.post('/contact', async (request, response) => {
+    try {
+        // grab param data
+        const token = request.body['cf-turnstile-response'];
+        const ip = request.headers['cf-connecting-ip'];
+        const email = request.body.email;
+        const message = request.body.message;
+
+        // verify turnstile
+        const turnstileResult = await verifyTurnstile(token, ip);
+        if (turnstileResult !== 'success') {
+            return response.status(400).json({
+                error: 'Turnstile verification failed. Please try again.',
+            });
+        }
+
+        // validate email/message
+        if (!email || !isValidEmail(email)) {
+            return response
+                .status(400)
+                .json({ error: 'Please enter a valid email address.' });
+        }
+        if (!message || message.trim() === '') {
+            return response
+                .status(400)
+                .json({ error: 'Please enter a message.' });
+        }
+
+        // @TODO: send self the email
+
+        return response
+            .status(200)
+            .json({ success: 'Message sent successfully!' });
+    } catch (error) {
+        // @TODO: email errors
+        console.log(error);
+        response.status(500).send('System Error');
+    }
+});
+
 mongoose
     .connect(DB_CONNECTION_STRING)
     .then((response) => {
@@ -119,3 +169,25 @@ mongoose
         // @TODO: email errors
         console.log(error);
     });
+
+async function verifyTurnstile(token, ip) {
+    // validate the turnstile token by calling the siteverify endpoint
+    let formData = new FormData();
+    formData.append('secret', TURNSTILE_SECRET_KEY);
+    formData.append('response', token);
+    formData.append('remoteip', ip);
+    const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+    const result = await fetch(url, {
+        body: formData,
+        method: 'POST',
+    });
+
+    const outcome = await result.json();
+    if (outcome.success) {
+        console.log('Turnstile verification successful.');
+        return 'success';
+    }
+
+    console.log('Turnstile verification failed:', outcome);
+    return 'error';
+}
