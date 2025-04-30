@@ -15,7 +15,21 @@ function Contact(props) {
     );
     const [modalIsVisible, setModalIsVisible] = useState(false);
 
+    const setModal = (
+        message,
+        onDismissCallback = () => {
+            console.log('called ondismiss');
+            setModalIsVisible(false);
+        },
+        isVisible = true
+    ) => {
+        setModalMessage(message);
+        setModalOnDismissCallback(() => onDismissCallback);
+        setModalIsVisible(isVisible);
+    };
+
     const handleSubmit = async (event) => {
+        console.log('handleSubmit called');
         event.preventDefault();
         const formData = new FormData(event.target);
         const params = new URLSearchParams();
@@ -35,13 +49,21 @@ function Contact(props) {
             console.error('result:', responseJSON);
 
             if (!response.ok) {
-                setShowModal();
+                setModal(
+                    responseJSON.error
+                        ? responseJSON.error
+                        : 'Please ensure you have entered a valid email and message...'
+                );
                 return;
             }
 
-            // show success message and refresh page on dismiss
+            setModal(
+                responseJSON.success
+                    ? responseJSON.success
+                    : 'Your message has been sent.'
+            );
         } catch (error) {
-            // show error message and refresh page on dismiss
+            setModal('There was an error when trying to send your message...');
         }
     };
 
