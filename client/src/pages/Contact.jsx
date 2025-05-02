@@ -165,6 +165,7 @@ function Contact(props) {
                         className="cf-turnstile mt-10 lg:mt-15"
                         data-sitekey={TURNSTILE_SITE_KEY}
                         data-callback="turnstileCallback"
+                        data-theme="light"
                     ></div>
                     {turnstileComplete && (
                         <button
