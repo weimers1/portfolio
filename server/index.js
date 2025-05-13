@@ -128,14 +128,6 @@ app.post('/contact', async (request, response) => {
         const email = request.body.email;
         const message = request.body.message;
 
-        // verify turnstile
-        const turnstileResult = await verifyTurnstile(token, ip);
-        if (turnstileResult !== 'success') {
-            return response.status(400).json({
-                error: 'Turnstile verification failed. Please try again.',
-            });
-        }
-
         // validate email/message
         if (!email || !isValidEmail(email)) {
             return response
@@ -146,6 +138,14 @@ app.post('/contact', async (request, response) => {
             return response
                 .status(400)
                 .json({ error: 'Please enter a message.' });
+        }
+
+        // verify turnstile
+        const turnstileResult = await verifyTurnstile(token, ip);
+        if (turnstileResult !== 'success') {
+            return response.status(400).json({
+                error: 'Turnstile verification failed. Please try refreshing the page.',
+            });
         }
 
         // @TODO: send self the email

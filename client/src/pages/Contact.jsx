@@ -14,11 +14,13 @@ function Contact(props) {
         () => {}
     );
     const [modalIsVisible, setModalIsVisible] = useState(false);
+    const [textAreaValue, setTextAreaValue] = useState('');
 
     const setModal = (
         message,
         onDismissCallback = () => {
-            console.log('called ondismiss');
+            document.getElementById('email').value = '';
+            setTextAreaValue('');
             setModalIsVisible(false);
         },
         isVisible = true
@@ -29,7 +31,6 @@ function Contact(props) {
     };
 
     const handleSubmit = async (event) => {
-        console.log('handleSubmit called');
         event.preventDefault();
         const formData = new FormData(event.target);
         const params = new URLSearchParams();
@@ -46,13 +47,15 @@ function Contact(props) {
                 body: params.toString(),
             });
             const responseJSON = await response.json();
-            console.error('result:', responseJSON);
 
             if (!response.ok) {
                 setModal(
                     responseJSON.error
                         ? responseJSON.error
-                        : 'Please ensure you have entered a valid email and message...'
+                        : 'Please ensure you have entered a valid email and message...',
+                    () => {
+                        setModalIsVisible(false);
+                    }
                 );
                 return;
             }
@@ -60,7 +63,11 @@ function Contact(props) {
             setModal(
                 responseJSON.success
                     ? responseJSON.success
-                    : 'Your message has been sent.'
+                    : 'Your message has been sent.',
+                () => {
+                    window.location.reload();
+                    setModalIsVisible(false);
+                }
             );
         } catch (error) {
             setModal('There was an error when trying to send your message...');
@@ -78,8 +85,8 @@ function Contact(props) {
                 setLoading(false);
             } catch (error) {
                 setLoading(false);
-                console.error('Error fetching data:', error);
                 // @TODO: email errors
+                console.error('Error fetching data:', error);
             }
         };
 
@@ -151,6 +158,7 @@ function Contact(props) {
                     <div className="w-75 lg:w-200 mb-0 pb-0">
                         <input
                             type="text"
+                            id="email"
                             className="w-full bg-white rounded-lg text-black p-3 lg:p-5 lg:mt-15"
                             name="email"
                             placeholder="Enter your email"
@@ -158,6 +166,8 @@ function Contact(props) {
                         <textarea
                             className="w-full h-40 lg:h-60 bg-white rounded-lg text-black p-3 lg:p-5 mt-10 lg:mt-15"
                             name="message"
+                            value={textAreaValue}
+                            onChange={(e) => setTextAreaValue(e.target.value)}
                             placeholder="Enter a message"
                         ></textarea>
                     </div>
