@@ -16,6 +16,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { getCertifications } from './models/certification.js';
 import { isValidEmail } from './global.js';
+import path from 'path';
 
 // Create server
 const app = express();
