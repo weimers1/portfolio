@@ -36,6 +36,14 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// if on production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/dist'));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
+    });
+}
+
 app.get('/', async (request, response) => {
     try {
         const projects = await getProjects();
@@ -160,6 +168,11 @@ app.post('/contact', async (request, response) => {
     }
 });
 
+// app.post('/email', async (request, response) => {
+//     try {}
+//     catch (error) {}
+// });
+
 mongoose
     .connect(DB_CONNECTION_STRING)
     .then((response) => {
@@ -169,6 +182,8 @@ mongoose
         // @TODO: email errors
         console.log(error);
     });
+    
+// async function sendEmail() {}
 
 async function verifyTurnstile(token, ip) {
     // validate the turnstile token by calling the siteverify endpoint
