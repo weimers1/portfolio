@@ -10,11 +10,17 @@ import cors from 'cors';
 import { getCertifications } from './models/certification.js';
 import { isValidEmail } from './global.js';
 import path from 'path';
+import { fileURLToPath } from 'url'; // <-- Import fileURLToPath from 'url' module
+
 const PORT_SERVER = process.env.PORT || 4000;
 const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost:';
 const PORT_CLIENT = process.env.PORT_CLIENT || 3000;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
+
+// Get the directory name for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create server
 const app = express();
