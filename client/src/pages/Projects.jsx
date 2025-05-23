@@ -3,6 +3,7 @@ import PageLayout from '../components/PageLayout';
 import axios from 'axios';
 import Project from '../components/Project';
 import useScrollToHash from '../hooks/useScrollToHash';
+import { BASE_URL_API } from '../../config';
 
 function Projects(props) {
     const [loading, setLoading] = useState(true);
@@ -12,7 +13,7 @@ function Projects(props) {
         const fetchAllData = async () => {
             try {
                 const [projectsResponse] = await Promise.all([
-                    axios.get('http://localhost:4000/projects'),
+                    axios.get(BASE_URL_API + '/projects'),
                 ]);
 
                 setProjects(projectsResponse.data);

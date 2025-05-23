@@ -12,7 +12,7 @@ import { isValidEmail } from './global.js';
 
 const PORT_SERVER = process.env.PORT || 8080;
 const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost:';
-const PORT_CLIENT = process.env.PORT_CLIENT || 3000;
+const PORT_CLIENT = process.env.PORT_CLIENT || 80;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 

@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-const PORT = process.env.VITE_PORT || 3000;
+const PORT = process.env.VITE_PORT || 80;
 
 // https://vite.dev/config/
 export default defineConfig({
