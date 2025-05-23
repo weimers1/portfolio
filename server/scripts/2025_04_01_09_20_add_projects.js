@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import { DB_CONNECTION_STRING } from '../config.js';
+const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 import { Technology } from '../models/technology.js';
-import { Project, getProjects } from '../models/project.js';
+import { Project } from '../models/project.js';
 
 async function addProjects() {
     try {

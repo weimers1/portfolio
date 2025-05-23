@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { DB_CONNECTION_STRING } from '../config.js';
+const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 import { Technology, getTechnologies } from '../models/technology.js';
 
 async function addTechnologies() {

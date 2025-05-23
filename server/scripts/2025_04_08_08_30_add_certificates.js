@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { DB_CONNECTION_STRING } from '../config.js';
+const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 import { Certification } from '../models/certification.js';
 
 async function addCertifications() {

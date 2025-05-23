@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { executeFetch } from '../global.js';
-import { GITHUB_API_KEY } from '../config.js';
+const GITHUB_API_KEY = process.env.GITHUB_API_KEY;
 
 const schema = mongoose.Schema(
     {

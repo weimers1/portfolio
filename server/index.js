@@ -1,12 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import {
-    PORT_SERVER,
-    PORT_CLIENT,
-    DB_CONNECTION_STRING,
-    TURNSTILE_SECRET_KEY,
-    URL_CLIENT,
-} from './config.js';
 import { getProjects } from './models/project.js';
 import { getSocials } from './models/social.js';
 import { getPages } from './models/page.js';
@@ -17,6 +10,11 @@ import cors from 'cors';
 import { getCertifications } from './models/certification.js';
 import { isValidEmail } from './global.js';
 import path from 'path';
+const PORT_SERVER = process.env.PORT || 4000;
+const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost:';
+const PORT_CLIENT = process.env.PORT_CLIENT || 3000;
+const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 
 // Create server
 const app = express();
@@ -183,7 +181,7 @@ mongoose
         // @TODO: email errors
         console.log(error);
     });
-    
+
 // async function sendEmail() {}
 
 async function verifyTurnstile(token, ip) {

@@ -1,6 +1,4 @@
 import mongoose from 'mongoose';
-import { executeFetch } from '../global.js';
-import { GITHUB_API_KEY } from '../config.js';
 
 const schema = mongoose.Schema(
     {
