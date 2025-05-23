@@ -9,18 +9,12 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { getCertifications } from './models/certification.js';
 import { isValidEmail } from './global.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 const PORT_SERVER = process.env.PORT || 8080;
 const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost:';
 const PORT_CLIENT = process.env.PORT_CLIENT || 3000;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
-
-// Get the directory name for ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Create server
 const app = express();
@@ -40,14 +34,6 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// if on production
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/dist'));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
-    });
-}
 
 app.get('/', async (request, response) => {
     try {
