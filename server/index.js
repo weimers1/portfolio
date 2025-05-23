@@ -9,10 +9,10 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { getCertifications } from './models/certification.js';
 import { isValidEmail } from './global.js';
+import 'dotenv/config.js'; 
 
 const PORT_SERVER = process.env.PORT || 8080;
-const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost:';
-const PORT_CLIENT = process.env.PORT_CLIENT || 80;
+const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost';
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
 
@@ -27,7 +27,7 @@ app.listen(PORT_SERVER, () => {
 // Configure server middleware
 app.use(
     cors({
-        origin: URL_CLIENT + PORT_CLIENT,
+        origin: URL_CLIENT,
         methods: ['GET'],
         allowedHeaders: ['Content-Type'],
     })

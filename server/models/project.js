@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { executeFetch } from '../global.js';
+import 'dotenv/config.js'; 
 const GITHUB_API_KEY = process.env.GITHUB_API_KEY;
 
 const schema = mongoose.Schema(
@@ -79,6 +80,7 @@ export async function getGitHubRepoLanguages(titleRepo) {
         'X-GitHub-Api-Version': '2022-11-28',
     };
 
+    console.log('\n\n\n\nTOKEN: ' + GITHUB_API_KEY + '\n\n\n\n');
     const response = await executeFetch(url, headers);
     return response;
 }
