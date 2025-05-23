@@ -10,9 +10,9 @@ import cors from 'cors';
 import { getCertifications } from './models/certification.js';
 import { isValidEmail } from './global.js';
 import path from 'path';
-import { fileURLToPath } from 'url'; // <-- Import fileURLToPath from 'url' module
+import { fileURLToPath } from 'url';
 
-const PORT_SERVER = process.env.PORT || 4000;
+const PORT_SERVER = process.env.PORT || 8080;
 const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost:';
 const PORT_CLIENT = process.env.PORT_CLIENT || 3000;
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
