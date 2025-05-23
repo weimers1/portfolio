@@ -143,4 +143,4 @@ dist-ssr
 .pnp.*
 
 # config files
-config.js
+server/config.js
