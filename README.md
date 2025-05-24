@@ -17,3 +17,8 @@ Then build client with `docker build --build-arg REACT_APP_API_URL=http://host.d
 Ensure proper environment variables are configured for `TURNSTILE_SECRET_KEY`, `DB_CONNECTION_STRING`, and `GITHUB_API_KEY`.  
 Run backend with `docker run -p 8080:8080 --name mern-backend-c -d -e GITHUB_API_KEY='<github_api_key>' -e DB_CONNECTION_STRING='<db_connection_string>' -e TURNSTILE_SECRET_KEY='<turnstile_secret_key>' mern-backend`.  
 Run frontend with `docker run -p 80:80 --name mern-frontend-c -d mern-frontend`.
+
+#### Disclaimers
+
+With regard to the use of all product images and logos, I am not affiliated with these products, services, or organizations in any way. The use of these logos have been obtained legally or are within the logo usage guidelines.  
+For specific logos such as Microsoft products and Oracle products, these logos are being used with permission from Microsoft and Oracle.
