@@ -37,13 +37,8 @@ function MultiSegmentProgressBar({ data }) {
                         key={index}
                         className={`absolute h-full ps-1 lg:ps-2 ${
                             item.color
-                        } ${
-                            index === 0
-                                ? 'rounded-s-md'
-                                : index === data.length - 1
-                                ? 'rounded-e-md'
-                                : ''
-                        }`}
+                        } ${index === 0 ? 'rounded-s-md' : ''}
+                        ${index === data.length - 1 ? 'rounded-e-md' : ''}`}
                         style={{
                             width: `${skewedWidthPercentage}%`,
                             left: `${previousWidthPercentage}%`,
@@ -51,7 +46,12 @@ function MultiSegmentProgressBar({ data }) {
                     >
                         <Tooltip
                             key={index}
-                            text={widthPercentage.toFixed(2) + '%'}
+                            text={
+                                widthPercentage.toFixed(2) +
+                                '% (' +
+                                item.name +
+                                ')'
+                            }
                         >
                             <div className="text-xs lg:text-lg flex items-center h-full">
                                 {item.label}

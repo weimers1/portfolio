@@ -1,4 +1,11 @@
-import { mdiCheckCircleOutline } from '@mdi/js';
+import {
+    mdiCheckCircleOutline,
+    mdiDocker,
+    mdiLanguageCss3,
+    mdiLanguageHtml5,
+    mdiLanguageJavascript,
+    mdiLanguagePhp,
+} from '@mdi/js';
 import Icon from '@mdi/react';
 import React from 'react';
 import useScreenSize from '../hooks/useScreenSize';
@@ -18,14 +25,41 @@ function Project({
         JavaScript: 'bg-yellow-400',
         SCSS: 'bg-red-400',
         HTML: 'bg-red-500',
+        Dockerfile: 'bg-blue-500',
     };
     const labels = {
-        PHP: 'PHP',
+        PHP: (
+            <Icon
+                path={mdiLanguagePhp}
+                size={1}
+            />
+        ),
         Blade: 'Blade',
-        CSS: 'CSS',
-        JavaScript: 'JS',
+        CSS: (
+            <Icon
+                path={mdiLanguageCss3}
+                size={1}
+            />
+        ),
+        JavaScript: (
+            <Icon
+                path={mdiLanguageJavascript}
+                size={1}
+            />
+        ),
         SCSS: 'SCSS',
-        HTML: 'HTML',
+        HTML: (
+            <Icon
+                path={mdiLanguageHtml5}
+                size={1}
+            />
+        ),
+        Dockerfile: (
+            <Icon
+                path={mdiDocker}
+                size={1}
+            />
+        ),
     };
 
     const screenSize = useScreenSize();
@@ -131,13 +165,14 @@ function Project({
                 <></>
             )}
             {displayLanguages ? (
-                <div className="pt-10 lg:pt-14 w-full place-items-center">
+                <div className="pt-15 lg:pt-20 w-full place-items-center">
                     <MultiSegmentProgressBar
                         data={Object.keys(projectObj.languages).map(
                             (language) => {
                                 return {
                                     label: labels[language],
                                     value: projectObj.languages[language],
+                                    name: language,
                                     color: colors[language]
                                         ? colors[language]
                                         : 'bg-cyan-100',
