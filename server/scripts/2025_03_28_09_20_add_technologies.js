@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import 'dotenv/config.js';
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 import { Technology, getTechnologies } from '../models/technology.js';
 
@@ -134,6 +135,26 @@ async function addTechnologies() {
                 name: 'Docker',
                 type: 'tool',
                 filePathLogo: '/src/assets/images/docker.svg',
+            },
+            {
+                name: 'TypeScript',
+                type: 'language',
+                filePathLogo: '/src/assets/images/typescript.svg',
+            },
+            {
+                name: 'Confluence',
+                type: 'tool',
+                filePathLogo: '/src/assets/images/confluence.svg',
+            },
+            {
+                name: 'Linux',
+                type: 'os',
+                filePathLogo: '/src/assets/images/linux.svg',
+            },
+            {
+                name: 'Google Cloud Platform',
+                type: 'tool',
+                filePathLogo: '/src/assets/images/gcp.svg',
             },
         ];
 

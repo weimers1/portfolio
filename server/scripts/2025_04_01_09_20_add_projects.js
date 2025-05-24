@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import 'dotenv/config.js';
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 import { Technology } from '../models/technology.js';
 import { Project } from '../models/project.js';
