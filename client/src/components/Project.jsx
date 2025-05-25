@@ -5,6 +5,8 @@ import {
     mdiLanguageHtml5,
     mdiLanguageJavascript,
     mdiLanguagePhp,
+    mdiSass,
+    mdiSawBlade,
 } from '@mdi/js';
 import Icon from '@mdi/react';
 import React from 'react';
@@ -34,7 +36,12 @@ function Project({
                 size={1}
             />
         ),
-        Blade: 'Blade',
+        Blade: (
+            <Icon
+                path={mdiSawBlade}
+                size={1}
+            />
+        ),
         CSS: (
             <Icon
                 path={mdiLanguageCss3}
@@ -47,7 +54,12 @@ function Project({
                 size={1}
             />
         ),
-        SCSS: 'SCSS',
+        SCSS: (
+            <Icon
+                path={mdiSass}
+                size={1}
+            />
+        ),
         HTML: (
             <Icon
                 path={mdiLanguageHtml5}
