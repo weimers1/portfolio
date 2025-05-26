@@ -19,7 +19,7 @@ async function addProjects() {
                     'A welding certification exam preparation website owned by Weld WISE, LLC.',
                 urlWebsite: 'https://www.weld-wise.net',
                 filePathLogo: '/src/assets/images/weld-wise.png',
-                filePathViews: '/src/assets/images/default.svg',
+                filePathViews: '/src/assets/images/weldwise_views.png',
                 tasks: [
                     'Integrate PayPal API to process user payments for access to online welding certification testing materials, ensuring secure and reliable transaction handling',
                     'Manage user authentication and authorization via Stytch magic links, providing a seamless and secure sign-up and login experience for hundreds of users',
