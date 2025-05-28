@@ -11,6 +11,10 @@ RUN npm install
 # Copy all frontend files
 COPY . .
 
+# Set environment variable for client config file
+ARG VITE_BASE_URL_API_ARG
+ENV VITE_BASE_URL_API=${VITE_BASE_URL_API_ARG}
+
 # Build the client for production
 RUN npm run build
 
