@@ -50,6 +50,8 @@ steps:
       - '-t'
       - '<region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
       - '--build-arg'
+      - 'URL_CLIENT_ARG=${_URL_CLIENT}'
+      - '--build-arg'
       - 'DB_CONNECTION_STRING_ARG=${_DB_CONNECTION_STRING}'
       - '--build-arg'
       - 'GITHUB_API_KEY_ARG=${_GITHUB_API_KEY}'
@@ -61,6 +63,7 @@ steps:
       - 'push'
       - '<region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
 substitutions:
+  _URL_CLIENT: <client_url>
   _DB_CONNECTION_STRING: $(gcloud secrets versions access latest --secret=db-connection-string)
   _GITHUB_API_KEY: $(gcloud secrets versions access latest --secret=github-api-key)
   _TURNSTILE_SECRET_KEY: $(gcloud secrets versions access latest --secret=turnstile-secret-key)
