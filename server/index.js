@@ -9,7 +9,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { getCertifications } from './models/certification.js';
 import { isValidEmail } from './global.js';
-import 'dotenv/config.js'; 
+import 'dotenv/config.js';
 
 const PORT_SERVER = process.env.PORT || 8080;
 const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost';
@@ -25,6 +25,8 @@ app.listen(PORT_SERVER, () => {
 });
 
 // Configure server middleware
+console.log('\nprocess.env.URL_CLIENT set to:', process.env.URL_CLIENT);
+console.log('\nCORS origin set to:', URL_CLIENT);
 app.use(
     cors({
         origin: URL_CLIENT,
