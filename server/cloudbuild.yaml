@@ -1,0 +1,24 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
+      - '--build-arg'
+      - 'URL_CLIENT_ARG=${_URL_CLIENT}'
+      - '--build-arg'
+      - 'DB_CONNECTION_STRING_ARG=${_DB_CONNECTION_STRING}'
+      - '--build-arg'
+      - 'GITHUB_API_KEY_ARG=${_GITHUB_API_KEY}'
+      - '--build-arg'
+      - 'TURNSTILE_SECRET_KEY_ARG=${_TURNSTILE_SECRET_KEY}'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
+substitutions:
+  _URL_CLIENT: https://portfolio-frontend-232883986354.us-central1.run.app
+  _DB_CONNECTION_STRING: $(gcloud secrets versions access latest --secret=mongodb-connection-string)
+  _GITHUB_API_KEY: $(gcloud secrets versions access latest --secret=github-api-key)
+  _TURNSTILE_SECRET_KEY: $(gcloud secrets versions access latest --secret=turnstile-secret-key)
