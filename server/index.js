@@ -30,7 +30,7 @@ console.log('\nCORS origin set to:', URL_CLIENT);
 const corsOptions = {
     origin: URL_CLIENT,
     methods: ['GET', 'POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type'],
 };
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
