@@ -40,7 +40,7 @@ steps:
 
 Then build client with `gcloud builds submit ./client --config=./client/cloudbuild.yaml --substitutions _VITE_BASE_URL_API_ARG=<backend_url>`.
 
-Then, assuming secret manager has been set up with the proper secrets as seen in the following `substitutions` section, create a `cloudbuild.yaml` file in the root of `server`:
+Then, assuming GCP secret manager has been set up with the proper secrets as seen in the following `substitutions` section, create a `cloudbuild.yaml` file in the root of `server`:
 
 ```
 steps:
@@ -75,7 +75,7 @@ Run frontend container with:
 `gcloud run deploy portfolio-frontend --region <region> --image <region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/frontend:latest --platform managed --allow-unauthenticated`
 
 Then run backend container with:
-`gcloud run deploy portfolio-backend --region <region> --image <region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest --platform managed --no-allow-unauthenticated`
+`gcloud run deploy portfolio-backend --region <region> --image <region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest --platform managed --allow-unauthenticated`
 
 #### Disclaimers
 
