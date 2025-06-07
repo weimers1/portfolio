@@ -27,13 +27,13 @@ app.listen(PORT_SERVER, () => {
 // Configure server middleware
 console.log('\nprocess.env.URL_CLIENT set to:', process.env.URL_CLIENT);
 console.log('\nCORS origin set to:', URL_CLIENT);
-app.use(
-    cors({
-        origin: URL_CLIENT,
-        methods: ['GET'],
-        allowedHeaders: ['Content-Type'],
-    })
-);
+const corsOptions = {
+    origin: URL_CLIENT,
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
