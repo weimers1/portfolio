@@ -12,6 +12,7 @@ steps:
           - 'GITHUB_API_KEY_ARG=${_GITHUB_API_KEY}'
           - '--build-arg'
           - 'TURNSTILE_SECRET_KEY_ARG=${_TURNSTILE_SECRET_KEY}'
+          - '--no-cache'
           - '.'
     - name: 'gcr.io/cloud-builders/docker'
       args:
