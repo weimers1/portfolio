@@ -102,8 +102,9 @@ function Contact(props) {
             const script = document.createElement('script');
             script.src =
                 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+            script.async = true;
             script.defer = true;
-            document.head.appendChild(script);
+            document.body.appendChild(script);
         }
 
         // delete the callback to make sure it isn't called from potential previous renders
@@ -150,7 +151,7 @@ function Contact(props) {
                 </div>
             </section>
 
-            <section className="place-items-center w-full">
+            <section className="place-items-center w-full overflow-x-visible overflow-y-visible">
                 <form
                     method="POST"
                     onSubmit={handleSubmit}
@@ -172,7 +173,7 @@ function Contact(props) {
                         ></textarea>
                     </div>
                     <div
-                        className="cf-turnstile mt-10 lg:mt-15"
+                        className="cf-turnstile mt-10 lg:mt-15 overflow-x-visible overflow-y-visible"
                         data-sitekey={TURNSTILE_SITE_KEY}
                         data-callback="turnstileCallback"
                         data-theme="light"
