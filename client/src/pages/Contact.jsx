@@ -104,7 +104,7 @@ function Contact(props) {
                 'https://challenges.cloudflare.com/turnstile/v0/api.js';
             script.async = true;
             script.defer = true;
-            document.body.appendChild(script);
+            document.head.appendChild(script);
         }
 
         // delete the callback to make sure it isn't called from potential previous renders
