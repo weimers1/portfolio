@@ -12,6 +12,8 @@ steps:
           - 'GITHUB_API_KEY_ARG=${_GITHUB_API_KEY}'
           - '--build-arg'
           - 'TURNSTILE_SECRET_KEY_ARG=${_TURNSTILE_SECRET_KEY}'
+          - '--build-arg'
+          - 'BREVO_API_KEY=${_BREVO_API_KEY}'
           - '--no-cache'
           - '.'
     - name: 'gcr.io/cloud-builders/docker'
@@ -23,3 +25,4 @@ substitutions:
     _DB_CONNECTION_STRING: $(gcloud secrets versions access latest --secret=mongodb-connection-string)
     _GITHUB_API_KEY: $(gcloud secrets versions access latest --secret=github-api-key)
     _TURNSTILE_SECRET_KEY: $(gcloud secrets versions access latest --secret=turnstile-secret-key)
+    _BREVO_API_KEY: $(gcloud secrets versions access latest --secret=brevo-api-key)
