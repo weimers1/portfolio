@@ -17,7 +17,6 @@ export async function executeFetch(url, headers = {}, method = 'GET') {
         const data = await response.json();
         return data;
     } catch (error) {
-        // @TODO: email errors
         console.error('Error fetching data:', error);
         throw error;
     }

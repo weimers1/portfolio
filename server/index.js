@@ -48,7 +48,7 @@ app.get('/', async (request, response) => {
             .status(200)
             .json({ projects: projects, socials: socials });
     } catch (error) {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /');
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -60,7 +60,7 @@ app.get('/pages', async (request, response) => {
 
         return response.status(200).json(pages);
     } catch (error) {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /pages');
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -72,7 +72,7 @@ app.get('/projects', async (request, response) => {
 
         return response.status(200).json(projects);
     } catch (error) {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /projects');
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -83,7 +83,7 @@ app.get('/socials', async (request, response) => {
         const socials = await getSocials();
         return response.status(200).json(socials);
     } catch (error) {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /socials');
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -94,7 +94,7 @@ app.get('/technologies', async (request, response) => {
         const technologies = await getTechnologies();
         return response.status(200).json(technologies);
     } catch (error) {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /technologies');
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -105,7 +105,7 @@ app.get('/jobs', async (request, response) => {
         const jobs = await getJobs();
         return response.status(200).json(jobs);
     } catch (error) {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /jobs');
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -116,7 +116,7 @@ app.get('/certifications', async (request, response) => {
         const certifications = await getCertifications();
         return response.status(200).json(certifications);
     } catch (error) {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /certifications');
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -157,7 +157,7 @@ app.post('/contact', async (request, response) => {
             .status(200)
             .json({ success: 'Message sent successfully!' });
     } catch (error) {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: POST /contact');
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -193,7 +193,7 @@ mongoose
         console.log('Connected to database.');
     })
     .catch((error) => {
-        // @TODO: email errors
+        sendEmail('sam@samweimer.com', error, 'Portfolio Error: Database Connection Failed');
         console.log(error);
     });
 
