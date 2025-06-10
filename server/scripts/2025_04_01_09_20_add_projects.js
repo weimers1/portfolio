@@ -44,7 +44,7 @@ async function addProjects() {
                 titleProject: 'Portfolio',
                 titleRepo: 'portfolio',
                 description: 'The current portfolio website you are viewing.',
-                urlWebsite: 'https://www.samweimer.com',
+                urlWebsite: 'https://samweimer.com/',
                 filePathLogo: '/src/assets/images/logo.png',
                 filePathViews: '/src/assets/images/portfolio_views.png',
                 tasks: [
@@ -72,7 +72,8 @@ async function addProjects() {
                 titleRepo: 'googlecloudgames',
                 description:
                     'A small open-source games web app hosted via Google Cloud Platform.',
-                urlWebsite: 'https://www.googlecloudgames.com',
+                // urlWebsite: 'https://www.googlecloudgames.com',
+                urlWebsite: 'https://github.com/weimers1/googlecloudgames',
                 filePathLogo: '/src/assets/images/gcg.png',
                 filePathViews: '/src/assets/images/default.svg',
                 tasks: [
