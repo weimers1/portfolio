@@ -4,6 +4,8 @@ import axios from 'axios';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import { BASE_URL_API, TURNSTILE_SITE_KEY } from '../../config';
 import Modal from '../components/Modal';
+import { Turnstile } from '@marsidev/react-turnstile';
+import useScreenSize from '../hooks/useScreenSize';
 
 function Contact(props) {
     const [loading, setLoading] = useState(true);
@@ -15,6 +17,7 @@ function Contact(props) {
     );
     const [modalIsVisible, setModalIsVisible] = useState(false);
     const [textAreaValue, setTextAreaValue] = useState('');
+    const screenSize = useScreenSize();
 
     const setModal = (
         message,
@@ -73,6 +76,24 @@ function Contact(props) {
             setModal('There was an error when trying to send your message...');
         }
     };
+    
+    const handleTurnstileCallback = () => {
+        setTurnstileComplete(true);
+    };
+
+    const handleTurnstileError = (error) => {
+        console.log(error);
+        // @TODO: email errors
+    };
+
+    const handleTurnstileExpired = () => {
+        setModal(
+            'Your session has expired... Please reload the page and try again. :(',
+            () => {
+                setModalIsVisible(false);
+            }
+        );
+    };
 
     useEffect(() => {
         const fetchAllData = async () => {
@@ -91,26 +112,6 @@ function Contact(props) {
         };
 
         fetchAllData();
-
-        // define the global callback to fire when the turnstile successfully completes
-        window.turnstileCallback = () => {
-            setTurnstileComplete(true);
-        };
-
-        // if tunstile script has not been loaded yet, add that sucker
-        if (!window.turnstile) {
-            const script = document.createElement('script');
-            script.src =
-                'https://challenges.cloudflare.com/turnstile/v0/api.js';
-            script.async = true;
-            script.defer = true;
-            document.head.appendChild(script);
-        }
-
-        // delete the callback to make sure it isn't called from potential previous renders
-        return () => {
-            delete window.turnstileCallback;
-        };
     }, []);
 
     return (
@@ -172,12 +173,15 @@ function Contact(props) {
                             placeholder="Enter a message"
                         ></textarea>
                     </div>
-                    <div
-                        className="cf-turnstile mt-10 lg:mt-15 overflow-x-visible overflow-y-visible"
-                        data-sitekey={TURNSTILE_SITE_KEY}
-                        data-callback="turnstileCallback"
-                        data-theme="light"
-                    ></div>
+                    <Turnstile
+                        siteKey={TURNSTILE_SITE_KEY}
+                        onSuccess={handleTurnstileCallback}
+                        onError={handleTurnstileError}
+                        onExpire={handleTurnstileExpired}
+                        options={{
+                            theme: "light",
+                        }}
+                    />
                     {turnstileComplete && (
                         <button
                             type="submit"
