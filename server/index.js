@@ -7,6 +7,7 @@ import { getTechnologies } from './models/technology.js';
 import { getJobs } from './models/job.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import SibApiV3Sdk from 'sib-api-v3-sdk';
 import { getCertifications } from './models/certification.js';
 import { isValidEmail } from './global.js';
 import 'dotenv/config.js';
@@ -149,7 +150,8 @@ app.post('/contact', async (request, response) => {
             });
         }
 
-        // @TODO: send self the email
+        // send self the email
+        sendEmail(email, message, 'New Message');
 
         return response
             .status(200)
@@ -161,10 +163,29 @@ app.post('/contact', async (request, response) => {
     }
 });
 
-// app.post('/email', async (request, response) => {
-//     try {}
-//     catch (error) {}
-// });
+const sendEmail = async (emailFrom, message, subject) => {
+    // setup brevo api 
+    const defaultClient = SibApiV3Sdk.ApiClient.instance;
+    const apiKey = defaultClient.authentications['api-key'];
+    apiKey.apiKey = process.env.BREVO_API_KEY;
+    const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
+    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+
+    // populate email details
+    sendSmtpEmail.sender = { email: 'sam@samweimer.com', name: 'samweimer.com' };
+    sendSmtpEmail.to = [{ email: 'samweimer7@gmail.com', name: 'Sam Weimer' }];
+    sendSmtpEmail.subject = subject;
+    sendSmtpEmail.textContent = 'New message from ' + emailFrom + ':\n\n' + message;
+
+    try {
+        const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
+        console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+        return data;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+};
 
 mongoose
     .connect(DB_CONNECTION_STRING)
