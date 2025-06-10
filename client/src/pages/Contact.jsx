@@ -181,7 +181,7 @@ function Contact(props) {
                         options={{
                             theme: "light",
                         }}
-                    />
+                    ></Turnstile>
                     {turnstileComplete && (
                         <button
                             type="submit"
@@ -193,6 +193,9 @@ function Contact(props) {
                     )}
                 </form>
             </section>
+
+            {/* idk what the turnstile component is doing, but it jacks up the page so this exists to create a buffer for it */}
+            <section className={`h-30 ${turnstileComplete ? 'block' : 'hidden'}`}></section>
 
             <Modal
                 message={modalMessage}

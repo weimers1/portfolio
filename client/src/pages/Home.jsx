@@ -75,7 +75,7 @@ function Home(props) {
                         <span className='border-e px-2'>React</span>
                         <span className='border-e px-2'>Node</span>
                         <span className='border-e px-2'>Cloud</span>
-                        <span className='ps-2'>Devops</span>
+                        <span className='ps-2'>DevOps</span>
                     </div>
                     <div className="flex justify-center pt-6 lg:pt-0 lg:ps-4">
                         {socials.map((social) => {
