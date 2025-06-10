@@ -38,6 +38,7 @@ async function addProjects() {
                     'Docker',
                     'Visual Studio Code',
                     'GitHub',
+                    'Google Cloud Platform',
                 ],
             },
             {
@@ -65,6 +66,7 @@ async function addProjects() {
                     'Docker',
                     'Visual Studio Code',
                     'GitHub',
+                    'Google Cloud Platform',
                 ],
             },
             {
@@ -92,6 +94,7 @@ async function addProjects() {
                     'Node.js',
                     'Firestore',
                     'GitHub',
+                    'Google Cloud Platform',
                 ],
             },
         ];
