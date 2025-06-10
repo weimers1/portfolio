@@ -69,13 +69,19 @@ function Home(props) {
                         Sam Weimer
                     </div>
                     <div className="border-b lg:border-b-0 lg:border-e mx-10 lg:mx-0 py-7 lg:py-0 lg:px-6 lg:mt-2">
-                        Full Stack Developer
+                        Fullstack Web Dev
+                    </div>
+                    <div className="flex justify-center border-b mx-10 py-7 lg:hidden text-2xl">
+                        <span className='border-e px-2'>React</span>
+                        <span className='border-e px-2'>Node</span>
+                        <span className='border-e px-2'>Cloud</span>
+                        <span className='ps-2'>Devops</span>
                     </div>
                     <div className="flex justify-center pt-6 lg:pt-0 lg:ps-4">
                         {socials.map((social) => {
                             return (
                                 <a
-                                    className="p-3 text-white"
+                                    className="p-3 text-white hover:text-cyan-300"
                                     href={social.urlWebsite}
                                     target="_blank"
                                     key={social._id}
@@ -88,6 +94,14 @@ function Home(props) {
                                 </a>
                             );
                         })}
+                    </div>
+                </section>
+                <section className='hidden lg:block place-items-center pt-2 text-4xl'>
+                    <div className='flex'>
+                        <div className='border-e px-5'>React</div>
+                        <div className='inline border-e px-5'>Node</div>
+                        <div className='inline border-e px-5'>Cloud</div>
+                        <div className='inline ps-5'>DevOps</div>
                     </div>
                 </section>
                 <section className="lg:hidden">
