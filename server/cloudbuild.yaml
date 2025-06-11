@@ -13,7 +13,7 @@ steps:
           - '--build-arg'
           - 'TURNSTILE_SECRET_KEY_ARG=${_TURNSTILE_SECRET_KEY}'
           - '--build-arg'
-          - 'BREVO_API_KEY=${_BREVO_API_KEY}'
+          - 'BREVO_API_KEY_ARG=${_BREVO_API_KEY}'
           - '--no-cache'
           - '.'
     - name: 'gcr.io/cloud-builders/docker'
