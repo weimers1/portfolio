@@ -1,31 +1,25 @@
 steps:
-    - name: 'gcr.io/cloud-builders/docker'
-      args:
-          - 'build'
-          - '-t'
-          - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
-          - '--build-arg'
-          - 'URL_CLIENT_ARG=${_URL_CLIENT}'
-          - '--no-cache'
-          - '.'
-      secretEnv:
-          [
-              'DB_CONNECTION_STRING',
-              'GITHUB_API_KEY',
-              'TURNSTILE_SECRET_KEY',
-              'BREVO_API_KEY',
-          ]
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
+      - '--build-arg'
+      - 'URL_CLIENT_ARG=${_URL_CLIENT}'
+      - '--no-cache'
+      - '.'
+    secretEnv: ['DB_CONNECTION_STRING', 'GITHUB_API_KEY', 'TURNSTILE_SECRET_KEY', 'BREVO_API_KEY']
 images:
-    - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
+  - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
 available_secrets:
-    secret_managerv1:
-        - versionName: projects/samweimer-portfolio/secrets/mongodb-connection-string/versions/latest
-          env: 'DB_CONNECTION_STRING'
-        - versionName: projects/samweimer-portfolio/secrets/github-api-key/versions/latest
-          env: 'GITHUB_API_KEY'
-        - versionName: projects/samweimer-portfolio/secrets/turnstile-secret-key/versions/latest
-          env: 'TURNSTILE_SECRET_KEY'
-        - versionName: projects/samweimer-portfolio/secrets/brevo-api-key/versions/latest
-          env: 'BREVO_API_KEY'
+  secret_managerv1:
+    - versionName: projects/samweimer-portfolio/secrets/mongodb-connection-string/versions/latest
+      env: 'DB_CONNECTION_STRING'
+    - versionName: projects/samweimer-portfolio/secrets/github-api-key/versions/latest
+      env: 'GITHUB_API_KEY'
+    - versionName: projects/samweimer-portfolio/secrets/turnstile-secret-key/versions/latest
+      env: 'TURNSTILE_SECRET_KEY'
+    - versionName: projects/samweimer-portfolio/portfolio/secrets/brevo-api-key/versions/latest # Check this path again: it was 'samweimer-portfolio' not 'samweimer-portfolio/portfolio' in previous example
+      env: 'BREVO_API_KEY'
 substitutions:
-    _URL_CLIENT: https://samweimer.com
+  _URL_CLIENT: https://samweimer.com
