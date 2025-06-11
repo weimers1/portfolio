@@ -76,7 +76,7 @@ function Contact(props) {
             setModal('There was an error when trying to send your message...');
         }
     };
-    
+
     const handleTurnstileCallback = () => {
         setTurnstileComplete(true);
     };
@@ -139,7 +139,7 @@ function Contact(props) {
                     })}
                     <a
                         className="p-3 text-white hover:text-cyan-300"
-                        href="mailto:samweimer7@gmail.com"
+                        href="mailto:sam@samweimer.com"
                         target="_blank"
                         key="gmail"
                     >
@@ -179,7 +179,7 @@ function Contact(props) {
                         onError={handleTurnstileError}
                         onExpire={handleTurnstileExpired}
                         options={{
-                            theme: "light",
+                            theme: 'light',
                         }}
                     ></Turnstile>
                     {turnstileComplete && (
@@ -195,7 +195,9 @@ function Contact(props) {
             </section>
 
             {/* idk what the turnstile component is doing, but it jacks up the page so this exists to create a buffer for it */}
-            <section className={`h-30 ${turnstileComplete ? 'block' : 'hidden'}`}></section>
+            <section
+                className={`h-30 ${turnstileComplete ? 'block' : 'hidden'}`}
+            ></section>
 
             <Modal
                 message={modalMessage}
