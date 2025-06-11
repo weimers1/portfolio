@@ -5,7 +5,7 @@ steps:
       args:
           - '-c'
           - |
-              echo "DB_CONNECTION_STRING=$(gcloud secrets versions access latest --secret=mongodb-connection-string)" > secrets.env
+              echo "DB_CONNECTION_STRING=$(gcloud secrets versions access latest --secret=db-connection-string)" > secrets.env
               echo "GITHUB_API_KEY=$(gcloud secrets versions access latest --secret=github-api-key)" >> secrets.env
               echo "TURNSTILE_SECRET_KEY=$(gcloud secrets versions access latest --secret=turnstile-secret-key)" >> secrets.env
               echo "BREVO_API_KEY=$(gcloud secrets versions access latest --secret=brevo-api-key)" >> secrets.env
