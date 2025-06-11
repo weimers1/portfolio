@@ -16,7 +16,7 @@ const PORT_SERVER = process.env.PORT || 8080;
 const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost';
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
-const BREVO_API_KEY = process.end.BREVO_API_KEY;
+const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
 // Create server
 const app = express();
@@ -99,7 +99,11 @@ app.get('/technologies', async (request, response) => {
         const technologies = await getTechnologies();
         return response.status(200).json(technologies);
     } catch (error) {
-        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /technologies');
+        sendEmail(
+            'sam@samweimer.com',
+            error,
+            'Portfolio Error: GET /technologies'
+        );
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -121,7 +125,11 @@ app.get('/certifications', async (request, response) => {
         const certifications = await getCertifications();
         return response.status(200).json(certifications);
     } catch (error) {
-        sendEmail('sam@samweimer.com', error, 'Portfolio Error: GET /certifications');
+        sendEmail(
+            'sam@samweimer.com',
+            error,
+            'Portfolio Error: GET /certifications'
+        );
         console.log(error);
         response.status(500).send('System Error');
     }
@@ -169,22 +177,28 @@ app.post('/contact', async (request, response) => {
 });
 
 const sendEmail = async (emailFrom, message, subject) => {
-    // setup brevo api 
+    // setup brevo api
     const defaultClient = SibApiV3Sdk.ApiClient.instance;
     const apiKey = defaultClient.authentications['api-key'];
-    apiKey.apiKey = process.env.BREVO_API_KEY;
+    apiKey.apiKey = BREVO_API_KEY;
     const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
     const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     // populate email details
-    sendSmtpEmail.sender = { email: 'sam@samweimer.com', name: 'samweimer.com' };
+    sendSmtpEmail.sender = {
+        email: 'sam@samweimer.com',
+        name: 'samweimer.com',
+    };
     sendSmtpEmail.to = [{ email: 'samweimer7@gmail.com', name: 'Sam Weimer' }];
     sendSmtpEmail.subject = subject;
-    sendSmtpEmail.textContent = 'New message from ' + emailFrom + ':\n\n' + message;
+    sendSmtpEmail.textContent =
+        'New message from ' + emailFrom + ':\n\n' + message;
 
     try {
         const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
-        console.log('API called successfully. Returned data: ' + JSON.stringify(data));
+        console.log(
+            'API called successfully. Returned data: ' + JSON.stringify(data)
+        );
         return data;
     } catch (error) {
         console.error(error);
@@ -198,7 +212,11 @@ mongoose
         console.log('Connected to database.');
     })
     .catch((error) => {
-        sendEmail('sam@samweimer.com', error, 'Portfolio Error: Database Connection Failed');
+        sendEmail(
+            'sam@samweimer.com',
+            error,
+            'Portfolio Error: Database Connection Failed'
+        );
         console.log(error);
     });
 
