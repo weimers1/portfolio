@@ -29,7 +29,7 @@ app.listen(PORT_SERVER, () => {
 // debug
 // console.log('\nprocess.env.BREVO_API_KEY set to:', process.env.BREVO_API_KEY);
 // console.log('\nBREVO_API_KEY set to:', BREVO_API_KEY);
-// console.log('\nGITHUB_API_KEY set to:', GITHUB_API_KEY);
+// console.log('\nDB_CONNECTION_STRING set to:', DB_CONNECTION_STRING);
 // console.log('\nCORS origin set to:', URL_CLIENT);
 
 // Configure server middleware
