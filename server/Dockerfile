@@ -1,18 +1,18 @@
 # Use Node.js image
 FROM node:22
 
-# Define build args for non-secrets
+# Define build arguments for all variables, including secrets
 ARG URL_CLIENT_ARG
+ARG DB_CONNECTION_STRING
+ARG GITHUB_API_KEY
+ARG TURNSTILE_SECRET_KEY
+ARG BREVO_API_KEY
 
 # Set working directory
 WORKDIR /app
 
-# Set environment variables for runtime
+# Set environment variables inside the final image for runtime access
 ENV URL_CLIENT=${URL_CLIENT_ARG}
-
-# Set secrets as environment variables.
-# These values are populated during the build step because Cloud Build's secretEnv
-# makes them available. The ENV instruction captures them into the final image.
 ENV DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
 ENV GITHUB_API_KEY=${GITHUB_API_KEY}
 ENV TURNSTILE_SECRET_KEY=${TURNSTILE_SECRET_KEY}

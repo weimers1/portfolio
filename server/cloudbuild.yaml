@@ -1,4 +1,20 @@
 steps:
+    # Step 1: Fetch all secrets and store them in a temporary .env file
+    # This makes the secrets available for subsequent build steps
+    - name: 'gcr.io/cloud-builders/gcloud'
+      entrypoint: 'bash'
+      args:
+          - '-c'
+          - |
+              # Fetch each secret and append it to a file in key=value format
+              # IMPORTANT: Replace 'samweimer-portfolio' with your actual project ID if different
+              gcloud secrets versions access latest --secret=mongodb-connection-string --project=samweimer-portfolio > /workspace/db_connection_string.env
+              gcloud secrets versions access latest --secret=github-api-key --project=samweimer-portfolio > /workspace/github_api_key.env
+              gcloud secrets versions access latest --secret=turnstile-secret-key --project=samweimer-portfolio > /workspace/turnstile_secret_key.env
+              gcloud secrets versions access latest --secret=brevo-api-key --project=samweimer-portfolio > /workspace/brevo_api_key.env
+      id: 'fetch-all-secrets'
+
+    # Step 2: Build the Docker image, passing secrets as build arguments from the fetched files
     - name: 'gcr.io/cloud-builders/docker'
       args:
           - 'build'
@@ -6,24 +22,21 @@ steps:
           - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
           - '--build-arg'
           - 'URL_CLIENT_ARG=${_URL_CLIENT}'
+          # Pass the content of each secret file as a build argument
+          - '--build-arg'
+          - 'DB_CONNECTION_STRING=$(cat /workspace/db_connection_string.env)'
+          - '--build-arg'
+          - 'GITHUB_API_KEY=$(cat /workspace/github_api_key.env)'
+          - '--build-arg'
+          - 'TURNSTILE_SECRET_KEY=$(cat /workspace/turnstile_secret_key.env)'
+          - '--build-arg'
+          - 'BREVO_API_KEY=$(cat /workspace/brevo_api_key.env)'
           - '--no-cache'
           - '.'
-      secretEnv: # These environment variables will be available during THIS build step
-          - 'DB_CONNECTION_STRING'
-          - 'GITHUB_API_KEY'
-          - 'TURNSTILE_SECRET_KEY'
-          - 'BREVO_API_KEY'
+      id: 'build-docker-image'
+
 images:
     - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
-available_secrets: # This must be at the same indentation level as 'steps' and 'images'
-    secret_managerv1:
-        - versionName: projects/samweimer-portfolio/secrets/mongodb-connection-string/versions/latest
-          env: 'DB_CONNECTION_STRING'
-        - versionName: projects/samweimer-portfolio/secrets/github-api-key/versions/latest
-          env: 'GITHUB_API_KEY'
-        - versionName: projects/samweimer-portfolio/secrets/turnstile-secret-key/versions/latest
-          env: 'TURNSTILE_SECRET_KEY'
-        - versionName: projects/samweimer-portfolio/secrets/brevo-api-key/versions/latest # <--- IMPORTANT: Double-check your exact secret path. If your project ID is 'samweimer-portfolio', remove any duplicate 'portfolio' segment if it's not part of the secret ID itself.
-          env: 'BREVO_API_KEY'
+
 substitutions:
     _URL_CLIENT: https://samweimer.com
