@@ -16,6 +16,7 @@ const PORT_SERVER = process.env.PORT || 8080;
 const URL_CLIENT = process.env.URL_CLIENT || 'http://localhost';
 const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
+const BREVO_API_KEY = process.end.BREVO_API_KEY;
 
 // Create server
 const app = express();
@@ -25,9 +26,13 @@ app.listen(PORT_SERVER, () => {
     console.log('App is listening on port ' + PORT_SERVER);
 });
 
+// debug
+// console.log('\nprocess.env.BREVO_API_KEY set to:', process.env.BREVO_API_KEY);
+// console.log('\nBREVO_API_KEY set to:', BREVO_API_KEY);
+// console.log('\nGITHUB_API_KEY set to:', GITHUB_API_KEY);
+// console.log('\nCORS origin set to:', URL_CLIENT);
+
 // Configure server middleware
-console.log('\nprocess.env.URL_CLIENT set to:', process.env.URL_CLIENT);
-console.log('\nCORS origin set to:', URL_CLIENT);
 const corsOptions = {
     origin: URL_CLIENT,
     methods: ['GET', 'POST', 'OPTIONS'],
