@@ -15,7 +15,6 @@
     "@marsidev/react-turnstile": "^1.1.0",
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
-    "@tailwindcss/vite": "^4.0.3",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
@@ -29,6 +28,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@tailwindcss/postcss": "^4.1.8",
+    "@tailwindcss/vite": "^4.1.8",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
@@ -38,7 +39,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
-    "postcss": "^8.5.1",
+    "postcss": "^8.5.4",
     "tailwindcss": "^4.0.3",
     "vite": "^6.0.5"
   }

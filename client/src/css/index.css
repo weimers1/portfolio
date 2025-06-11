@@ -1,48 +1,49 @@
 @font-face {
-  font-family: 'Afacad Flux';
-  src: url('../assets/fonts/Afacad-VariableFont_wght.ttf');
+    font-family: 'Afacad Flux';
+    src: url('../assets/fonts/Afacad-VariableFont_wght.ttf');
 }
 
 :root {
-  font-family: 'Afacad Flux', Inter;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: 'Afacad Flux', Inter;
+    line-height: 1.5;
+    font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+    color-scheme: light dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  margin: 0;
-  place-items: center;
-  min-width: auto;
-  min-height: 100vh;
-  z-index: -2 !important;
+    margin: 0;
+    place-items: center;
+    min-width: auto;
+    min-height: 100vh;
+    z-index: -2 !important;
 }
 
 #root {
- width: 100% !important;
+    width: 100% !important;
 }
 
-#root, #root * {
-  max-width: 100% !important;
+#root,
+#root * {
+    max-width: 100% !important;
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+    a:hover {
+        color: #747bff;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
 }
