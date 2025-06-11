@@ -1,36 +1,23 @@
 steps:
     - name: 'gcr.io/cloud-builders/gcloud'
-      id: 'fetch-secrets'
+      id: 'generate-env'
       entrypoint: 'bash'
       args:
           - '-c'
           - |
-              echo "DB_CONNECTION_STRING=$(gcloud secrets versions access latest --secret=db-connection-string)" > secrets.env
-              echo "GITHUB_API_KEY=$(gcloud secrets versions access latest --secret=github-api-key)" >> secrets.env
-              echo "TURNSTILE_SECRET_KEY=$(gcloud secrets versions access latest --secret=turnstile-secret-key)" >> secrets.env
-              echo "BREVO_API_KEY=$(gcloud secrets versions access latest --secret=brevo-api-key)" >> secrets.env
+              echo "URL_CLIENT=https://samweimer.com" > .env
+              echo "DB_CONNECTION_STRING=$(gcloud secrets versions access latest --secret=db-connection-string)" >> .env
+              echo "GITHUB_API_KEY=$(gcloud secrets versions access latest --secret=github-api-key)" >> .env
+              echo "TURNSTILE_SECRET_KEY=$(gcloud secrets versions access latest --secret=turnstile-secret-key)" >> .env
+              echo "BREVO_API_KEY=$(gcloud secrets versions access latest --secret=brevo-api-key)" >> .env
     - name: 'gcr.io/cloud-builders/docker'
       args:
           - 'build'
           - '-t'
           - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
-          - '--build-arg'
-          - 'URL_CLIENT_ARG=${_URL_CLIENT}'
-          - '--build-arg'
-          - 'DB_CONNECTION_STRING_ARG=$(cat secrets.env | grep DB_CONNECTION_STRING | cut -d= -f2-)'
-          - '--build-arg'
-          - 'GITHUB_API_KEY_ARG=$(cat secrets.env | grep GITHUB_API_KEY | cut -d= -f2-)'
-          - '--build-arg'
-          - 'TURNSTILE_SECRET_KEY_ARG=$(cat secrets.env | grep TURNSTILE_SECRET_KEY | cut -d= -f2-)'
-          - '--build-arg'
-          - 'BREVO_API_KEY_ARG=$(cat secrets.env | grep BREVO_API_KEY | cut -d= -f2-)'
           - '--no-cache'
           - '.'
-      env:
-          - 'URL_CLIENT=${_URL_CLIENT}'
     - name: 'gcr.io/cloud-builders/docker'
       args:
           - 'push'
           - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
-substitutions:
-    _URL_CLIENT: https://samweimer.com
