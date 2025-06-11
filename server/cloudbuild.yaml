@@ -6,15 +6,15 @@ steps:
           - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
           - '--build-arg'
           - 'URL_CLIENT_ARG=${_URL_CLIENT}'
-          # Note: No longer passing DB_CONNECTION_STRING, GITHUB_API_KEY, TURNSTILE_SECRET_KEY, BREVO_API_KEY as --build-arg
           - '--no-cache'
           - '.'
-      secretEnv: [
+      secretEnv:
+          [
               'DB_CONNECTION_STRING',
               'GITHUB_API_KEY',
               'TURNSTILE_SECRET_KEY',
               'BREVO_API_KEY',
-          ] # These names will be directly available as ENV vars during the build step
+          ]
 images:
     - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
 available_secrets:
@@ -27,6 +27,5 @@ available_secrets:
           env: 'TURNSTILE_SECRET_KEY'
         - versionName: projects/samweimer-portfolio/secrets/brevo-api-key/versions/latest
           env: 'BREVO_API_KEY'
-# You can remove `substitutions` for secrets as they are now handled by available_secrets
 substitutions:
     _URL_CLIENT: https://samweimer.com
