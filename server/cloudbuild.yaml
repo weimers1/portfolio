@@ -7,11 +7,10 @@ steps:
           - '-c'
           - |
               # Fetch each secret and append it to a file in key=value format
-              # IMPORTANT: Replace 'samweimer-portfolio' with your actual project ID if different
-              gcloud secrets versions access latest --secret=mongodb-connection-string --project=samweimer-portfolio > /workspace/db_connection_string.env
-              gcloud secrets versions access latest --secret=github-api-key --project=samweimer-portfolio > /workspace/github_api_key.env
-              gcloud secrets versions access latest --secret=turnstile-secret-key --project=samweimer-portfolio > /workspace/turnstile_secret_key.env
-              gcloud secrets versions access latest --secret=brevo-api-key --project=samweimer-portfolio > /workspace/brevo_api_key.env
+              gcloud secrets versions access latest --secret=db-connection-string --project=232883986354 > /workspace/db_connection_string.env
+              gcloud secrets versions access latest --secret=github-api-key --project=232883986354 > /workspace/github_api_key.env
+              gcloud secrets versions access latest --secret=turnstile-secret-key --project=232883986354 > /workspace/turnstile_secret_key.env
+              gcloud secrets versions access latest --secret=brevo-api-key --project=232883986354 > /workspace/brevo_api_key.env
       id: 'fetch-all-secrets'
 
     # Step 2: Build the Docker image, passing secrets as build arguments from the fetched files
