@@ -20,54 +20,11 @@ Run frontend with `docker run -p 80:8080 --name mern-frontend-c -d mern-frontend
 
 ### Instructions for production setup and use
 
-First, create a `cloudbuild.yaml` file in the root of `client`:
-
-```
-steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'build'
-      - '-t'
-      - '<region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/frontend:latest'
-      - '--build-arg'
-      - 'VITE_BASE_URL_API_ARG=${_VITE_BASE_URL_API_ARG}'
-      - '.'
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - '<region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/frontend:latest'
-```
+First, create a `cloudbuild.yaml` file in the root of `client`.
 
 Then build client with `gcloud builds submit ./client --config=./client/cloudbuild.yaml --substitutions _VITE_BASE_URL_API_ARG=<backend_url>`.
 
-Then, assuming GCP secret manager has been set up with the proper secrets as seen in the following `substitutions` section, create a `cloudbuild.yaml` file in the root of `server`:
-
-```
-steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'build'
-      - '-t'
-      - '<region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
-      - '--build-arg'
-      - 'URL_CLIENT_ARG=${_URL_CLIENT}'
-      - '--build-arg'
-      - 'DB_CONNECTION_STRING_ARG=${_DB_CONNECTION_STRING}'
-      - '--build-arg'
-      - 'GITHUB_API_KEY_ARG=${_GITHUB_API_KEY}'
-      - '--build-arg'
-      - 'TURNSTILE_SECRET_KEY_ARG=${_TURNSTILE_SECRET_KEY}'
-      - '.'
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - '<region>-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
-substitutions:
-  _URL_CLIENT: <client_url>
-  _DB_CONNECTION_STRING: $(gcloud secrets versions access latest --secret=db-connection-string)
-  _GITHUB_API_KEY: $(gcloud secrets versions access latest --secret=github-api-key)
-  _TURNSTILE_SECRET_KEY: $(gcloud secrets versions access latest --secret=turnstile-secret-key)
-```
+Then GCP secret manager must be set up with the proper secrets as seen in the `cloudbuild.yaml` file in the root of `server`
 
 Then build server with `gcloud builds submit ./server --config=./server/cloudbuild.yaml`.
 
