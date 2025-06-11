@@ -1,19 +1,4 @@
 steps:
-    # Step 1: Fetch all secrets and store them in a temporary .env file
-    # This makes the secrets available for subsequent build steps
-    - name: 'gcr.io/cloud-builders/gcloud'
-      entrypoint: 'bash'
-      args:
-          - '-c'
-          - |
-              # Fetch each secret and append it to a file in key=value format
-              gcloud secrets versions access latest --secret=db-connection-string --project=232883986354 > /workspace/db_connection_string.env
-              gcloud secrets versions access latest --secret=github-api-key --project=232883986354 > /workspace/github_api_key.env
-              gcloud secrets versions access latest --secret=turnstile-secret-key --project=232883986354 > /workspace/turnstile_secret_key.env
-              gcloud secrets versions access latest --secret=brevo-api-key --project=232883986354 > /workspace/brevo_api_key.env
-      id: 'fetch-all-secrets'
-
-    # Step 2: Build the Docker image, passing secrets as build arguments from the fetched files
     - name: 'gcr.io/cloud-builders/docker'
       args:
           - 'build'
@@ -21,21 +6,23 @@ steps:
           - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
           - '--build-arg'
           - 'URL_CLIENT_ARG=${_URL_CLIENT}'
-          # Pass the content of each secret file as a build argument
           - '--build-arg'
-          - 'DB_CONNECTION_STRING=$(cat /workspace/db_connection_string.env)'
+          - 'DB_CONNECTION_STRING_ARG=${_DB_CONNECTION_STRING}'
           - '--build-arg'
-          - 'GITHUB_API_KEY=$(cat /workspace/github_api_key.env)'
+          - 'GITHUB_API_KEY_ARG=${_GITHUB_API_KEY}'
           - '--build-arg'
-          - 'TURNSTILE_SECRET_KEY=$(cat /workspace/turnstile_secret_key.env)'
+          - 'TURNSTILE_SECRET_KEY_ARG=${_TURNSTILE_SECRET_KEY}'
           - '--build-arg'
-          - 'BREVO_API_KEY=$(cat /workspace/brevo_api_key.env)'
+          - 'BREVO_API_KEY_ARG=${_BREVO_API_KEY}'
           - '--no-cache'
           - '.'
-      id: 'build-docker-image'
-
-images:
-    - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
-
+    - name: 'gcr.io/cloud-builders/docker'
+      args:
+          - 'push'
+          - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
 substitutions:
     _URL_CLIENT: https://samweimer.com
+    _DB_CONNECTION_STRING: $(gcloud secrets versions access latest --secret=mongodb-connection-string)
+    _GITHUB_API_KEY: $(gcloud secrets versions access latest --secret=github-api-key)
+    _TURNSTILE_SECRET_KEY: $(gcloud secrets versions access latest --secret=turnstile-secret-key)
+    _BREVO_API_KEY: $(gcloud secrets versions access latest --secret=brevo-api-key)
