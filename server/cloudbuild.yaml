@@ -6,23 +6,27 @@ steps:
           - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
           - '--build-arg'
           - 'URL_CLIENT_ARG=${_URL_CLIENT}'
-          - '--build-arg'
-          - 'DB_CONNECTION_STRING_ARG=${_DB_CONNECTION_STRING}'
-          - '--build-arg'
-          - 'GITHUB_API_KEY_ARG=${_GITHUB_API_KEY}'
-          - '--build-arg'
-          - 'TURNSTILE_SECRET_KEY_ARG=${_TURNSTILE_SECRET_KEY}'
-          - '--build-arg'
-          - 'BREVO_API_KEY_ARG=${_BREVO_API_KEY}'
+          # Note: No longer passing DB_CONNECTION_STRING, GITHUB_API_KEY, TURNSTILE_SECRET_KEY, BREVO_API_KEY as --build-arg
           - '--no-cache'
           - '.'
-    - name: 'gcr.io/cloud-builders/docker'
-      args:
-          - 'push'
-          - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
+      secretEnv: [
+              'DB_CONNECTION_STRING',
+              'GITHUB_API_KEY',
+              'TURNSTILE_SECRET_KEY',
+              'BREVO_API_KEY',
+          ] # These names will be directly available as ENV vars during the build step
+images:
+    - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest'
+available_secrets:
+    secret_managerv1:
+        - versionName: projects/samweimer-portfolio/secrets/mongodb-connection-string/versions/latest
+          env: 'DB_CONNECTION_STRING'
+        - versionName: projects/samweimer-portfolio/secrets/github-api-key/versions/latest
+          env: 'GITHUB_API_KEY'
+        - versionName: projects/samweimer-portfolio/secrets/turnstile-secret-key/versions/latest
+          env: 'TURNSTILE_SECRET_KEY'
+        - versionName: projects/samweimer-portfolio/secrets/brevo-api-key/versions/latest
+          env: 'BREVO_API_KEY'
+# You can remove `substitutions` for secrets as they are now handled by available_secrets
 substitutions:
     _URL_CLIENT: https://samweimer.com
-    _DB_CONNECTION_STRING: $(gcloud secrets versions access latest --secret=mongodb-connection-string)
-    _GITHUB_API_KEY: $(gcloud secrets versions access latest --secret=github-api-key)
-    _TURNSTILE_SECRET_KEY: $(gcloud secrets versions access latest --secret=turnstile-secret-key)
-    _BREVO_API_KEY: $(gcloud secrets versions access latest --secret=brevo-api-key)
