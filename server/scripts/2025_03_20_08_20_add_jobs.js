@@ -14,7 +14,7 @@ async function addJobs() {
         const jobData = [
             {
                 titleCompany: 'Corning, Inc.',
-                titlePosition: 'Full Stack Developer',
+                titlePosition: 'Fullstack Web Developer',
                 description:
                     'Created, troubleshooted, and maintained numerous large-scale glass research and development software applications with accessible and intuitive user interfaces, and robust backend APIs using Bootstrap, Vue.js, jQuery, and ColdFusion',
                 tasks: [
@@ -55,14 +55,14 @@ async function addJobs() {
             },
             {
                 titleCompany: 'VCOM',
-                titlePosition: 'Full Stack Developer',
+                titlePosition: 'Fullstack Web Developer',
                 description:
                     'Develop, analyze, and maintain large-scale learning management system and medical logging application for medical students, clinical staff, and preceptors to optimize educational experience and improve data management, tracking, and validation for global medical research',
                 tasks: [
                     'Configure remote Linux environment hosting development servers with Nginx for software development team to ensure consistency and collaboration, and to promote a secure and streamlined development process',
                     'Rewrite legacy learning management system and medical logging application using Laravel and React to improve scalability, documentation, and user experience for 1000+ active students',
                     'Cut statistics dashboard load times by over 90% by reducing queries to more recent and relevant data, and implementing best query practices including indexing and effective joining',
-                    'Migrate thousands of student and preceptor records from obsolete system to facilitate medical log data confirmation, validation, and long-term support',
+                    'Migrate 7000+ student and preceptor records from obsolete system to facilitate medical log data confirmation, validation, and long-term support',
                 ],
                 techStack: [
                     'HTML',
