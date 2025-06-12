@@ -85,7 +85,7 @@ function Project({
 
     return (
         <div
-            className="text-white text-shadow-cyan place-items-center pb-20 lg:pb-40"
+            className="text-white text-shadow-cyan flex flex-col place-items-center pb-20 lg:pb-40"
             data-aos="fade-up"
         >
             <a
@@ -95,7 +95,7 @@ function Project({
             >
                 {image}
             </a>
-            <div className="grid grid-cols-1 lg:grid-cols-3 place-items-center lg:place-items-auto text-sm lg:text-xl w-50 lg:w-200">
+            <div className="grid grid-cols-1 lg:grid-cols-3 flex flex-col place-items-center lg:place-items-auto text-sm lg:text-xl w-50 lg:w-200">
                 <a
                     href={projectObj.urlWebsite}
                     className="lg:hidden"
@@ -112,7 +112,7 @@ function Project({
             </div>
             {displayViews ? (
                 <div
-                    className={`mb-5 lg:mb-5 lg:pt-4 w-75 lg:w-200 place-items-center ${
+                    className={`mb-5 lg:mb-5 lg:pt-4 w-75 lg:w-200 flex flex-col place-items-center ${
                         displayTechnologies ? 'border-b' : ''
                     }`}
                 >
@@ -154,7 +154,7 @@ function Project({
             )}
             {displayTechnologies ? (
                 <div
-                    className={`lg:pt-4 w-75 lg:w-200 place-items-center grid grid-cols-6 ${
+                    className={`lg:pt-4 w-75 lg:w-200 flex flex-col place-items-center grid grid-cols-6 ${
                         displayLanguages ? 'border-b' : ''
                     }`}
                 >
@@ -177,7 +177,7 @@ function Project({
                 <></>
             )}
             {displayLanguages ? (
-                <div className="pt-15 lg:pt-20 w-full place-items-center">
+                <div className="pt-15 lg:pt-20 w-75 lg:w-200 flex flex-col place-items-center">
                     <MultiSegmentProgressBar
                         data={Object.keys(projectObj.languages).map(
                             (language) => {

@@ -8,10 +8,10 @@ function Job({ jobObj }) {
     const screenSize = useScreenSize();
     return (
         <div
-            className="text-white text-shadow-cyan place-items-center pb-20 lg:pb-40"
+            className="text-white text-shadow-cyan flex flex-col place-items-center pb-20 lg:pb-40"
             data-aos="fade-up"
         >
-            <div className="w-45 h-45 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 text-md lg:text-2xl text-center place-items-center mb-4">
+            <div className="w-45 h-45 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 text-md lg:text-2xl text-center flex flex-col place-items-center mb-4">
                 <div className="pt-1 lg:pb-3 pt-12 lg:pt-16">
                     <span className="border-b inline-block pb-1 lg:pb-3 px-2">
                         {jobObj.titlePosition}
@@ -48,7 +48,7 @@ function Job({ jobObj }) {
                     );
                 })}
             </div>
-            <div className="pt-4 w-75 lg:w-200 place-items-center grid grid-cols-6">
+            <div className="pt-4 w-75 lg:w-200 flex flex-col place-items-center grid grid-cols-6">
                 {jobObj.techStack.map((technology, i) => {
                     return (
                         <img

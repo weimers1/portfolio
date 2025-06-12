@@ -4,10 +4,10 @@ import { formatMongoDBDate } from '../utils/date';
 function Certification({ certificationObj }) {
     return (
         <div
-            className="text-white text-shadow-cyan place-items-center pb-8 pt-2 lg:pb-0 lg:pt-0"
+            className="text-white text-shadow-cyan flex flex-col place-items-center pb-8 pt-2 lg:pb-0 lg:pt-0"
             data-aos="fade-up"
         >
-            <div className="w-45 h-45 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 text-sm lg:text-xl text-center place-items-center mb-4 lg:mb-0">
+            <div className="w-45 h-45 lg:w-70 lg:h-70 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 text-sm lg:text-xl text-center flex flex-col place-items-center mb-4 lg:mb-0">
                 <div
                     className={`py-1 lg:py-2 mt-5 lg:mt-7 ${
                         certificationObj.title.length > 50

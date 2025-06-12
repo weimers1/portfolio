@@ -35,7 +35,7 @@ function Projects(props) {
             pages={props.pages}
             loading={loading}
         >
-            <section className="place-items-center pt-10 lg:pt-20">
+            <section className="flex flex-col place-items-center pt-10 lg:pt-20">
                 {projects.map((project) => {
                     return (
                         <Project

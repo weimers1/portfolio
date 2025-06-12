@@ -119,7 +119,7 @@ function Contact(props) {
             pages={props.pages}
             loading={loading}
         >
-            <section className="place-items-center lg:pt-5">
+            <section className="flex flex-col place-items-center lg:pt-5">
                 <div className="flex flex-wrap justify-center gap-5 lg:gap-20 pt-4 w-75 lg:w-200 lg:border-b pb-5">
                     {socials.map((social) => {
                         return (
@@ -152,7 +152,7 @@ function Contact(props) {
                 </div>
             </section>
 
-            <section className="place-items-center w-full overflow-x-visible overflow-y-visible">
+            <section className="flex flex-col place-items-center w-full overflow-x-visible overflow-y-visible">
                 <form
                     method="POST"
                     onSubmit={handleSubmit}
