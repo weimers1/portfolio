@@ -6,10 +6,12 @@ function useScrollToHash(loading) {
 
     useEffect(() => {
         if (!loading && location.hash) {
-            const element = document.querySelector(location.hash);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
+            setTimeout(() => {
+                const element = document.querySelector(location.hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 500);
         }
     }, [loading, location]);
 }
