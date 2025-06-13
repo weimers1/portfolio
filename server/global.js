@@ -23,6 +23,8 @@ export async function executeFetch(url, headers = {}, method = 'GET') {
 }
 
 export function isValidEmail(email) {
+    if (email.length > 254) return false;
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }

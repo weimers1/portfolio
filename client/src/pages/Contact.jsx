@@ -164,6 +164,8 @@ function Contact(props) {
                             className="w-full bg-white rounded-lg text-black p-3 lg:p-5 lg:mt-15"
                             name="email"
                             placeholder="Enter your email"
+                            maxlength="254"
+                            required
                         />
                         <textarea
                             className="w-full h-40 lg:h-60 bg-white rounded-lg text-black p-3 lg:p-5 mt-10 lg:mt-15"
@@ -171,7 +173,13 @@ function Contact(props) {
                             value={textAreaValue}
                             onChange={(e) => setTextAreaValue(e.target.value)}
                             placeholder="Enter a message"
+                            minLength="1"
+                            maxlength="500"
+                            required
                         ></textarea>
+                        <div className="text-white pb-2">
+                            {textAreaValue.length} / 500
+                        </div>
                     </div>
                     <Turnstile
                         siteKey={TURNSTILE_SITE_KEY}

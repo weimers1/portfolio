@@ -154,6 +154,13 @@ app.post('/contact', async (request, response) => {
                 .status(400)
                 .json({ error: 'Please enter a message.' });
         }
+        if (message.length > 500) {
+            return response
+                .status(400)
+                .json({
+                    error: 'Message exceeds character limit. Consider directly emailing me.',
+                });
+        }
 
         // verify turnstile
         const turnstileResult = await verifyTurnstile(token, ip);
