@@ -45,7 +45,7 @@ function Home(props) {
             commitCountTotal: commitCountTotal + 600, // including commits from private repos/other jobs
             yearsExperience: Math.floor(
                 Math.abs(
-                    new Date('2020-04-27').getTime() - new Date().getTime() // 2020-04-27 marks the start date of the weimers1 GitHub account
+                    new Date('2021-06-19').getTime() - new Date().getTime() // 2021-06-19 marks the start date of web development...
                 ) /
                     (1000 * 60 * 60 * 24 * 365.25)
             ),
