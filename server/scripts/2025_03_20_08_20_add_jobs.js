@@ -14,7 +14,7 @@ async function addJobs() {
         const jobData = [
             {
                 titleCompany: 'Corning, Inc.',
-                titlePosition: 'Fullstack Web Developer',
+                titlePosition: 'Fullstack Web Dev',
                 description:
                     'Created, troubleshooted, and maintained numerous large-scale glass research and development software applications with accessible and intuitive user interfaces, and robust backend APIs using Bootstrap, Vue.js, jQuery, and ColdFusion',
                 tasks: [
@@ -55,7 +55,7 @@ async function addJobs() {
             },
             {
                 titleCompany: 'VCOM',
-                titlePosition: 'Fullstack Web Developer',
+                titlePosition: 'Fullstack Web Dev',
                 description:
                     'Develop, analyze, and maintain large-scale learning management system and medical logging application for medical students, clinical staff, and preceptors to optimize educational experience and improve data management, tracking, and validation for global medical research',
                 tasks: [
