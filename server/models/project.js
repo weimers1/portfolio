@@ -40,6 +40,10 @@ const schema = mongoose.Schema(
                 required: true,
             },
         ],
+        isHidden: {
+            type: Number,
+            required: true,
+        },
     },
     {
         timestamps: true,

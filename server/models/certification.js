@@ -14,6 +14,10 @@ const schema = mongoose.Schema(
             type: mongoose.Schema.Types.Date,
             required: true,
         },
+        isHidden: {
+            type: Number,
+            required: true,
+        },
     },
     {
         timestamps: true,

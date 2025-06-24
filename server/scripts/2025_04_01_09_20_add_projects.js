@@ -40,6 +40,7 @@ async function addProjects() {
                     'GitHub',
                     'Google Cloud Platform',
                 ],
+                isHidden: 0,
             },
             {
                 titleProject: 'Portfolio',
@@ -68,6 +69,7 @@ async function addProjects() {
                     'GitHub',
                     'Google Cloud Platform',
                 ],
+                isHidden: 0,
             },
             {
                 titleProject: 'Google Cloud Games',
@@ -96,6 +98,7 @@ async function addProjects() {
                     'GitHub',
                     'Google Cloud Platform',
                 ],
+                isHidden: 1,
             },
         ];
 
@@ -139,6 +142,8 @@ async function addProjects() {
                     JSON.stringify(existingProject.techStack)
                 )
                     updates.techStack = technologyIds;
+                if (project.isHidden !== existingProject.isHidden)
+                    updates.isHidden = project.isHidden;
 
                 if (Object.keys(updates).length > 0) {
                     await Project.findByIdAndUpdate(
@@ -162,6 +167,7 @@ async function addProjects() {
                     filePathViews: project.filePathViews,
                     tasks: project.tasks,
                     techStack: technologyIds,
+                    isHidden: project.isHidden,
                 });
 
                 // add project to db
