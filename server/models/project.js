@@ -90,7 +90,7 @@ export async function getGitHubRepoLanguages(titleRepo) {
 
 export async function getProjects() {
     const projects = await Project.find({ isHidden: 0 })
-        .populate('techStack')
+        .populate({ path: 'techStack', options: { sort: { priority: -1 } } })
         .sort({ createdAt: -1 })
         .lean();
 
