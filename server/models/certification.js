@@ -27,5 +27,5 @@ const schema = mongoose.Schema(
 export const Certification = mongoose.model('Certification', schema);
 
 export async function getCertifications() {
-    return await Certification.find({}).sort({ dateReceived: -1 });
+    return await Certification.find({ isHidden: 0 }).sort({ dateReceived: -1 });
 }
