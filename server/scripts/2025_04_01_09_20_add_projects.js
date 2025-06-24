@@ -22,8 +22,8 @@ async function addProjects() {
                 filePathViews: '/src/assets/images/weldwise_views.png',
                 tasks: [
                     'Integrate PayPal API to process user payments for access to online welding certification testing materials, ensuring secure and reliable transaction handling',
-                    'Manage user authentication and authorization via Stytch magic links, providing a seamless and secure sign-up and login experience for hundreds of users',
-                    'Scale application infrastructure on Google Cloud Platform to accommodate current and potential growth in user base, ensuring optimal performance and reliability',
+                    'Manage user authentication via Stytch magic links, providing a seamless and secure sign-up and login experience for hundreds of users',
+                    'Scale application infrastructure on Google Cloud Platform using Cloud Run to accommodate current and potential growth in user base, ensuring optimal performance and reliability',
                     'Administer Cloud SQL for MySQL database and application logic for the delivery and evaluation of welding certification tests, and manages user progress and results',
                 ],
                 techStack: [
