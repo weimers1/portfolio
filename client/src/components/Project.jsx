@@ -5,6 +5,7 @@ import {
     mdiLanguageHtml5,
     mdiLanguageJavascript,
     mdiLanguagePhp,
+    mdiLanguageTypescript,
     mdiSass,
     mdiSawBlade,
 } from '@mdi/js';
@@ -28,6 +29,7 @@ function Project({
         SCSS: 'bg-red-400',
         HTML: 'bg-red-500',
         Dockerfile: 'bg-blue-500',
+        TypeScript: 'bg-blue-500',
     };
     const labels = {
         PHP: (
@@ -69,6 +71,12 @@ function Project({
         Dockerfile: (
             <Icon
                 path={mdiDocker}
+                size={1}
+            />
+        ),
+        TypeScript: (
+            <Icon
+                path={mdiLanguageTypescript}
                 size={1}
             />
         ),

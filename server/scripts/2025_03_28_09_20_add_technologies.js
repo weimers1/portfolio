@@ -185,6 +185,12 @@ async function addTechnologies() {
                 filePathLogo: '/src/assets/images/gcp.svg',
                 priority: 7,
             },
+            {
+                name: 'Amazon Web Services',
+                type: 'tool',
+                filePathLogo: '/src/assets/images/aws.svg',
+                priority: 8,
+            },
         ];
 
         for (const technology of technologyData) {
