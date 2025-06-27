@@ -59,7 +59,7 @@ async function addJobs() {
                 description:
                     'Develop, analyze, and maintain large-scale learning management system and medical logging application for medical students, clinical staff, and preceptors to optimize educational experience and improve data management, tracking, and validation for global medical research',
                 tasks: [
-                    'Configure remote Linux environment with Nginxfor a secure, consistent, and streamlined development workflow',
+                    'Configure remote Linux environment with Nginx for a secure, consistent, and streamlined development workflow',
                     'Rewrite legacy learning management system and medical logging application using React.js and Next.js to improve scalability, documentation, and user experience for 1000+ active students',
                     'Cut statistics dashboard load times by over 90% by reducing queries to more recent and relevant data, and implementing best query practices including indexing and effective joining',
                     'Migrate 7000+ student and preceptor records from obsolete system to facilitate medical log data confirmation, validation, and long-term support',
