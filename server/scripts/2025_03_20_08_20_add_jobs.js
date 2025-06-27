@@ -16,11 +16,11 @@ async function addJobs() {
                 titleCompany: 'Corning, Inc.',
                 titlePosition: 'Fullstack Web Dev',
                 description:
-                    'Created, troubleshooted, and maintained numerous large-scale glass research and development software applications with accessible and intuitive user interfaces, and robust backend APIs using Bootstrap, Vue.js, jQuery, and ColdFusion',
+                    'Developed and maintained large-scale research applications with accessible and intuitive user interfaces, and robust backend APIs using Bootstrap, Vue.js, jQuery, and ColdFusion',
                 tasks: [
                     'Updated and maintained 100+ existing applications with over 10,000 users to preserve compatibility with newer versions of software and programming languages',
                     'Refactored metrics reporting pages to reduce load times by over 50% and enhance user experience',
-                    'Collaborated with process engineers to strategically plan a high-impact, multi-user request system for laser cutting projects and a robust API to create and retrieve requests externally from application, engaging with engineers throughout development life cycle to align with evolving requirements',
+                    'Collaborated cross-functionally to create high-impact, multi-user request systems and 10+ robust RESTful API endpoints following SDLC and evolving requirements',
                     'Handled data validation, entry, and management through custom logic, existing validation engines, and secure CRUD operations written with ColdFusion and Oracle SQL',
                 ],
                 techStack: [
@@ -59,8 +59,8 @@ async function addJobs() {
                 description:
                     'Develop, analyze, and maintain large-scale learning management system and medical logging application for medical students, clinical staff, and preceptors to optimize educational experience and improve data management, tracking, and validation for global medical research',
                 tasks: [
-                    'Configure remote Linux environment hosting development servers with Nginx for software development team to ensure consistency and collaboration, and to promote a secure and streamlined development process',
-                    'Rewrite legacy learning management system and medical logging application using Laravel and React to improve scalability, documentation, and user experience for 1000+ active students',
+                    'Configure remote Linux environment with Nginxfor a secure, consistent, and streamlined development workflow',
+                    'Rewrite legacy learning management system and medical logging application using React.js and Next.js to improve scalability, documentation, and user experience for 1000+ active students',
                     'Cut statistics dashboard load times by over 90% by reducing queries to more recent and relevant data, and implementing best query practices including indexing and effective joining',
                     'Migrate 7000+ student and preceptor records from obsolete system to facilitate medical log data confirmation, validation, and long-term support',
                 ],

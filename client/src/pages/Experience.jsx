@@ -151,36 +151,20 @@ function Experience(props) {
 
             <section className="flex flex-col place-items-center py-30 lg:py-40">
                 <div className="text-white text-3xl lg:text-5xl border-b w-60 lg:w-200 text-center mb-10 pb-10 lg:mb-20 lg:pb-20 text-shadow-cyan">
-                    Resumes
+                    Resume
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-30 pt-2">
                     <a
-                        href="/src/assets/documents/Samuel_Weimer_Full_Stack_Resume_Styled.pdf"
+                        href="/src/assets/documents/SamWeimerResume.pdf"
                         target="_blank"
                     >
                         <div
                             className="w-30 h-30 lg:w-50 lg:h-50 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 flex flex-col place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center pt-5 lg:pt-10"
                             data-aos="fade-up"
                         >
-                            For People
                             <Icon
                                 className="w-10 h-10 lg:w-15 lg:h-15 mt-2"
                                 icon="mdi-account-tie"
-                            />
-                        </div>
-                    </a>
-                    <a
-                        href="/src/assets/documents/Samuel_Weimer_Full_Stack_Resume.pdf"
-                        target="_blank"
-                    >
-                        <div
-                            className="w-30 h-30 lg:w-50 lg:h-50 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 flex flex-col place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center my-20 lg:my-0 pt-5 lg:pt-10"
-                            data-aos="fade-up"
-                        >
-                            For Robots
-                            <Icon
-                                className="w-10 h-10 lg:w-15 lg:h-15 mt-2"
-                                icon="mdi-robot"
                             />
                         </div>
                     </a>
