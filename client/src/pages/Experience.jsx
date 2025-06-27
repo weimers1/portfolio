@@ -159,11 +159,11 @@ function Experience(props) {
                         target="_blank"
                     >
                         <div
-                            className="w-20 h-20 lg:w-40 lg:h-40 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 flex flex-col place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center pt-5 lg:pt-10"
+                            className="w-21 h-21 lg:w-40 lg:h-40 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 flex flex-col place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center pt-5 lg:pt-10"
                             data-aos="fade-up"
                         >
                             <Icon
-                                className="w-10 h-10 lg:w-15 lg:h-15 mt-1"
+                                className="w-10 h-10 lg:w-15 lg:h-15 lg:mt-1"
                                 icon="mdi-google-drive"
                             />
                         </div>
@@ -173,11 +173,11 @@ function Experience(props) {
                         target="_blank"
                     >
                         <div
-                            className="w-20 h-20 lg:w-40 lg:h-40 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 flex flex-col place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center my-20 lg:my-0 pt-5 lg:pt-10"
+                            className="w-21 h-21 lg:w-40 lg:h-40 bg-cyan-600/50 rounded-full border-3 lg:border-6 border-cyan-600 shadow-2xl shadow-cyan-600 flex flex-col place-items-center text-white text-md lg:text-2xl text-shadow-cyan text-center my-20 lg:my-0 pt-5 lg:pt-10"
                             data-aos="fade-up"
                         >
                             <Icon
-                                className="w-10 h-10 lg:w-15 lg:h-15 mt-1"
+                                className="w-10 h-10 lg:w-15 lg:h-15 lg:mt-1"
                                 icon="mdi-paperclip"
                             />
                         </div>
