@@ -1,13 +1,14 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'build'
-      - '-t'
-      - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/frontend:latest'
-      - '--build-arg'
-      - 'VITE_BASE_URL_API_ARG=${_VITE_BASE_URL_API_ARG}'
-      - '.'
-  - name: 'gcr.io/cloud-builders/docker'
-    args:
-      - 'push'
-      - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/frontend:latest'
+    - name: 'gcr.io/cloud-builders/docker'
+      args:
+          - 'build'
+          - '-t'
+          - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/frontend:latest'
+          - '--build-arg'
+          - 'VITE_BASE_URL_API_ARG=${_VITE_BASE_URL_API_ARG}'
+          - '--no-cache'
+          - '.'
+    - name: 'gcr.io/cloud-builders/docker'
+      args:
+          - 'push'
+          - 'us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/frontend:latest'
