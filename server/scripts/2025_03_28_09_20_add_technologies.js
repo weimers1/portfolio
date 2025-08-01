@@ -191,6 +191,12 @@ async function addTechnologies() {
                 filePathLogo: '/src/assets/images/aws.svg',
                 priority: 8,
             },
+            {
+                name: 'Next.js',
+                type: 'framework',
+                filePathLogo: '/src/assets/images/nextjs.svg',
+                priority: 10,
+            },
         ];
 
         for (const technology of technologyData) {
