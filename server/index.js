@@ -213,7 +213,7 @@ const sendEmail = async (emailFrom, message, subject) => {
     }
 };
 
-mongoose
+await mongoose
     .connect(DB_CONNECTION_STRING)
     .then((response) => {
         console.log('Connected to database.');
