@@ -84,6 +84,7 @@ async function addProjects() {
                     'Design and implement responsive UI using React and Tailwind CSS, integrating Figma prototypes to streamline UX workflows, reducing design-to-development iteration time by 20%',
                     'Configure CI/CD pipelines with GitHub Actions to automate testing and deployment to AWS, ensuring 99.9% uptime and accelerating release cycles by 30%',
                     'Engineer RESTful API endpoints with Node.js/Express and MySQL, enabling real-time user stats and community interactions, optimizing query performance by 15% through indexing',
+                    'Develop a messaging system for secure user communication using web sockets',
                 ],
                 techStack: [
                     'HTML',
