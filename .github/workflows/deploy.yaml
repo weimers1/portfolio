@@ -1,26 +1,65 @@
 name: Deploy to GCP
+
 on:
     push:
         branches:
             - main
+
 jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
+            # Step 1: Checkout code
             - uses: actions/checkout@v4
+
+            # Step 2: Authenticate with GCP
             - uses: google-github-actions/auth@v1
               with:
-                  credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-            - run: gcloud builds submit ./client --config=./client/cloudbuild.yaml --substitutions _VITE_BASE_URL_API_ARG='https://portfolio-backend-232883986354.us-central1.run.app/'
-            - run: gcloud builds submit ./server --config=./server/cloudbuild.yaml
-            - uses: hashicorp/setup-terraform@v3
-              with:
-                  terraform_version: 1.6.0
-            - run: terraform init
-              working-directory: ./terraform
-              env:
-                  GOOGLE_CREDENTIALS: '${{ secrets.GCP_CREDENTIALS }}'
-            - run: terraform apply -auto-approve
-              working-directory: ./terraform
-              env:
-                  GOOGLE_CREDENTIALS: '${{ secrets.GCP_CREDENTIALS }}'
+                  credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+
+            # Step 3: Set up gcloud CLI
+            - uses: google-github-actions/setup-gcloud@v1
+
+            # Step 4: Build frontend image with custom substitutions
+            - name: Build Frontend with Cloud Build
+              run: >
+                  gcloud builds submit ./client
+                  --config=./client/cloudbuild.yaml
+                  --substitutions=_VITE_BASE_URL_API_ARG=https://portfolio-backend-232883986354.us-central1.run.app/
+
+            # Step 5: Build backend image with Cloud Build
+            - name: Build Backend with Cloud Build
+              run: >
+                  gcloud builds submit ./server
+                  --config=./server/cloudbuild.yaml
+
+            # Step 6: Deploy frontend to Cloud Run
+            - name: Deploy Frontend to Cloud Run
+              run: >
+                  gcloud run deploy portfolio-frontend
+                  --region us-central1
+                  --image us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/frontend:latest
+                  --platform managed
+                  --allow-unauthenticated
+
+            # Step 7: Deploy backend to Cloud Run
+            - name: Deploy Backend to Cloud Run
+              run: >
+                  gcloud run deploy portfolio-backend
+                  --region us-central1
+                  --image us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/backend:latest
+                  --platform managed
+                  --allow-unauthenticated
+
+            # Optional: Delete old images (keep only `:latest`)
+            - name: Clean Up Old Images
+              run: |
+                  for SERVICE in frontend backend; do
+                    IMAGE_PATH="us-central1-docker.pkg.dev/samweimer-portfolio/portfolio-repo/$SERVICE"
+                    gcloud artifacts docker images list $IMAGE_PATH \
+                      --format="get(version)" \
+                      | grep -v latest \
+                      | while read digest; do
+                          gcloud artifacts docker images delete "$IMAGE_PATH@$digest" --quiet || true
+                        done
+                  done
