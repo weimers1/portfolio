@@ -54,6 +54,7 @@ async function addProjects() {
                     'Integrate GitHub APIs to dynamically fetch and display live data on coding projects, tech stacks, and commit history',
                     'Develop portable and robust React components styled with Tailwind CSS for efficient creation of well-structured and responsive pages displaying all relevant information and showcasing experience',
                     "Implement a contact form leveraging Google Cloud Platform's Cloud Functions to facilitate direct email communication",
+                    'Configure a CI/CD pipeline for consistent and streamlined production pushes using GitHub actions and Terraform',
                 ],
                 techStack: [
                     'HTML',
