@@ -144,3 +144,11 @@ dist-ssr
 
 # config files
 server/config.js
+
+# terraform and ci/cd files
+key.json
+terraform/.terraform.lock.hcl
+terraform/.terraform/
+.terraform/
+*.tfstate
+*.tfstate.backup
