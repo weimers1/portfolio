@@ -1,0 +1,22 @@
+name: Deploy to GCP
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      - run: gcloud builds submit ./client --config=./client/cloudbuild.yaml --substitutions _VITE_BASE_URL_API_ARG='https://portfolio-backend-232883986354.us-central1.run.app/'
+      - run: gcloud builds submit ./server --config=./server/cloudbuild.yaml
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.0
+      - run: terraform init
+        working-directory: ./terraform
+      - run: terraform apply -auto-approve
+        working-directory: ./terraform
