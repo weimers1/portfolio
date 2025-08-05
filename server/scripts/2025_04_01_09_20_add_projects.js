@@ -50,11 +50,11 @@ async function addProjects() {
                 filePathLogo: '/src/assets/images/logo.png',
                 filePathViews: '/src/assets/images/portfolio_views.png',
                 tasks: [
-                    'Manage a portfolio database using MongoDB, with Node.js scripts for data insertion and updates of work history and project details',
+                    'Build a cloud-native, data-driven portfolio using MongoDB, Node.js, Express.js, and Google Cloud Platform’s Compute Engine and scalable Docker containers to ensure constant information accuracy and 99.99% uptime',
                     'Integrate GitHub APIs to dynamically fetch and display live data on coding projects, tech stacks, and commit history',
                     'Develop portable and robust React components styled with Tailwind CSS for efficient creation of well-structured and responsive pages displaying all relevant information and showcasing experience',
                     "Implement a contact form leveraging Google Cloud Platform's Cloud Functions to facilitate direct email communication",
-                    'Configure a CI/CD pipeline for consistent and streamlined production pushes using GitHub actions',
+                    'Configure a CI/CD pipeline for consistent and streamlined production pushes using GitHub actions, cutting deployment process time by over 70%',
                 ],
                 techStack: [
                     'HTML',
