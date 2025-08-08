@@ -57,7 +57,7 @@ async function addJobs() {
                 titleCompany: 'VCOM',
                 titlePosition: 'Fullstack Web Dev',
                 description:
-                    'Develop, analyze, and maintain large-scale learning management system and medical logging application for medical students, clinical staff, and preceptors to optimize educational experience and improve data management, tracking, and validation for global medical research',
+                    'Architect and develop React/TypeScript/Next.js portal for doctors to assess medical student patient encounters, facilitating verifiably accurate and complete data for epidemiological research and analysis. Simultaneously expand and maintain PHP legacy learning management system for medical students, clinical staff, and preceptors to optimize educational experience and improve medical research data management and validation',
                 tasks: [
                     'Configure remote Linux environment with Nginx for a secure, consistent, and streamlined development workflow',
                     'Rewrite legacy learning management system and medical logging application using React.js and Next.js to improve scalability, documentation, and user experience for 1000+ active students',
